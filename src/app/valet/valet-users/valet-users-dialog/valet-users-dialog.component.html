@@ -1,0 +1,133 @@
+<div *ngIf="formType == 'add' ">
+    <form autocomplete="off" (ngSubmit)="onAddUserToken()" ngNativeValidate>
+        <div class="modal-body pad25">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                        [ngClass]="addForm.name ? 'is-focused': ''">
+                        <input type="text" class="mdl-textfield__input clabelborder" name="name"
+                            [(ngModel)]="addForm.name" #name="ngModel" required />
+                        <label class="mdl-textfield__label cname-color" for="name">Name</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                        [ngClass]="addForm.username ? 'is-focused': ''">
+                        <input type="text" class="mdl-textfield__input clabelborder" name="username"
+                            [(ngModel)]="addForm.username" #username="ngModel" required />
+                        <label class="mdl-textfield__label cname-color" for="username">Username</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                        [ngClass]="addForm.password ? 'is-focused': ''">
+                        <input type="text" class="mdl-textfield__input clabelborder" name="password"
+                            [(ngModel)]="addForm.password" #password="ngModel" required />
+                        <label class="mdl-textfield__label cname-color" for="password">Password</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                        [ngClass]="addForm.confirm_password ? 'is-focused': ''">
+                        <input type="text" class="mdl-textfield__input clabelborder" name="confirm_password"
+                            [(ngModel)]="addForm.confirm_password" #confirm_password="ngModel" required />
+                        <label class="mdl-textfield__label cname-color" for="confirm_password">Confirm Password</label>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="addForm.confirm_password && addForm.password != addForm.confirm_password">
+                <div class="error-msg">Mismatch password</div>
+            </div>
+
+            <div *ngIf="addForm.error_msg" class="error-msg">{{ addForm.error_msg }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button type="button" class="btn btn-link btn-cancel waves-effect"
+                    (click)="closeDialog()">CANCEL</button>
+                <button type="submit" [disabled]="addForm.password!=addForm.confirm_password" 
+                    class="btn btn-link waves-effect">DONE</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="formType == 'lock'">
+
+    <form autocomplete="off" (ngSubmit)="onUpdateUserToken()" ngNativeValidate>
+        <div class="modal-body pad25">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                        [ngClass]="editForm.password ? 'is-focused': ''">
+                        <input type="text" class="mdl-textfield__input clabelborder" name="password"
+                            [(ngModel)]="editForm.password" #password="ngModel" required />
+                        <label class="mdl-textfield__label cname-color" for="password">Password</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                        [ngClass]="editForm.confirm_password ? 'is-focused': ''">
+                        <input type="text" class="mdl-textfield__input clabelborder" name="confirm_password"
+                            [(ngModel)]="editForm.confirm_password" #confirm_password="ngModel" required />
+                        <label class="mdl-textfield__label cname-color" for="confirm_password">Confirm Password</label>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="pwdForm.confirm_password && pwdForm.password != pwdForm.confirm_password">
+                <div class="error-msg">Mismatch password</div>
+            </div>
+
+            <div *ngIf="editForm.error_msg" class="error-msg">{{ editForm.error_msg }}</div>
+        </div>
+        <div class="row text-right">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-link btn-cancel waves-effect"
+                    (click)="closeDialog()">CANCEL</button>
+                <button type="submit" [disabled]="pwdForm.password != pwdForm.confirm_password" 
+                    class="btn btn-link waves-effect">UPDATE</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="formType == 'delete'">
+    <div class="modal-content mdl-shadow--4dp">
+        <div class="header modal-headpad">
+            <div class="col-md-10">
+                <h4 class="modal-title" id="defaultModalLabel">
+                    Remove this table?
+                </h4>
+            </div>
+        </div>
+        <div class="modal-body pad25">
+            <p>Removing this table means you won't be able to use it anymore.</p>
+            <p class="p-t-30">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="#616161">
+                    <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z" />
+                </svg>
+                <span class="p-l-40">{{tableName}}</span>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
+            <button class="btn btn-link waves-effect" type="button" (click)="onDeleteUserToken()">DONE</button>
+        </div>
+    </div>
+</div>

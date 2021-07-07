@@ -1,0 +1,16 @@
+/*******************
+ Breadcrumb and page title
+*******************/
+.page-breadcrumb {
+  padding: 15px 30px 0 30px;
+  margin-bottom: 20px;
+  background-color: #69499b !important;
+  color: white !important;
+  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.page-breadcrumb .page-title {
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=breadcrumb.css.map */

@@ -1,0 +1,42 @@
+<div class="main-div thme-bg">
+    <div class="sub-div">
+        <div class="col-md-12 no-pad">
+            <div class="col-md-8 no-pad">
+                <img src="assets/images/dinamic-logo.png">
+            </div>
+            <div class="col-md-4 no-pad mdl-shadow--2dp login-height100">
+                <div class="something-semantic">
+                    <div class="something-else-semantic">
+                        <div class="center-log">
+                            <div align="left"><h1>LOGIN</h1></div>
+                            <form (ngSubmit)="onSubmit()" #myForm="ngForm" ngNativeValidate>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="loginForm.username ? 'is-focused': ''">
+                                    <input type="text" class="mdl-textfield__input" [(ngModel)]="loginForm.username" name="username" required />
+                                    <label class="mdl-textfield__label txt-italic" for="username">Username</label>
+                                </div>
+
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="loginForm.password ? 'is-focused': ''">
+                                    <input type="password" class="mdl-textfield__input" [(ngModel)]="loginForm.password" name="password" required />
+                                    <label class="mdl-textfield__label txt-italic" for="pwd">Password</label>
+                                </div>
+                                <div *ngIf='loginForm.error_msg' class="error-msg-md"><br>{{ loginForm.error_msg }}</div>
+                                <div class="forgot" align="right">
+                                    <a>Forgot password?</a>
+                                </div>
+
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
+                                    <label for="loginkeeping" class="txt-italic">Keep me logged in</label>
+                                </div>
+
+                                <div align="center">
+                                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">LOGIN</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
