@@ -40,8 +40,14 @@ export class ApiService {
   }
 
   ADD_THEME(x: any) {
-    let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("admin_token") }) };
+    // let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("admin_token") }) };
+    let httpOptions = { headers: new HttpHeaders({ 'Authorization': 'Bearer '+localStorage.getItem("admin_token") }) };
     return this.http.post<any>(environment.ws_url+ '/admin/restaurant/addTheme', x, httpOptions);
+  }
+
+  ADD_HOMEPAGE_THEME(x: any) {
+    let httpOptions = { headers: new HttpHeaders({ 'Authorization': 'Bearer '+localStorage.getItem('admin_token') }) };
+    return this.http.post<any>(environment.ws_url+ '/admin/restaurant/addHomePageTheme', x, httpOptions);
   }
 
   THEME_LIST(x: any) {
