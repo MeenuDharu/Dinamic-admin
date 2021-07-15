@@ -57,8 +57,7 @@ export class RestaurentThemeDialogComponent implements OnInit {
 	}
 
 	onUpdateTheme(updateName: any) {
-
-		if (updateName === 'theme') {
+				if (updateName === 'theme') {
 			this.themeObject.pos_rest_id = this.selectedRestaurent.pos_rest_id;
 			this.themeObject.isDefaultTheme = false;
 			this.themeForm = {
