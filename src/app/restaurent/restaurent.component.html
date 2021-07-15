@@ -62,7 +62,8 @@
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
             <td mat-cell *matCellDef="let row">
-              <i class="material-icons" (click)="openDialog('themeAdd', row)" style="cursor: pointer;">palette</i>
+              <i class="material-icons" (click)="onChangeTheme(row)" style="cursor: pointer;">palette</i>
+              <!-- <i class="material-icons" (click)="openDialog('themeAdd', row)" style="cursor: pointer;">palette</i> -->
               <i class="material-icons" (click)="onBranchList(row)" style="cursor: pointer;margin-left: 15px;">visibility</i>
               <i class="material-icons" (click)="openDialog('edit', row)"
                 style="cursor: pointer;margin-left: 15px; ">edit</i>

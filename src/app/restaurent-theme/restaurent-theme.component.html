@@ -1,0 +1,160 @@
+<div class="row">
+    <div class="col-12">
+        <h4 class="d-inline">Change the Restaurant theme as per your wish</h4>
+        <!-- Row -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-md-12">
+                <!-- Card -->
+                <mat-card class="card mat-elevation-z1 p-0">
+                    <div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
+                        <h4 class="card-title m-0 font500">Theme Update</h4>
+                        <i class="material-icons" style="cursor: pointer;" (click)="onEdit('theme')">edit</i>
+                    </div>
+                </mat-card>
+                <!-- Card -->
+            </div>
+            <!-- column -->
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-md-12">
+                <!-- Card -->
+                <mat-card class="card mat-elevation-z1 p-0">
+                    <div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
+                        <h4 class="card-title m-0 font500">HomePage Update</h4>
+                        <i class="material-icons" style="cursor: pointer;" (click)="onEdit('homepage')">edit</i>
+                    </div>
+                </mat-card>
+                <!-- Card -->
+            </div>
+            <!-- column -->
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-md-12">
+                <!-- Card -->
+                <mat-card class="card mat-elevation-z1 p-0">
+                    <div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
+                        <h4 class="card-title m-0 font500">Section Update</h4>
+                        <i class="material-icons" style="cursor: pointer;" (click)="onEdit('section')">edit</i>
+                    </div>
+                </mat-card>
+                <!-- Card -->
+            </div>
+            <!-- column -->
+        </div>
+        <!-- Row -->
+    </div>
+</div>
+<!-- //////////////////////////////////////////////////////////////////////////// -->
+
+<!--  Theme Form -->
+<!-- <div *ngIf="modalType == 'theme' ">
+    <form autocomplete="off" (ngSubmit)="onUpdateTheme('theme')" ngNativeValidate>
+      <div class="modal-body pad25">
+  
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+              [ngClass]="themeObject.navbarColor ? 'is-focused': ''">
+              <input type="text" class="mdl-textfield__input clabelborder" name="navbarColor"
+                [(ngModel)]="themeObject.navbarColor" #navbarColor="ngModel" required />
+              <label class="mdl-textfield__label cname-color" for="navbarColor">Navbar Color</label>
+            </div>
+          </div>
+  
+          <div class="col-md-6">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+              [ngClass]="themeObject.navbarText ? 'is-focused': ''">
+              <input type="text" class="mdl-textfield__input clabelborder" name="navbarText"
+                [(ngModel)]="themeObject.navbarText" #navbarText="ngModel" required />
+              <label class="mdl-textfield__label cname-color" for="navbarText">Navbar Text</label>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+              [ngClass]="themeObject.primaryButtonColor ? 'is-focused': ''">
+              <input type="text" class="mdl-textfield__input clabelborder" name="primaryButtonColor"
+                [(ngModel)]="themeObject.primaryButtonColor" #primaryButtonColor="ngModel" />
+              <label class="mdl-textfield__label cname-color" for="primaryButtonColor">Primary Button Color</label>
+            </div>
+          </div>
+  
+          <div class="col-md-6">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+              [ngClass]="themeObject.primaryButtonText ? 'is-focused': ''">
+              <input type="text" class="mdl-textfield__input clabelborder" name="primaryButtonText"
+                [(ngModel)]="themeObject.primaryButtonText" #primaryButtonText="ngModel" />
+              <label class="mdl-textfield__label cname-color" for="primaryButtonText">Primary Button Text</label>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+              [ngClass]="themeObject.secondaryButtonColor ? 'is-focused': ''">
+              <input type="text" class="mdl-textfield__input clabelborder" name="secondaryButtonColor"
+                [(ngModel)]="themeObject.secondaryButtonColor" #secondaryButtonColor="ngModel" />
+              <label class="mdl-textfield__label cname-color" for="secondaryButtonColor">Secondary Button Color</label>
+            </div>
+          </div>
+  
+          <div class="col-md-6">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+              [ngClass]="themeObject.secondaryButtonText ? 'is-focused': ''">
+              <input type="text" class="mdl-textfield__input clabelborder" name="secondaryButtonText"
+                [(ngModel)]="themeObject.secondaryButtonText" #secondaryButtonText="ngModel" />
+              <label class="mdl-textfield__label cname-color" for="secondaryButtonText">Secondary Button Text</label>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+              [ngClass]="themeObject.disabledButtonColor ? 'is-focused': ''">
+              <input type="text" class="mdl-textfield__input clabelborder" name="disabledButtonColor"
+                [(ngModel)]="themeObject.disabledButtonColor" #disabledButtonColor="ngModel" />
+              <label class="mdl-textfield__label cname-color" for="disabledButtonColor">Disabled Button Color</label>
+            </div>
+          </div>
+  
+          <div class="col-md-6">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+              [ngClass]="themeObject.disabledButtonText ? 'is-focused': ''">
+              <input type="text" class="mdl-textfield__input clabelborder" name="disabledButtonText"
+                [(ngModel)]="themeObject.disabledButtonText" #disabledButtonText="ngModel" />
+              <label class="mdl-textfield__label cname-color" for="disabledButtonText">Disabled Button Text</label>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+              [ngClass]="themeObject.spinnerColor ? 'is-focused': ''">
+              <input type="text" class="mdl-textfield__input clabelborder" name="spinnerColor"
+                [(ngModel)]="themeObject.spinnerColor" #spinnerColor="ngModel" required />
+              <label class="mdl-textfield__label cname-color" for="spinnerColor">Spinner Color</label>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="themeObject.error_msg" class="error-msg">{{ themeObject.error_msg }}</div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <button type="button" class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
+          <button type="submit" class="btn btn-link waves-effect">DONE</button>
+        </div>
+      </div>
+    </form>
+  </div> -->

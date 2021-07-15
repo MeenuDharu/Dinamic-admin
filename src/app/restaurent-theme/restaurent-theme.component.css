@@ -1,0 +1,13 @@
+.font500 {
+    font-weight: 500;
+}
+
+.p-x-30 {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.p-y-20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
