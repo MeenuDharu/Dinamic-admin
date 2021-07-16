@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { ApiService } from 'src/app/_services/api.service';
+import { environment } from 'src/environments/environment';
 
 export interface IThemeForm {
 	pos_rest_id?: string;
@@ -24,6 +25,7 @@ export class RestaurentThemeDialogComponent implements OnInit {
 	modalData: any;
 	formData = new FormData();
 	selectedRestaurent = JSON.parse(localStorage.getItem('selected_restaurant')!);
+	baseUrl = environment.ws_url;
 
 	constructor(
 		public apiService: ApiService,
@@ -44,12 +46,6 @@ export class RestaurentThemeDialogComponent implements OnInit {
 			this.themeObject = this.modalData.theme;
 		} else if (this.modalType === 'homepage') {
 			this.homepageObject = this.modalData.homepage;
-			this.homepageObject.headerStatus = true;
-			this.homepageObject.billStatus = true;
-			this.homepageObject.helpStatus = true;
-			this.homepageObject.vehicleStatus = true;
-			this.homepageObject.offerStatus = true;
-			this.homepageObject.exitStatus = true;
 		} else if (this.modalType === 'section') {
 
 		}
@@ -72,6 +68,7 @@ export class RestaurentThemeDialogComponent implements OnInit {
 			});
 		}
 		if (updateName === 'homepage') {
+			this.formData.set('isDefault', "false");
 			this.formData.set('pos_rest_id', this.selectedRestaurent.pos_rest_id);
 			this.formData.set('isDefaultHomepage', "false")
 			this.formData.set('header', this.homepageObject.header);
@@ -106,32 +103,29 @@ export class RestaurentThemeDialogComponent implements OnInit {
 	onFileChange(event: any, type: string) {
 		
 		if (type === "bill") {
-			const billImage = event.target?.files[0];
+			let billImage = event.target?.files[0];
 			this.formData.append('homepageImages', billImage, 'billImage');
-			// this.homepageObject['billImage'] = billImage;
-			const billPreview = document.getElementById('billPreview')
+			let billPreview = document.getElementById('billPreview')
 			billPreview?.setAttribute('src', URL.createObjectURL(billImage));
 		} else if (type === "help") {
-			const helpImage = event.target?.files[0];
+			let helpImage = event.target?.files[0];
 			this.formData.append('homepageImages', helpImage, 'helpImage');
-			// this.homepageObject['helpImage'] = helpImage;
-			const helpPreview = document.getElementById('helpPreview')
+			let helpPreview = document.getElementById('helpPreview')
 			helpPreview?.setAttribute('src', URL.createObjectURL(helpImage));
 		} else if (type === "vehicle") {
-			const vehicleImage = event.target?.files[0];
+			let vehicleImage = event.target?.files[0];
 			this.formData.append('homepageImages', vehicleImage, 'vehicleImage');
-			// this.homepageObject['vehicleImage'] = vehicleImage;
-			const vehiclePreview = document.getElementById('vehiclePreview')
+			let vehiclePreview = document.getElementById('vehiclePreview')
 			vehiclePreview?.setAttribute('src', URL.createObjectURL(vehicleImage));
 		} else if (type === "offer") {
-			const offerImage = event.target?.files[0];
+			let offerImage = event.target?.files[0];
 			this.formData.append('homepageImages', offerImage, 'offerImage');
-			const offerPreview = document.getElementById('offerPreview')
+			let offerPreview = document.getElementById('offerPreview')
 			offerPreview?.setAttribute('src', URL.createObjectURL(offerImage));
 		} else if (type === "exit") {
-			const exitImage = event.target?.files[0];
+			let exitImage = event.target?.files[0];
 			this.formData.append('homepageImages', exitImage, 'exitImage');
-			const exitPreview = document.getElementById('exitPreview')
+			let exitPreview = document.getElementById('exitPreview')
 			exitPreview?.setAttribute('src', URL.createObjectURL(exitImage));
 		}
 	}

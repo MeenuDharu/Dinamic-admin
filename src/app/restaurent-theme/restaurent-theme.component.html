@@ -1,55 +1,414 @@
 <div class="row">
-    <div class="col-12">
-        <h4 class="d-inline">Change the Restaurant theme as per your wish</h4>
-        <!-- Row -->
-        <div class="row">
-            <!-- column -->
-            <div class="col-md-12">
-                <!-- Card -->
-                <mat-card class="card mat-elevation-z1 p-0">
-                    <div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
-                        <h4 class="card-title m-0 font500">Theme Update</h4>
-                        <i class="material-icons" style="cursor: pointer;" (click)="onEdit('theme')">edit</i>
-                    </div>
-                </mat-card>
-                <!-- Card -->
-            </div>
-            <!-- column -->
-        </div>
-        <!-- Row -->
-        <!-- Row -->
-        <div class="row">
-            <!-- column -->
-            <div class="col-md-12">
-                <!-- Card -->
-                <mat-card class="card mat-elevation-z1 p-0">
-                    <div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
-                        <h4 class="card-title m-0 font500">HomePage Update</h4>
-                        <i class="material-icons" style="cursor: pointer;" (click)="onEdit('homepage')">edit</i>
-                    </div>
-                </mat-card>
-                <!-- Card -->
-            </div>
-            <!-- column -->
-        </div>
-        <!-- Row -->
-        <!-- Row -->
-        <div class="row">
-            <!-- column -->
-            <div class="col-md-12">
-                <!-- Card -->
-                <mat-card class="card mat-elevation-z1 p-0">
-                    <div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
-                        <h4 class="card-title m-0 font500">Section Update</h4>
-                        <i class="material-icons" style="cursor: pointer;" (click)="onEdit('section')">edit</i>
-                    </div>
-                </mat-card>
-                <!-- Card -->
-            </div>
-            <!-- column -->
-        </div>
-        <!-- Row -->
+  <div class="col-12">
+    <h4 class="d-inline">Change the Restaurant theme as per your wish</h4>
+    <!-- Theme Updation -->
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="card mat-elevation-z1 p-0">
+          <div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
+            <h4 class="card-title m-0 font500">Theme Update</h4>
+            <i class="material-icons" style="cursor: pointer;" (click)="onEdit('theme')">edit</i>
+          </div>
+        </mat-card>
+        <ng-container *ngIf="formType === 'theme'">
+          <mat-card class="mat-elevation-z2 p-0">
+            <form autocomplete="off" (ngSubmit)="onUpdateTheme('theme')" ngNativeValidate>
+              <div class="modal-body p-25">
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Navbar Color</mat-label>
+                      <input matInput type="text" name="navbarColor" [(ngModel)]="themeObject.navbarColor"
+                        #navbarColor="ngModel" required />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Navbar Text</mat-label>
+                      <input matInput type="text" name="navbarText" [(ngModel)]="themeObject.navbarText"
+                        #navbarText="ngModel" required />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Primary Button Color</mat-label>
+                      <input matInput type="text" name="primaryButtonColor" [(ngModel)]="themeObject.primaryButtonColor"
+                        #primaryButtonColor="ngModel" required />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Primary Button Text</mat-label>
+                      <input matInput type="text" name="primaryButtonText" [(ngModel)]="themeObject.primaryButtonText"
+                        #primaryButtonText="ngModel" required />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Secondary Button Color</mat-label>
+                      <input matInput type="text" name="secondaryButtonColor"
+                        [(ngModel)]="themeObject.secondaryButtonColor" #secondaryButtonColor="ngModel" required />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Secondary Button Text</mat-label>
+                      <input matInput type="text" name="secondaryButtonText"
+                        [(ngModel)]="themeObject.secondaryButtonText" #secondaryButtonText="ngModel" required />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Disabled Button Color</mat-label>
+                      <input matInput type="text" name="disabledButtonColor"
+                        [(ngModel)]="themeObject.disabledButtonColor" #disabledButtonColor="ngModel" required />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Disabled Button Text</mat-label>
+                      <input matInput type="text" name="disabledButtonText" [(ngModel)]="themeObject.disabledButtonText"
+                        #disabledButtonText="ngModel" required />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field class="w-100">
+                      <mat-label>Spinner Color</mat-label>
+                      <input matInput type="text" name="spinnerColor" [(ngModel)]="themeObject.spinnerColor"
+                        #spinnerColor="ngModel" required />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div *ngIf="themeObject.error_msg" class="error-msg">{{ themeObject.error_msg }}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 text-right p-x-25 p-b-10">
+                  <button type="button" class="btn btn-link btn-cancel waves-effect"
+                    (click)="closeForm('theme')">CANCEL</button>
+                  <button type="submit" class="btn btn-link waves-effect">DONE</button>
+                </div>
+              </div>
+
+            </form>
+          </mat-card>
+        </ng-container>
+      </div>
     </div>
+
+    <!-- Homepage Updation -->
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="card mat-elevation-z1 p-0">
+          <div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
+            <h4 class="card-title m-0 font500">HomePage Update</h4>
+            <i class="material-icons" style="cursor: pointer;" (click)="onEdit('homepage')">edit</i>
+          </div>
+        </mat-card>
+        <ng-container *ngIf="formType === 'homepage'">
+          <mat-card class="mat-elevation-z-2 p-0">
+            <form autocomplete="off" (ngSubmit)="onUpdateTheme('homepage')" ngNativeValidate>
+              <div class="modal-body p-25">
+                <!-- Homepage Header -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Homepage Header</mat-label>
+                      <input matInput type="text" name="header" [(ngModel)]="homepageObject.header" #header="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Homepage Subheader</mat-label>
+                      <input matInput type="text" name="subHeader" [(ngModel)]="homepageObject.subHeader"
+                        #subHeader="ngModel" />
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="headerStatus" [(ngModel)]="homepageObject.headerStatus">Show Header</mat-checkbox>
+                </div>
+
+                <!-- Homepage Bill -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Bill Header</mat-label>
+                      <input matInput type="text" name="billHeader" [(ngModel)]="homepageObject.billHeader"
+                        #billHeader="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Bill Subheader</mat-label>
+                      <input matInput type="text" name="billSubheader" [(ngModel)]="homepageObject.billSubheader"
+                        #billSubheader="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Bill Image</mat-label>
+                      <input type="file" name="billImage" [(ngModel)]="homepageObject.billImage"
+                        #billImage="ngModel" (change)="onFileChange($event, 'bill')" />
+                    </mat-form-field>
+                  </div> -->
+
+                  <!-- <div>
+                    <input hidden id="billImage" type="file" name="billImage" [(ngModel)]="homepageObject.billImage" />
+                    <label for="billImage" class="mat-raised-button mat-primary p-10 w-100">Choose Files <mat-icon>attachment</mat-icon></label>
+                  </div> -->
+                </div>
+
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="billImage" [(ngModel)]="homepageObject.billImage"
+                        #billImage="ngModel" (change)="onFileChange($event, 'bill')" />
+                  </div>
+
+                  <div class="col-md-6" >
+                    <div class="text-center">
+                      <img *ngIf="isDefaultBillImage === false" id="billPreview" alt="Bill Image Preview" width="100px" height="100px">
+                      <img *ngIf="isDefaultBillImage === true" id="billPreview" src="{{this.baseUrl+this.homepageObject.billImage}}" alt="Bill Image Preview" width="100px" height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="billStatus" [(ngModel)]="homepageObject.billStatus">Show Bill</mat-checkbox>
+                </div>
+
+                <!-- Homepage Help -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Help Header</mat-label>
+                      <input matInput type="text" name="helpHeader" [(ngModel)]="homepageObject.helpHeader"
+                        #helpHeader="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Help Subheader</mat-label>
+                      <input matInput type="text" name="helpSubheader" [(ngModel)]="homepageObject.helpSubheader"
+                        #helpSubheader="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Help Image</mat-label>
+                      <input type="file" name="helpImage" [(ngModel)]="homepageObject.helpImage"
+                        #helpImage="ngModel" (change)="onFileChange($event, 'help')" />
+                    </mat-form-field>
+                  </div> -->
+
+                </div>
+
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="helpImage" [(ngModel)]="homepageObject.helpImage"
+                        #helpImage="ngModel" (change)="onFileChange($event, 'help')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultHelpImage === false" id="helpPreview" alt="Help Image Preview" width="100px" height="100px">
+                      <img *ngIf="isDefaultHelpImage === true" id="helpPreview" src="{{this.baseUrl+this.homepageObject.helpImage}}" alt="Help Image Preview" width="100px" height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="helpStatus" [(ngModel)]="homepageObject.helpStatus">Show Help</mat-checkbox>
+                </div>
+
+                <!-- Homepage Vehicle -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Vehicle Header</mat-label>
+                      <input matInput type="text" name="vehicleHeader" [(ngModel)]="homepageObject.vehicleHeader"
+                        #vehicleHeader="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Vehicle Subheader</mat-label>
+                      <input matInput type="text" name="vehicleSubheader" [(ngModel)]="homepageObject.vehicleSubheader"
+                        #vehicleSubheader="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Vehicle Image</mat-label>
+                      <input type="file" name="vehicleImage" [(ngModel)]="homepageObject.vehicleImage"
+                        #vehicleImage="ngModel" (change)="onFileChange($event, 'vehicle')"/>
+                    </mat-form-field>
+                  </div> -->
+                </div>
+
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="vehicleImage" [(ngModel)]="homepageObject.vehicleImage"
+                        #vehicleImage="ngModel" (change)="onFileChange($event, 'vehicle')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultVehicleImage === false" id="vehiclePreview" alt="Vehicle Image Preview" width="100px" height="100px">
+                      <img *ngIf="isDefaultVehicleImage === true" id="vehiclePreview" src="{{this.baseUrl+this.homepageObject.vehicleImage}}" alt="Vehicle Image Preview" width="100px" height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="vehicleStatus" [(ngModel)]="homepageObject.vehicleStatus">Show Vehicle
+                  </mat-checkbox>
+                </div>
+
+                <!-- Homepage Offer -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Offer Header</mat-label>
+                      <input matInput type="text" name="offerHeader" [(ngModel)]="homepageObject.offerHeader"
+                        #offerHeader="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Offer Subheader</mat-label>
+                      <input matInput type="text" name="offerSubheader" [(ngModel)]="homepageObject.offerSubheader"
+                        #offerSubheader="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Offer Image</mat-label>
+                      <input type="file" name="offerImage" [(ngModel)]="homepageObject.offerImage"
+                        #offerImage="ngModel" (change)="onFileChange($event, 'offer')"/>
+                    </mat-form-field>
+                  </div> -->
+                </div>
+
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="offerImage" [(ngModel)]="homepageObject.offerImage"
+                        #offerImage="ngModel" (change)="onFileChange($event, 'offer')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultOfferImage === false" id="offerPreview" alt="Offer Image Preview" width="100px" height="100px">
+                      <img *ngIf="isDefaultOfferImage === true" id="offerPreview" src="{{this.baseUrl+this.homepageObject.offerImage}}" alt="Offer Image Preview" width="100px" height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="offerStatus" [(ngModel)]="homepageObject.offerStatus">Show Offer</mat-checkbox>
+                </div>
+
+                <!-- Homepage Exit -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Exit Header</mat-label>
+                      <input matInput type="text" name="exitHeader" [(ngModel)]="homepageObject.exitHeader"
+                        #exitHeader="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Exit Subheader</mat-label>
+                      <input matInput type="text" name="exitSubheader" [(ngModel)]="homepageObject.exitSubheader"
+                        #exitSubheader="ngModel" />
+                    </mat-form-field>
+                  </div>
+
+                  <!-- <div class="col-md-6">
+                    <mat-form-field class="w-100">
+                      <mat-label>Exit Image</mat-label>
+                      <input type="file" name="exitImage" [(ngModel)]="homepageObject.exitImage"
+                        #exitImage="ngModel" (change)="onFileChange($event, 'exit')"/>
+                    </mat-form-field>
+                  </div> -->
+                </div>
+
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="exitImage" [(ngModel)]="homepageObject.exitImage"
+                        #exitImage="ngModel" (change)="onFileChange($event, 'exit')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultExitImage === false" id="exitPreview" alt="Exit Image Preview" width="100px" height="100px">
+                      <img *ngIf="isDefaultExitImage === true" id="exitPreview" src="{{this.baseUrl+this.homepageObject.exitImage}}" alt="Exit Image Preview" width="100px" height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="exitStatus" [(ngModel)]="homepageObject.exitStatus">Show Exit</mat-checkbox>
+                </div>
+
+                <div *ngIf="homepageObject.error_msg" class="error-msg">{{ homepageObject.error_msg }}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 text-right p-x-25 p-b-10">
+                  <button type="button" class="btn btn-link btn-cancel waves-effect"
+                    (click)="closeForm('homepage')">CANCEL</button>
+                  <button type="submit" class="btn btn-link waves-effect">DONE</button>
+                </div>
+              </div>
+
+            </form>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="card mat-elevation-z1 p-0">
+          <div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
+            <h4 class="card-title m-0 font500">Section Update</h4>
+            <i class="material-icons" style="cursor: pointer;" (click)="onEdit('section')">edit</i>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- //////////////////////////////////////////////////////////////////////////// -->
 
