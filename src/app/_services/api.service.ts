@@ -39,15 +39,25 @@ export class ApiService {
     return this.http.post<any>(environment.ws_url+'/admin/restaurant/delete', x, httpOptions);
   }
 
-  ADD_THEME(x: any) {
+  ADD_THEME (x: any) {
     // let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("admin_token") }) };
     let httpOptions = { headers: new HttpHeaders({ 'Authorization': 'Bearer '+localStorage.getItem("admin_token") }) };
     return this.http.post<any>(environment.ws_url+ '/admin/restaurant/addTheme', x, httpOptions);
   }
 
-  ADD_HOMEPAGE_THEME(x: any) {
+  ADD_HOMEPAGE_THEME (x: any) {
     let httpOptions = { headers: new HttpHeaders({ 'Authorization': 'Bearer '+localStorage.getItem('admin_token') }) };
     return this.http.post<any>(environment.ws_url+ '/admin/restaurant/addHomePageTheme', x, httpOptions);
+  }
+
+  ADD_QUICKHELP_THEME (x: any) {
+    let httpOptions = { headers: new HttpHeaders({'Authorization': 'Bearer '+ localStorage.getItem('admin_token') }) };
+    return this.http.post<any>(environment.ws_url+'/admin/restaurant/addQuickHelp', x, httpOptions);
+  }
+
+  ADD_BROKENIMAGES_THEME (x: any) {
+    let httpOptions = { headers: new HttpHeaders({'Authorization': 'Bearer '+ localStorage.getItem('admin_token') }) };
+    return this.http.post<any>(environment.ws_url + '/admin/restaurant/addBrokenImage', x, httpOptions);
   }
 
   THEME_LIST(x: any) {

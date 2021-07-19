@@ -146,7 +146,8 @@
                 </div>
 
                 <div class="row">
-                  <mat-checkbox class="p-10" name="headerStatus" [(ngModel)]="homepageObject.headerStatus">Show Header</mat-checkbox>
+                  <mat-checkbox class="p-10" name="headerStatus" [(ngModel)]="homepageObject.headerStatus">Show Header
+                  </mat-checkbox>
                 </div>
 
                 <!-- Homepage Bill -->
@@ -171,7 +172,7 @@
                     <mat-form-field class="w-100">
                       <mat-label>Bill Image</mat-label>
                       <input type="file" name="billImage" [(ngModel)]="homepageObject.billImage"
-                        #billImage="ngModel" (change)="onFileChange($event, 'bill')" />
+                        #billImage="ngModel" (change)="onHomePageFileChange($event, 'bill')" />
                     </mat-form-field>
                   </div> -->
 
@@ -183,20 +184,22 @@
 
                 <div class="row align-items-center">
                   <div class="col-md-6">
-                    <input type="file" name="billImage" [(ngModel)]="homepageObject.billImage"
-                        #billImage="ngModel" (change)="onFileChange($event, 'bill')" />
+                    <input type="file" name="billImage" [(ngModel)]="homepageObject.billImage" #billImage="ngModel"
+                      (change)="onHomePageFileChange($event, 'bill')" />
                   </div>
 
-                  <div class="col-md-6" >
+                  <div class="col-md-6">
                     <div class="text-center">
-                      <img *ngIf="isDefaultBillImage === false" id="billPreview" alt="Bill Image Preview" width="100px" height="100px">
-                      <img *ngIf="isDefaultBillImage === true" id="billPreview" src="{{this.baseUrl+this.homepageObject.billImage}}" alt="Bill Image Preview" width="100px" height="100px">
+                      <img *ngIf="isDefaultBillImage === true" id="billPreview"
+                        src="{{this.baseUrl+this.homepageObject.billImage}}" alt="Bill Image Preview" width="100px"
+                        height="100px">
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <mat-checkbox class="p-10" name="billStatus" [(ngModel)]="homepageObject.billStatus">Show Bill</mat-checkbox>
+                  <mat-checkbox class="p-10" name="billStatus" [(ngModel)]="homepageObject.billStatus">Show Bill
+                  </mat-checkbox>
                 </div>
 
                 <!-- Homepage Help -->
@@ -221,7 +224,7 @@
                     <mat-form-field class="w-100">
                       <mat-label>Help Image</mat-label>
                       <input type="file" name="helpImage" [(ngModel)]="homepageObject.helpImage"
-                        #helpImage="ngModel" (change)="onFileChange($event, 'help')" />
+                        #helpImage="ngModel" (change)="onHomePageFileChange($event, 'help')" />
                     </mat-form-field>
                   </div> -->
 
@@ -229,20 +232,22 @@
 
                 <div class="row align-items-center">
                   <div class="col-md-6">
-                    <input type="file" name="helpImage" [(ngModel)]="homepageObject.helpImage"
-                        #helpImage="ngModel" (change)="onFileChange($event, 'help')" />
+                    <input type="file" name="helpImage" [(ngModel)]="homepageObject.helpImage" #helpImage="ngModel"
+                      (change)="onHomePageFileChange($event, 'help')" />
                   </div>
 
                   <div class="col-md-6">
                     <div class="text-center">
-                      <img *ngIf="isDefaultHelpImage === false" id="helpPreview" alt="Help Image Preview" width="100px" height="100px">
-                      <img *ngIf="isDefaultHelpImage === true" id="helpPreview" src="{{this.baseUrl+this.homepageObject.helpImage}}" alt="Help Image Preview" width="100px" height="100px">
+                      <img *ngIf="isDefaultHelpImage === true" id="helpPreview"
+                        src="{{this.baseUrl+this.homepageObject.helpImage}}" alt="Help Image Preview" width="100px"
+                        height="100px">
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <mat-checkbox class="p-10" name="helpStatus" [(ngModel)]="homepageObject.helpStatus">Show Help</mat-checkbox>
+                  <mat-checkbox class="p-10" name="helpStatus" [(ngModel)]="homepageObject.helpStatus">Show Help
+                  </mat-checkbox>
                 </div>
 
                 <!-- Homepage Vehicle -->
@@ -267,7 +272,7 @@
                     <mat-form-field class="w-100">
                       <mat-label>Vehicle Image</mat-label>
                       <input type="file" name="vehicleImage" [(ngModel)]="homepageObject.vehicleImage"
-                        #vehicleImage="ngModel" (change)="onFileChange($event, 'vehicle')"/>
+                        #vehicleImage="ngModel" (change)="onHomePageFileChange($event, 'vehicle')"/>
                     </mat-form-field>
                   </div> -->
                 </div>
@@ -275,19 +280,21 @@
                 <div class="row align-items-center">
                   <div class="col-md-6">
                     <input type="file" name="vehicleImage" [(ngModel)]="homepageObject.vehicleImage"
-                        #vehicleImage="ngModel" (change)="onFileChange($event, 'vehicle')" />
+                      #vehicleImage="ngModel" (change)="onHomePageFileChange($event, 'vehicle')" />
                   </div>
 
                   <div class="col-md-6">
                     <div class="text-center">
-                      <img *ngIf="isDefaultVehicleImage === false" id="vehiclePreview" alt="Vehicle Image Preview" width="100px" height="100px">
-                      <img *ngIf="isDefaultVehicleImage === true" id="vehiclePreview" src="{{this.baseUrl+this.homepageObject.vehicleImage}}" alt="Vehicle Image Preview" width="100px" height="100px">
+                      <img *ngIf="isDefaultVehicleImage === true" id="vehiclePreview"
+                        src="{{this.baseUrl+this.homepageObject.vehicleImage}}" alt="Vehicle Image Preview"
+                        width="100px" height="100px">
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <mat-checkbox class="p-10" name="vehicleStatus" [(ngModel)]="homepageObject.vehicleStatus">Show Vehicle
+                  <mat-checkbox class="p-10" name="vehicleStatus" [(ngModel)]="homepageObject.vehicleStatus">Show
+                    Vehicle
                   </mat-checkbox>
                 </div>
 
@@ -313,27 +320,29 @@
                     <mat-form-field class="w-100">
                       <mat-label>Offer Image</mat-label>
                       <input type="file" name="offerImage" [(ngModel)]="homepageObject.offerImage"
-                        #offerImage="ngModel" (change)="onFileChange($event, 'offer')"/>
+                        #offerImage="ngModel" (change)="onHomePageFileChange($event, 'offer')"/>
                     </mat-form-field>
                   </div> -->
                 </div>
 
                 <div class="row align-items-center">
                   <div class="col-md-6">
-                    <input type="file" name="offerImage" [(ngModel)]="homepageObject.offerImage"
-                        #offerImage="ngModel" (change)="onFileChange($event, 'offer')" />
+                    <input type="file" name="offerImage" [(ngModel)]="homepageObject.offerImage" #offerImage="ngModel"
+                      (change)="onHomePageFileChange($event, 'offer')" />
                   </div>
 
                   <div class="col-md-6">
                     <div class="text-center">
-                      <img *ngIf="isDefaultOfferImage === false" id="offerPreview" alt="Offer Image Preview" width="100px" height="100px">
-                      <img *ngIf="isDefaultOfferImage === true" id="offerPreview" src="{{this.baseUrl+this.homepageObject.offerImage}}" alt="Offer Image Preview" width="100px" height="100px">
+                      <img *ngIf="isDefaultOfferImage === true" id="offerPreview"
+                        src="{{this.baseUrl+this.homepageObject.offerImage}}" alt="Offer Image Preview" width="100px"
+                        height="100px">
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <mat-checkbox class="p-10" name="offerStatus" [(ngModel)]="homepageObject.offerStatus">Show Offer</mat-checkbox>
+                  <mat-checkbox class="p-10" name="offerStatus" [(ngModel)]="homepageObject.offerStatus">Show Offer
+                  </mat-checkbox>
                 </div>
 
                 <!-- Homepage Exit -->
@@ -358,27 +367,29 @@
                     <mat-form-field class="w-100">
                       <mat-label>Exit Image</mat-label>
                       <input type="file" name="exitImage" [(ngModel)]="homepageObject.exitImage"
-                        #exitImage="ngModel" (change)="onFileChange($event, 'exit')"/>
+                        #exitImage="ngModel" (change)="onHomePageFileChange($event, 'exit')"/>
                     </mat-form-field>
                   </div> -->
                 </div>
 
                 <div class="row align-items-center">
                   <div class="col-md-6">
-                    <input type="file" name="exitImage" [(ngModel)]="homepageObject.exitImage"
-                        #exitImage="ngModel" (change)="onFileChange($event, 'exit')" />
+                    <input type="file" name="exitImage" [(ngModel)]="homepageObject.exitImage" #exitImage="ngModel"
+                      (change)="onHomePageFileChange($event, 'exit')" />
                   </div>
 
                   <div class="col-md-6">
                     <div class="text-center">
-                      <img *ngIf="isDefaultExitImage === false" id="exitPreview" alt="Exit Image Preview" width="100px" height="100px">
-                      <img *ngIf="isDefaultExitImage === true" id="exitPreview" src="{{this.baseUrl+this.homepageObject.exitImage}}" alt="Exit Image Preview" width="100px" height="100px">
+                      <img *ngIf="isDefaultExitImage === true" id="exitPreview"
+                        src="{{this.baseUrl+this.homepageObject.exitImage}}" alt="Exit Image Preview" width="100px"
+                        height="100px">
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <mat-checkbox class="p-10" name="exitStatus" [(ngModel)]="homepageObject.exitStatus">Show Exit</mat-checkbox>
+                  <mat-checkbox class="p-10" name="exitStatus" [(ngModel)]="homepageObject.exitStatus">Show Exit
+                  </mat-checkbox>
                 </div>
 
                 <div *ngIf="homepageObject.error_msg" class="error-msg">{{ homepageObject.error_msg }}</div>
@@ -402,12 +413,380 @@
       <div class="col-md-12">
         <mat-card class="card mat-elevation-z1 p-0">
           <div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
-            <h4 class="card-title m-0 font500">Section Update</h4>
-            <i class="material-icons" style="cursor: pointer;" (click)="onEdit('section')">edit</i>
+            <h4 class="card-title m-0 font500">Quick Help Update</h4>
+            <i class="material-icons" style="cursor: pointer;" (click)="onEdit('quickHelp')">edit</i>
           </div>
         </mat-card>
+        <ng-container *ngIf="formType === 'quickHelp'">
+          <mat-card class="mat-elevation-z-2 p-0">
+            <form autocomplete="off" (ngSubmit)="onUpdateTheme('quickHelp')" ngNativeValidate>
+              <div class="modal-body p-25">
+                <!-- Quick Help Water -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Water</label>
+
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="waterImage" [(ngModel)]="quickHelpObject.waterImage" #waterImage="ngModel"
+                      (change)="onQuickHelpFileChange($event, 'water')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultWaterImage === true" id="waterPreview"
+                        src="{{this.baseUrl+this.quickHelpObject.waterImage}}" alt="Water Image Preview" width="100px"
+                        height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="waterStatus" [(ngModel)]="quickHelpObject.waterStatus">Show Water
+                  </mat-checkbox>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <!-- Quick Help Tea -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Tea</label>
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="teaImage" [(ngModel)]="quickHelpObject.teaImage" #teaImage="ngModel"
+                      (change)="onQuickHelpFileChange($event, 'tea')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultTeaImage === true" id="teaPreview"
+                        src="{{this.baseUrl+this.quickHelpObject.teaImage}}" alt="Tea Image Preview" width="100px"
+                        height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="teaStatus" [(ngModel)]="quickHelpObject.teaStatus">Show Tea
+                  </mat-checkbox>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <!-- Quick Help Waiter -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Waiter</label>
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="waiterImage" [(ngModel)]="quickHelpObject.waiterImage"
+                      #waiterImage="ngModel" (change)="onQuickHelpFileChange($event, 'waiter')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultWaiterImage === true" id="waiterPreview"
+                        src="{{this.baseUrl+this.quickHelpObject.waiterImage}}" alt="Waiter Image Preview" width="100px"
+                        height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="waiterStatus" [(ngModel)]="quickHelpObject.waiterStatus">Show Waiter
+                  </mat-checkbox>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <!-- Quick Help Wifi -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Wifi Assistance</label>
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="wifiImage" [(ngModel)]="quickHelpObject.wifiImage" #wifiImage="ngModel"
+                      (change)="onQuickHelpFileChange($event, 'wifi')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultWifiImage === true" id="wifiPreview"
+                        src="{{this.baseUrl+this.quickHelpObject.wifiImage}}" alt="Wifi Image Preview" width="100px"
+                        height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="wifiStatus" [(ngModel)]="quickHelpObject.wifiStatus">Show Wifi
+                  </mat-checkbox>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <!-- Quick Help Essential Kit -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Essential Kit</label>
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="essentialKitImage" [(ngModel)]="quickHelpObject.essentialKitImage"
+                      #essentialKitImage="ngModel" (change)="onQuickHelpFileChange($event, 'essentialKit')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultEssentialKitImage === true" id="essentialKitPreview"
+                        src="{{this.baseUrl+this.quickHelpObject.essentialKitImage}}" alt="EssentialKit Image Preview"
+                        width="100px" height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="essentialKitStatus" [(ngModel)]="quickHelpObject.essentialKitStatus">
+                    Show EssentialKit
+                  </mat-checkbox>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <!-- Quick Help Tissue -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Tissue</label>
+                <div class="row align-items-center">
+                  <div class="col-md-6">
+                    <input type="file" name="tissueImage" [(ngModel)]="quickHelpObject.tissueImage"
+                      #tissueImage="ngModel" (change)="onQuickHelpFileChange($event, 'tissue')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultTissueImage === true" id="tissuePreview"
+                        src="{{this.baseUrl+this.quickHelpObject.tissueImage}}" alt="Tissue Image Preview" width="100px"
+                        height="100px">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <mat-checkbox class="p-10" name="tissueStatus" [(ngModel)]="quickHelpObject.tissueStatus">Show Tissue
+                  </mat-checkbox>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <div *ngIf="quickHelpObject.error_msg" class="error-msg">{{ quickHelpObject.error_msg }}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 text-right p-x-25 p-b-10">
+                  <button type="button" class="btn btn-link btn-cancel waves-effect"
+                    (click)="closeForm('quickHelp')">CANCEL</button>
+                  <button type="submit" class="btn btn-link waves-effect">DONE</button>
+                </div>
+              </div>
+
+            </form>
+          </mat-card>
+        </ng-container>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="card mat-elevation-z1 p-0">
+          <div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
+            <h4 class="card-title m-0 font500">Broken/404 Images Update</h4>
+            <i class="material-icons" style="cursor: pointer;" (click)="onEdit('brokenImages')">edit</i>
+          </div>
+        </mat-card>
+        <ng-container *ngIf="formType === 'brokenImages'">
+          <mat-card class="mat-elevation-z-2 p-0">
+            <form autocomplete="off" (ngSubmit)="onUpdateTheme('brokenImages')" ngNativeValidate>
+              <div class="modal-body p-25">
+                <!-- Homepage Banner -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Homepage Banner</label>
+
+                <div class="row align-items-center m-b-10">
+                  <div class="col-md-6">
+                    <input type="file" name="brokenHomePageBannerImage" [(ngModel)]="brokenImagesObject.brokenHomePageBannerImage"
+                      #brokenHomePageBannerImage="ngModel" (change)="onBrokenImageFileChange($event, 'homePageBanner')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultHomePageBanner === true" id="homePageBannerPreview"
+                        src="{{this.baseUrl+this.brokenImagesObject.brokenHomePageBannerImage}}" alt="Homepage Banner Preview"
+                        width="75px" height="75px">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="row">
+                  <mat-checkbox class="p-10" name="waterStatus" [(ngModel)]="brokenImagesObject.waterStatus">Show Water
+                  </mat-checkbox>
+                </div> -->
+
+                <mat-divider></mat-divider>
+
+                <!-- Homepage Card List -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Homepage Card List</label>
+                <div class="row align-items-center m-b-10">
+                  <div class="col-md-6">
+                    <input type="file" name="brokenHomePageCard" [(ngModel)]="brokenImagesObject.brokenHomePageCard" #brokenHomePageCard="ngModel"
+                      (change)="onBrokenImageFileChange($event, 'homePageCard')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultHomePageCard  === true" id="homePageCardPreview"
+                        src="{{this.baseUrl+this.brokenImagesObject.brokenHomePageCard}}" alt="HomePage Card Preview" width="75px"
+                        height="75px">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="row">
+                  <mat-checkbox class="p-10" name="teaStatus" [(ngModel)]="brokenImagesObject.teaStatus">Show Tea
+                  </mat-checkbox>
+                </div> -->
+
+                <mat-divider></mat-divider>
+
+                <!-- Section Card List -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Section Card List</label>
+                <div class="row align-items-center m-b-10">
+                  <div class="col-md-6">
+                    <input type="file" name="brokenSectionCard" [(ngModel)]="brokenImagesObject.brokenSectionCard"
+                      #brokenSectionCard="ngModel" (change)="onBrokenImageFileChange($event, 'sectionCard')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultSectionCard === true" id="sectionCardPreview"
+                        src="{{this.baseUrl+this.brokenImagesObject.brokenSectionCard}}" alt="Section Card Preview"
+                        width="75px" height="75px">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="row">
+                  <mat-checkbox class="p-10" name="waiterStatus" [(ngModel)]="brokenImagesObject.waiterStatus">Show
+                    Waiter
+                  </mat-checkbox>
+                </div> -->
+
+                <mat-divider></mat-divider>
+
+                <!-- Categories Card List -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Categories Card List</label>
+                <div class="row align-items-center m-b-10">
+                  <div class="col-md-6">
+                    <input type="file" name="brokenCategoriesCard" [(ngModel)]="brokenImagesObject.brokenCategoriesCard" #brokenCategoriesCard="ngModel"
+                      (change)="onBrokenImageFileChange($event, 'categoriesCard')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultCategoriesCard === true" id="categoriesCardPreview"
+                        src="{{this.baseUrl+this.brokenImagesObject.brokenCategoriesCard}}" alt="Categories Card Preview" width="75px"
+                        height="75px">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="row">
+                  <mat-checkbox class="p-10" name="wifiStatus" [(ngModel)]="brokenImagesObject.wifiStatus">Show Wifi
+                  </mat-checkbox>
+                </div> -->
+
+                <mat-divider></mat-divider>
+
+                <!-- Broken Logo -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Broken Logo</label>
+                <div class="row align-items-center m-b-10">
+                  <div class="col-md-6">
+                    <input type="file" name="brokenLogo" [(ngModel)]="brokenImagesObject.brokenLogo"
+                      #brokenLogo="ngModel" (change)="onBrokenImageFileChange($event, 'logo')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultLogo === true" id="logoPreview"
+                        src="{{this.baseUrl+this.brokenImagesObject.brokenLogo}}"
+                        alt="Logo Preview" width="75px" height="75px">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="row">
+                  <mat-checkbox class="p-10" name="essentialKitStatus"
+                    [(ngModel)]="brokenImagesObject.essentialKitStatus">
+                    Show EssentialKit
+                  </mat-checkbox>
+                </div> -->
+
+                <mat-divider></mat-divider>
+
+                <!-- Login Logo -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Login Logo</label>
+                <div class="row align-items-center m-b-10">
+                  <div class="col-md-6">
+                    <input type="file" name="brokenLoginLogo" [(ngModel)]="brokenImagesObject.brokenLoginLogo"
+                      #brokenLoginLogo="ngModel" (change)="onBrokenImageFileChange($event, 'loginLogo')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultLoginLogo === true" id="loginLogoPreview"
+                        src="{{this.baseUrl+this.brokenImagesObject.brokenLoginLogo}}" alt="Login Logo Preview"
+                        width="75px" height="75px">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="row">
+                  <mat-checkbox class="p-10" name="tissueStatus" [(ngModel)]="brokenImagesObject.tissueStatus">Show
+                    Tissue
+                  </mat-checkbox>
+                </div> -->
+
+                <mat-divider></mat-divider>
+
+                <!-- Loader Logo -->
+                <label for="" class="w-100 m-t-10 m-b-0 text-center font500">Loader Logo</label>
+                <div class="row align-items-center m-b-10">
+                  <div class="col-md-6">
+                    <input type="file" name="brokenLoaderLogo" [(ngModel)]="brokenImagesObject.brokenLoaderLogo"
+                      #brokenLoaderLogo="ngModel" (change)="onBrokenImageFileChange($event, 'loaderLogo')" />
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <img *ngIf="isDefaultLoaderLogo === true" id="loaderLogoPreview"
+                        src="{{this.baseUrl+this.brokenImagesObject.brokenLoaderLogo}}" alt="Loader Logo Preview"
+                        width="75px" height="75px">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <div class="row">
+                  <mat-checkbox class="p-10" name="tissueStatus" [(ngModel)]="brokenImagesObject.tissueStatus">Show
+                    Tissue
+                  </mat-checkbox>
+                </div> -->
+
+                <mat-divider></mat-divider>
+
+                <div *ngIf="brokenImagesObject.error_msg" class="error-msg">{{ brokenImagesObject.error_msg }}</div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 text-right p-x-25 p-b-10">
+                  <button type="button" class="btn btn-link btn-cancel waves-effect"
+                    (click)="closeForm('brokenImages')">CANCEL</button>
+                  <button type="submit" class="btn btn-link waves-effect">DONE</button>
+                </div>
+              </div>
+
+            </form>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+
   </div>
 </div>
 <!-- //////////////////////////////////////////////////////////////////////////// -->

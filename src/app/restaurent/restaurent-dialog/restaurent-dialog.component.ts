@@ -12,6 +12,8 @@ export interface IThemeForm {
 	isDefault ?: boolean;
 	theme ?: object;
 	homepage ?: object;
+	quickHelp ?: object;
+	brokenImages ?: object;
 }
 
 @Component({
@@ -29,6 +31,8 @@ export class RestaurentDialogComponent implements OnInit {
 	themeForm: IThemeForm = {};
 	themeObject: any = {};
 	homepageObject: any = {};
+	quickHelpObject: any = {};
+	brokenImageObject: any = {};
 	restaurantName: string = ''; deleteId: any = '';
 	pos_restaurant_list: any;
 	formType: any;
@@ -120,6 +124,8 @@ export class RestaurentDialogComponent implements OnInit {
 		this.editForm.pos_rest_id =  event.target.value;
 		this.themeObject.pos_rest_id = event.target.value;
 		this.homepageObject.pos_rest_id = event.target.value;
+		this.quickHelpObject.pos_rest_id = event.target.value;
+		this.brokenImageObject.pos_rest_id = event.target.value;
 		console.log(this.addForm);
 	}
 
@@ -159,52 +165,14 @@ export class RestaurentDialogComponent implements OnInit {
 		});
 	}
 
-	onAddTheme() {
-		// default Theme added to restaurent
-		// this.themeObject.pos_rest_id = this.addForm.pos_rest_id;
-		// this.themeObject.navbarColor = '#232323';
-		// this.themeObject.navbarText = '#fff';
-		// this.themeObject.primaryButtonColor = '#69499b';
-		// this.themeObject.primaryButtonText = '#fff';
-		// this.themeObject.secondaryButtonColor = '#ffcf34';
-		// this.themeObject.secondaryButtonText = '#fff';
-		// this.themeObject.disabledButtonColor = '#616161';
-		// this.themeObject.disabledButtonText = '#fff';
-		// this.themeObject.spinnerColor = '#232323';
-		// this.themeObject.isDefaultTheme = true;
-
-		// default Homepage properties added to restaurent
-		// this.homepageObject.pos_rest_id = this.addForm.pos_rest_id;
-		// this.homepageObject.header = 'Welcome';
-		// this.homepageObject.subHeader = 'Start by selecting your desired option';
-		// this.homepageObject.headerStatus = true;
-		// this.homepageObject.billHeader = 'View Bill';
-		// this.homepageObject.billSubheader = 'No orders placed';
-		// this.homepageObject.billImage = '';
-		// this.homepageObject.billHeaderStatus = true;
-		// this.homepageObject.helpHeader = 'Need Help?';
-		// this.homepageObject.helpSubheader = 'Call a Waiter';
-		// this.homepageObject.helpImage = '';
-		// this.homepageObject.helpStatus = true;
-		// this.homepageObject.vehicleHeader = 'Call for Vehicle';
-		// this.homepageObject.vehicleSubheader = 'Valet Parking';
-		// this.homepageObject.vehicleImage = '';
-		// this.homepageObject.vehicleStatus = true;
-		// this.homepageObject.offerHeader = 'View Offers';
-		// this.homepageObject.offerSubheader = 'No offers available';
-		// this.homepageObject.offerImage = '';
-		// this.homepageObject.offerStatus = true;
-		// this.homepageObject.exitHeader = 'Exit';
-		// this.homepageObject.exitSubheader = 'Scan again';
-		// this.homepageObject.exitImage = '';
-		// this.homepageObject.exitStatus = true;
-		// this.homepageObject.isDefaultHomepage = true;
-		
+	onAddTheme() {		
 		this.themeForm = {
 			'isDefault' : true,
 			'pos_rest_id': this.themeObject.pos_rest_id,
 			'theme': this.themeObject,
 			'homepage': this.homepageObject,
+			'quickHelp': this.quickHelpObject,
+			'brokenImages': this.brokenImageObject
 		}
 		console.log('created object', this.themeForm);
 		this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {
