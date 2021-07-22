@@ -23,7 +23,6 @@ export interface IThemeForm {
 })
 export class RestaurentDialogComponent implements OnInit {
 
-	action: string;
 	local_data: any;
 	restaurant_list: any = [];
 	addForm: any = {};
@@ -33,7 +32,8 @@ export class RestaurentDialogComponent implements OnInit {
 	homepageObject: any = {};
 	quickHelpObject: any = {};
 	brokenImageObject: any = {};
-	restaurantName: string = ''; deleteId: any = '';
+	deleteId: string = '';
+	delete_pos_rest_id: string = '';
 	pos_restaurant_list: any;
 	formType: any;
 	restData: any;
@@ -45,8 +45,8 @@ export class RestaurentDialogComponent implements OnInit {
 		@Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
 		public apiService: ApiService) {
 		console.log('dialogData ', data);
-		this.local_data = data;
-		this.action = this.local_data.action;
+		this.local_data = {...data};
+		this.formType = this.local_data.x;
 	}
 	ngOnInit(): void {
 
@@ -63,6 +63,7 @@ export class RestaurentDialogComponent implements OnInit {
 			this.editForm.base_url = x.base_url;
 		} else if (this.formType === 'delete') {
 			this.deleteId = x._id;
+			this.delete_pos_rest_id = x.pos_rest_id;
 		}
 		this.apiService.RESTAURANT_LIST().subscribe(result => {
 			console.log("result data..........", result)
@@ -93,11 +94,11 @@ export class RestaurentDialogComponent implements OnInit {
 	}
 
 	doAction() {
-		this.dialogRef.close({ event: this.action, data: this.local_data });
+		this.dialogRef.close({ event: this.formType, data: this.local_data });
 	}
 
 	closeDialog() {
-		this.dialogRef.close({ event: 'Cancel' });
+		this.dialogRef.close({ event: 'cancel' });
 	}
 
 	onOptionsSelected(event: any) {
@@ -134,7 +135,6 @@ export class RestaurentDialogComponent implements OnInit {
 		this.apiService.ADD_RESTAURANT(this.addForm).subscribe(result => {
 			if (result.status) {
 				this.ngOnInit();
-				// this.closeDialog();
 				this.onAddTheme();
 			}
 			else {
@@ -147,7 +147,7 @@ export class RestaurentDialogComponent implements OnInit {
 	onUpdateRestaurant() {
 		this.apiService.UPDATE_RESTAURANT(this.editForm).subscribe(result => {
 			if (result.status) {
-				this.closeDialog();
+				this.doAction();
 				this.ngOnInit();
 			}
 			else {
@@ -157,10 +157,12 @@ export class RestaurentDialogComponent implements OnInit {
 	}
 
 	onDeleteRestaurant() {
-		this.apiService.DELETE_RESTAURANT({ '_id': this.deleteId }).subscribe(result => {
+		this.apiService.DELETE_RESTAURANT({ '_id': this.deleteId, 'pos_rest_id': this.delete_pos_rest_id }).subscribe(result => {
+			console.log('delete result', result);
 			if (result.status) {
-				this.closeDialog();
-				this.ngOnInit();
+				this.doAction();
+				// this.ngOnInit();
+				
 			}
 		});
 	}
@@ -177,7 +179,7 @@ export class RestaurentDialogComponent implements OnInit {
 		console.log('created object', this.themeForm);
 		this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {
 			if (result.status) {
-				this.closeDialog();
+				this.doAction();
 			} else {
 				this.themeObject.error_msg = result.message;
 			}

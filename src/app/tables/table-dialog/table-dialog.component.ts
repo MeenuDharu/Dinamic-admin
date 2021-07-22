@@ -28,9 +28,7 @@ export class TableDialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<TableDialogComponent>,
     //@Optional() is used to prevent error if no data is passed
     @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData, public apiService: ApiService) {
-    console.log('data:', data);
     this.local_data = data;
-    console.log('local_data: ', this.local_data);
     this.action = this.local_data.action;
   }
 
@@ -41,7 +39,6 @@ export class TableDialogComponent implements OnInit {
     let x = this.local_data.y;
 
     this.apiService.TABLE_LIST({ branch_id: this.selectedBranch._id }).subscribe(result => {
-      console.log("list", result)
       if (this.formType === 'tableEdit') {
         this.editForm.pos_reataurent_id = this.selectedRestaurant.pos_rest_id;
         this.editForm.pos_branch_id = this.selectedBranch.pos_branch_id;
@@ -138,7 +135,7 @@ export class TableDialogComponent implements OnInit {
     this.apiService.UPDATE_TABLESTATUS({ '_id': id, 'table_status': this.table_status, status: event.target.checked }).subscribe(result => {
       console.log("result", result)
       if (result.status) {
-        this.ngOnInit();
+        this.doAction();
       }
     });
   }
@@ -151,8 +148,7 @@ export class TableDialogComponent implements OnInit {
     this.addForm.tablestatus = true;
     this.apiService.ADD_TABLE(this.addForm).subscribe(result => {
       if (result.status) {
-        this.ngOnInit();
-        //   modalName.hide();
+       this.doAction();
       }
       else {
         this.addForm.error_msg = result.message;
@@ -166,9 +162,7 @@ export class TableDialogComponent implements OnInit {
     this.apiService.UPDATE_TABLE(this.editForm).subscribe(result => {
       console.log("result of edit..........", result)
       if (result.status) {
-        this.closeDialog();
-        this.ngOnInit();
-        // modalName.hide();
+        this.doAction();
       }
       else {
         this.editForm.error_msg = result.message;
@@ -179,11 +173,13 @@ export class TableDialogComponent implements OnInit {
   onDeleteTable() {
     this.apiService.DELETE_TABLE({ '_id': this.deleteId }).subscribe(result => {
       if (result.status) {
-        //modalName.hide();
-        this.closeDialog();
-        this.ngOnInit();
+        this.doAction();
       }
     });
+  }
+
+  doAction() {
+    this.dialogRef.close({ event: this.formType, data: this.local_data })
   }
 
   closeDialog() {

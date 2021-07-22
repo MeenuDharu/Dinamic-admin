@@ -1,105 +1,128 @@
 <div *ngIf="formType == 'tableAdd'">
-    <form autocomplete="off" (ngSubmit)="onAddTable()" ngNativeValidate>
-        <div class="modal-body pad25">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="addForm.type ? 'is-focused': ''">
-            <select class="mdl-textfield__input clabelborder" name="type" [(ngModel)]="addForm.type" #type="ngModel" required>
-              <option value="location">Location</option>
-              <option value="locationless">Locationless</option>
-            </select>
-						<label class="mdl-textfield__label cname-color" for="type">Table Type</label>
-          </div>
+	<form autocomplete="off" (ngSubmit)="onAddTable()" ngNativeValidate>
+		<div class="modal-body pad25">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="addForm.type ? 'is-focused': ''">
+				<select class="mdl-textfield__input clabelborder" name="type" [(ngModel)]="addForm.type" #type="ngModel"
+					required>
+					<option value="location">Location</option>
+					<option value="locationless">Locationless</option>
+				</select>
+				<label class="mdl-textfield__label cname-color" for="type">Table Type</label>
+			</div>
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="addForm.floor_name ? 'is-focused': ''">
-            <select class="mdl-textfield__input clabelborder" name="floor_name" [(ngModel)]="addForm.floor_name" #floor_name="ngModel" (change)='onOptionsSelected($event)' required>
-              <option [value]="x._id" *ngFor="let x of pos_floor_list">{{x.name}}</option>
-                    </select>
-						<label class="mdl-textfield__label cname-color" for="floor_name">Floor Name</label>
-          </div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="addForm.floor_name ? 'is-focused': ''">
+				<select class="mdl-textfield__input clabelborder" name="floor_name" [(ngModel)]="addForm.floor_name"
+					#floor_name="ngModel" (change)='onOptionsSelected($event)' required>
+					<option [value]="x._id" *ngFor="let x of pos_floor_list">{{x.name}}</option>
+				</select>
+				<label class="mdl-textfield__label cname-color" for="floor_name">Floor Name</label>
+			</div>
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="addForm.table_name ? 'is-focused': ''">
-            <select class="mdl-textfield__input clabelborder" name="table_name" [(ngModel)]="addForm.table_name" #table_name="ngModel" (change)='onOptionsSelected1($event)' required>
-              <option [value]="x.table_id" *ngFor="let x of pos_table_list">{{x.table_name}}</option>
-                    </select>
-            <label class="mdl-textfield__label cname-color" for="table_name">POS Table Name</label>
-            
-            
-          </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="addForm.name ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="name" [(ngModel)]="addForm.name" #name="ngModel" required />
-            
-						<label class="mdl-textfield__label cname-color" for="name">Table Name</label>
-          </div>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="addForm.table_api ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="table_api" [(ngModel)]="addForm.table_api" #table_api="ngModel" required />
-            
-						<label class="mdl-textfield__label cname-color" for="table_api">Table API</label>
-          </div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="addForm.table_name ? 'is-focused': ''">
+				<select class="mdl-textfield__input clabelborder" name="table_name" [(ngModel)]="addForm.table_name"
+					#table_name="ngModel" (change)='onOptionsSelected1($event)' required>
+					<option [value]="x.table_id" *ngFor="let x of pos_table_list">{{x.table_name}}</option>
+				</select>
+				<label class="mdl-textfield__label cname-color" for="table_name">POS Table Name</label>
 
-          <div *ngIf="addForm.error_msg" class="error-msg">{{ addForm.error_msg }}</div>
-			  </div>
-        <div class="row">
-          <button type="button" class="btn btn-link btn-cancel waves-effect"  (click)="closeDialog()">CANCEL</button>
-          <button type="submit" class="btn btn-link waves-effect">DONE</button>
-        </div>
-      </form>   
+
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="addForm.name ? 'is-focused': ''">
+				<input type="text" class="mdl-textfield__input clabelborder" name="name" [(ngModel)]="addForm.name"
+					#name="ngModel" required />
+
+				<label class="mdl-textfield__label cname-color" for="name">Table Name</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="addForm.table_api ? 'is-focused': ''">
+				<input type="text" class="mdl-textfield__input clabelborder" name="table_api"
+					[(ngModel)]="addForm.table_api" #table_api="ngModel" required />
+
+				<label class="mdl-textfield__label cname-color" for="table_api">Table API</label>
+			</div>
+
+			<div *ngIf="addForm.error_msg" class="error-msg">{{ addForm.error_msg }}</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-right">
+				<button type="button" class="btn btn-link btn-cancel waves-effect"
+					(click)="closeDialog()">CANCEL</button>
+				<button type="submit" class="btn btn-link waves-effect">DONE</button>
+			</div>
+		</div>
+	</form>
 </div>
 
 <div *ngIf="formType == 'tableEdit'">
-  <form autocomplete="off" (ngSubmit)="onUpdateTable()" ngNativeValidate>
-    <div class="modal-body pad25">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="editForm.type ? 'is-focused': ''">
-        <select class="mdl-textfield__input clabelborder" name="type" [(ngModel)]="editForm.type" #type="ngModel" required>
-          <option value="location">Location</option>
-          <option value="locationless">Locationless</option>
-        </select>
-        <label class="mdl-textfield__label cname-color" for="type">Table Type</label>
-      </div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="editForm.pos_floor_id ? 'is-focused': ''">
-        <input type="text" class="mdl-textfield__input clabelborder" name="pos_floor_id" [(ngModel)]="editForm.pos_floor_id" #pos_floor_id="ngModel" required />
-        <label class="mdl-textfield__label cname-color" for="pos_floor_id">Floor Id</label>
-      </div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="editForm.pos_table_id ? 'is-focused': ''">
-        <input type="text" class="mdl-textfield__input clabelborder" name="pos_table_id" [(ngModel)]="editForm.pos_table_id" #pos_table_id="ngModel" required />
-        <label class="mdl-textfield__label cname-color" for="pos_table_id">Table Id</label>
-      </div>
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="editForm.name ? 'is-focused': ''">
-        <input type="text" class="mdl-textfield__input clabelborder" name="name" [(ngModel)]="editForm.name" #name="ngModel" required />
-        <label class="mdl-textfield__label cname-color" for="name">Table Name</label>
-      </div>
+	<form autocomplete="off" (ngSubmit)="onUpdateTable()" ngNativeValidate>
+		<div class="modal-body pad25">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="editForm.type ? 'is-focused': ''">
+				<select class="mdl-textfield__input clabelborder" name="type" [(ngModel)]="editForm.type"
+					#type="ngModel" required>
+					<option value="location">Location</option>
+					<option value="locationless">Locationless</option>
+				</select>
+				<label class="mdl-textfield__label cname-color" for="type">Table Type</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="editForm.pos_floor_id ? 'is-focused': ''">
+				<input type="text" class="mdl-textfield__input clabelborder" name="pos_floor_id"
+					[(ngModel)]="editForm.pos_floor_id" #pos_floor_id="ngModel" required />
+				<label class="mdl-textfield__label cname-color" for="pos_floor_id">Floor Id</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="editForm.pos_table_id ? 'is-focused': ''">
+				<input type="text" class="mdl-textfield__input clabelborder" name="pos_table_id"
+					[(ngModel)]="editForm.pos_table_id" #pos_table_id="ngModel" required />
+				<label class="mdl-textfield__label cname-color" for="pos_table_id">Table Id</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="editForm.name ? 'is-focused': ''">
+				<input type="text" class="mdl-textfield__input clabelborder" name="name" [(ngModel)]="editForm.name"
+					#name="ngModel" required />
+				<label class="mdl-textfield__label cname-color" for="name">Table Name</label>
+			</div>
 
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="editForm.table_api ? 'is-focused': ''">
-        <input type="text" class="mdl-textfield__input clabelborder" name="table_api" [(ngModel)]="editForm.table_api" #table_api="ngModel" required />
-        <label class="mdl-textfield__label cname-color" for="table_api">Table API</label>
-      </div>
-      <div *ngIf="editForm.error_msg" class="error-msg">{{ editForm.error_msg }}</div>
-    </div>
-    <div class="row">
-      <button type="button" class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
-      <button type="submit" class="btn btn-link waves-effect">UPDATE</button>
-    </div>
-  </form>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="editForm.table_api ? 'is-focused': ''">
+				<input type="text" class="mdl-textfield__input clabelborder" name="table_api"
+					[(ngModel)]="editForm.table_api" #table_api="ngModel" required />
+				<label class="mdl-textfield__label cname-color" for="table_api">Table API</label>
+			</div>
+			<div *ngIf="editForm.error_msg" class="error-msg">{{ editForm.error_msg }}</div>
+		</div>
+		<div class="row">
+			<button type="button" class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
+			<button type="submit" class="btn btn-link waves-effect">UPDATE</button>
+		</div>
+	</form>
 </div>
 
 <div *ngIf="formType == 'tableDelete'">
-  <div class="modal-content mdl-shadow--4dp">
-    <div class="header modal-headpad">
-      <div class="col-md-10">
-        <h4 class="modal-title" id="defaultModalLabel">Remove this table?</h4>
-      </div>
-    </div>
-    <div class="modal-body pad25">
-      <p>Removing this table means you won't be able to use it anymore.</p>
-      <p class="p-t-30">
-        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="#616161">
-          <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z"/>
-        </svg>
-        <span class="p-l-40">{{tableName}}</span>
-      </p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
-      <button type="button" (click)="onDeleteTable(deleteModal)" class="btn btn-link waves-effect">DONE</button>
-    </div>
-  </div>
+	<div class="modal-content mdl-shadow--4dp">
+		<div class="header modal-headpad">
+			<div class="col-md-10">
+				<h4 class="modal-title" id="defaultModalLabel">Remove this table?</h4>
+			</div>
+		</div>
+		<div class="modal-body pad25">
+			<p>Removing this table means you won't be able to use it anymore.</p>
+			<p class="p-t-30">
+				<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="#616161">
+					<path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z" />
+				</svg>
+				<span class="p-l-40">{{tableName}}</span>
+			</p>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
+			<button type="button" (click)="onDeleteTable(deleteModal)" class="btn btn-link waves-effect">DONE</button>
+		</div>
+	</div>
 
 </div>
