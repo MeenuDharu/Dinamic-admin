@@ -8,19 +8,26 @@
                 <div class="something-semantic">
                     <div class="something-else-semantic">
                         <div class="center-log">
-                            <div align="left"><h1>LOGIN</h1></div>
+                            <div class="text-left">
+                                <h1>LOGIN</h1>
+                            </div>
                             <form (ngSubmit)="onSubmit()" #myForm="ngForm" ngNativeValidate>
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="loginForm.username ? 'is-focused': ''">
-                                    <input type="text" class="mdl-textfield__input" [(ngModel)]="loginForm.username" name="username" required />
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                                    [ngClass]="loginForm.username ? 'is-focused': ''">
+                                    <input type="text" class="mdl-textfield__input" [(ngModel)]="loginForm.username"
+                                        name="username" required />
                                     <label class="mdl-textfield__label txt-italic" for="username">Username</label>
                                 </div>
 
-                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" [ngClass]="loginForm.password ? 'is-focused': ''">
-                                    <input type="password" class="mdl-textfield__input" [(ngModel)]="loginForm.password" name="password" required />
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+                                    [ngClass]="loginForm.password ? 'is-focused': ''">
+                                    <input type="password" class="mdl-textfield__input" [(ngModel)]="loginForm.password"
+                                        name="password" required />
                                     <label class="mdl-textfield__label txt-italic" for="pwd">Password</label>
                                 </div>
-                                <div *ngIf='loginForm.error_msg' class="error-msg-md"><br>{{ loginForm.error_msg }}</div>
-                                <div class="forgot" align="right">
+                                <div *ngIf='loginForm.error_msg' class="error-msg-md"><br>{{ loginForm.error_msg }}
+                                </div>
+                                <div class="forgot text-right">
                                     <a>Forgot password?</a>
                                 </div>
 
@@ -29,8 +36,9 @@
                                     <label for="loginkeeping" class="txt-italic">Keep me logged in</label>
                                 </div>
 
-                                <div align="center">
-                                    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">LOGIN</button>
+                                <div class="text-center">
+                                    <button type="submit"
+                                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">LOGIN</button>
                                 </div>
                             </form>
                         </div>

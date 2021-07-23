@@ -18,16 +18,16 @@ export interface IUser {
 export class UsersComponent implements OnInit {
 
 	dataSource = new MatTableDataSource<IUser>();
-	displayedColumns : string[] = ['no', 'name', 'mobile', 'email', 'created_on'];
+	displayedColumns: string[] = ['no', 'name', 'mobile', 'email', 'created_on'];
 	pageNo: number | undefined;
 	entryLimit: number | undefined;
-	report: any ={};
+	report: any = {};
 	isLoading: boolean = true;
 
-	@ViewChild(MatPaginator) set matPaginator(paginator: MatPaginator){
+	@ViewChild(MatPaginator) set matPaginator(paginator: MatPaginator) {
 		this.dataSource.paginator = paginator;
 	}
-	@ViewChild(MatSort) set matSort(sort: MatSort){
+	@ViewChild(MatSort) set matSort(sort: MatSort) {
 		this.dataSource.sort = sort;
 	}
 
@@ -42,7 +42,7 @@ export class UsersComponent implements OnInit {
 	getUsersList() {
 		this.apiService.USER_LIST().subscribe((result) => {
 			console.log('user list:', result);
-			if(result.status){
+			if (result.status) {
 				this.isLoading = false;
 				this.dataSource.data = result.data;
 			}
@@ -51,7 +51,7 @@ export class UsersComponent implements OnInit {
 
 	applyFilter(filterValue: string) {
 		this.dataSource.filter = filterValue.trim().toLowerCase();
-		if(this.dataSource.paginator) {
+		if (this.dataSource.paginator) {
 			this.dataSource.paginator.firstPage();
 		}
 	}

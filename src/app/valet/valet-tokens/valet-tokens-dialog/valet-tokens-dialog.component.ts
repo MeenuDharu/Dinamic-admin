@@ -14,10 +14,10 @@ export interface IValetTokenDialog {
 })
 export class ValetTokensDialogComponent implements OnInit {
 
-	formType:any;
+	formType: any;
 	localData: any;
-	addForm:any = {};
-	editForm:any = {};
+	addForm: any = {};
+	editForm: any = {};
 	deleteId: any = '';
 	tableName: any;
 	selectedRestaurant = JSON.parse(localStorage.getItem('selected_restaurant')!);
@@ -28,32 +28,32 @@ export class ValetTokensDialogComponent implements OnInit {
 		//@Optional() is used to prevent error if no data is passed
 		@Optional() @Inject(MAT_DIALOG_DATA) public valetTokenData: IValetTokenDialog,
 		public apiService: ApiService) {
-			console.log('dialogData:', valetTokenData);
-			this.localData = valetTokenData;
+		console.log('dialogData:', valetTokenData);
+		this.localData = valetTokenData;
 	}
 
 	ngOnInit(): void {
 		this.addForm = {};
 		this.formType = this.localData.x;
 		let x = this.localData.y;
-		if(this.formType === 'edit') {
+		if (this.formType === 'edit') {
 			this.editForm._id = x._id;
 			this.editForm.serial_number = x.serial_number;
 			this.editForm.pos_rest_id = this.selectedRestaurant.pos_rest_id;
 			this.editForm.pos_branch_id = this.selectedBranch.pos_branch_id;
-		} else if(this.formType === 'delete') {
+		} else if (this.formType === 'delete') {
 			this.deleteId = x._id;
 		}
 	}
 
-	onAddValetToken(){
+	onAddValetToken() {
 		this.addForm.restaurant_id = this.selectedRestaurant._id;
 		this.addForm.branch_id = this.selectedBranch._id;
 		this.addForm.pos_restaurant_id = this.selectedRestaurant.pos_rest_id;
 		this.addForm.pos_branch_id = this.selectedBranch.pos_branch_id;
 		this.apiService.ADD_VALET_TOKEN(this.addForm).subscribe((result) => {
 			console.log('add valet:', result);
-			if(result.status){
+			if (result.status) {
 				this.doAction();
 			} else {
 				this.addForm.error_msg = result.message;
@@ -61,10 +61,10 @@ export class ValetTokensDialogComponent implements OnInit {
 		});
 	}
 
-	onUpdateValetToken(){
-		this.apiService.UPDATE_VALET_TOKEN(this.editForm).subscribe((result)=>{
+	onUpdateValetToken() {
+		this.apiService.UPDATE_VALET_TOKEN(this.editForm).subscribe((result) => {
 			console.log('valet token update:', result);
-			if(result.status){
+			if (result.status) {
 				this.doAction();
 			} else {
 				this.editForm.error_msg = result.message;
@@ -72,20 +72,20 @@ export class ValetTokensDialogComponent implements OnInit {
 		});
 	}
 
-	onDeleteValetToken(){
-		this.apiService.DELETE_VALET_TOKEN({'_id': this.deleteId}).subscribe((result) => {
-			if(result.status){
+	onDeleteValetToken() {
+		this.apiService.DELETE_VALET_TOKEN({ '_id': this.deleteId }).subscribe((result) => {
+			if (result.status) {
 				this.doAction();
 			}
 		})
 	}
 
-	doAction () {
+	doAction() {
 		this.dialogRef.close({ event: this.formType, data: this.localData });
 	}
 
 	closeDialog() {
-		this.dialogRef.close({event: 'cancel'});
+		this.dialogRef.close({ event: 'cancel' });
 	}
 
 }

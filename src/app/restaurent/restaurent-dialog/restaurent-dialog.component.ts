@@ -8,12 +8,12 @@ export interface UsersData {
 }
 
 export interface IThemeForm {
-	pos_rest_id ?: string;
-	isDefault ?: boolean;
-	theme ?: object;
-	homepage ?: object;
-	quickHelp ?: object;
-	brokenImages ?: object;
+	pos_rest_id?: string;
+	isDefault?: boolean;
+	theme?: object;
+	homepage?: object;
+	quickHelp?: object;
+	brokenImages?: object;
 }
 
 @Component({
@@ -45,7 +45,7 @@ export class RestaurentDialogComponent implements OnInit {
 		@Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
 		public apiService: ApiService) {
 		console.log('dialogData ', data);
-		this.local_data = {...data};
+		this.local_data = { ...data };
 		this.formType = this.local_data.x;
 	}
 	ngOnInit(): void {
@@ -102,27 +102,26 @@ export class RestaurentDialogComponent implements OnInit {
 	}
 
 	onOptionsSelected(event: any) {
-		  this.addForm={};
-		  const value = event.target.value;
-		  let name, address, email, phone;
-		  this.pos_restaurant_list.filter(function(item :any){
-		   if(item._id === value)
-		   {
-		    console.log("item..............",item);
-		   //  this.addForm.pos_rest_id = value; 
-		  // this.addForm['name'] = item.name;
-		    phone = item.phone;
-		    email = item.email;
-		    address = item.address;
-		    name= item.name;
-		   }
+		this.addForm = {};
+		const value = event.target.value;
+		let name, address, email, phone;
+		this.pos_restaurant_list.filter(function (item: any) {
+			if (item._id === value) {
+				console.log("item..............", item);
+				//  this.addForm.pos_rest_id = value; 
+				// this.addForm['name'] = item.name;
+				phone = item.phone;
+				email = item.email;
+				address = item.address;
+				name = item.name;
+			}
 		});
 		this.addForm.name = name;
 		this.addForm.mobile = phone;
 		this.addForm.email = email;
 		this.addForm.address = address;
-		this.addForm.pos_rest_id =  event.target.value;
-		this.editForm.pos_rest_id =  event.target.value;
+		this.addForm.pos_rest_id = event.target.value;
+		this.editForm.pos_rest_id = event.target.value;
 		this.themeObject.pos_rest_id = event.target.value;
 		this.homepageObject.pos_rest_id = event.target.value;
 		this.quickHelpObject.pos_rest_id = event.target.value;
@@ -162,14 +161,14 @@ export class RestaurentDialogComponent implements OnInit {
 			if (result.status) {
 				this.doAction();
 				// this.ngOnInit();
-				
+
 			}
 		});
 	}
 
-	onAddTheme() {		
+	onAddTheme() {
 		this.themeForm = {
-			'isDefault' : true,
+			'isDefault': true,
 			'pos_rest_id': this.themeObject.pos_rest_id,
 			'theme': this.themeObject,
 			'homepage': this.homepageObject,

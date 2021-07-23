@@ -6,11 +6,13 @@ export interface UsersData {
 	name: string;
 	id: number;
 }
+
 @Component({
 	selector: 'app-branch-dialog',
 	templateUrl: './branch-dialog.component.html',
 	styleUrls: ['./branch-dialog.component.css']
 })
+
 export class BranchDialogComponent implements OnInit {
 	branch_list: any = [];
 	action: string;

@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from "@angular/material/dialog";
 import { SelectionModel } from '@angular/cdk/collections';
 import { RestaurentDialogComponent } from './restaurent-dialog/restaurent-dialog.component';
+
 export interface restData {
 	name: string;
 	contact_person: string;
@@ -14,11 +15,13 @@ export interface restData {
 	branche_count: String;
 	action: any;
 }
+
 @Component({
 	selector: 'app-restaurent',
 	templateUrl: './restaurent.component.html',
 	styleUrls: ['./restaurent.component.css']
 })
+
 export class RestaurentComponent implements OnInit {
 	restaurant_list: any = [];
 	addForm: any = {}; editForm: any = {};

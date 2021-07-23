@@ -7,7 +7,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { SelectionModel } from '@angular/cdk/collections';
 import { BranchDialogComponent } from './branch-dialog/branch-dialog.component';
+
 export interface branchData {
+	no: string;
 	location: string;
 	manager_name: string;
 	mobile: String;

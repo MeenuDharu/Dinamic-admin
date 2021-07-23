@@ -69,9 +69,9 @@ export class ValetUsersComponent implements OnInit {
 	}
 
 	getValetUsersList() {
-		this.apiService.VALET_USER_LIST({branch_id: this.selectedBranch._id}).subscribe((result) => {
+		this.apiService.VALET_USER_LIST({ branch_id: this.selectedBranch._id }).subscribe((result) => {
 			console.log('valet users list:', result);
-			
+
 		})
 	}
 
@@ -82,14 +82,14 @@ export class ValetUsersComponent implements OnInit {
 		}
 	}
 
-	openDialog(x: any, y: any){
+	openDialog(x: any, y: any) {
 		console.log('x:', x, 'y:', y);
 		let dialogref = this.dialog.open(ValetUsersDialogComponent, {
 			maxWidth: '100vw',
 			maxHeight: '100vh',
 			width: '750px',
 			height: 'auto',
-			data: {x: x, y: y}
+			data: { x: x, y: y }
 		});
 
 		dialogref.afterClosed().subscribe((res) => {

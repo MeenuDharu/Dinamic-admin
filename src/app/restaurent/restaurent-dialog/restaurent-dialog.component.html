@@ -1,304 +1,201 @@
 <div *ngIf="formType == 'add' ">
-  <form autocomplete="off" (ngSubmit)="onAddRestaurant()" ngNativeValidate>
-    <div class="modal-body pad25">
-      <div class="row">
-        <div class="col-md-12">
+	<form autocomplete="off" (ngSubmit)="onAddRestaurant()" ngNativeValidate>
+		<div class="modal-body pad25">
+			<div class="row">
+				<div class="col-md-12">
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="addForm.pos_rest_id ? 'is-focused': ''">
-            <select class="mdl-textfield__input clabelborder" (change)='onOptionsSelected($event)' name="pos_rest_id"
-              [(ngModel)]="addForm.pos_rest_id" #pos_rest_id="ngModel" required>
-              <option [value]="x._id" *ngFor="let x of pos_restaurant_list">{{x.name}}</option>
-            </select>
-            <label class="mdl-textfield__label cname-color" for="pos_rest_id">Restaurent Name</label>
-          </div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="addForm.pos_rest_id ? 'is-focused': ''">
+						<select class="mdl-textfield__input clabelborder" (change)='onOptionsSelected($event)'
+							name="pos_rest_id" [(ngModel)]="addForm.pos_rest_id" #pos_rest_id="ngModel" required>
+							<option [value]="x._id" *ngFor="let x of pos_restaurant_list">{{x.name}}</option>
+						</select>
+						<label class="mdl-textfield__label cname-color" for="pos_rest_id">Restaurent Name</label>
+					</div>
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="addForm.name ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="name" [(ngModel)]="addForm.name"
-              #name="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="name">Restaurant Name</label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="addForm.contact_person ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="contact_person"
-              [(ngModel)]="addForm.contact_person" #contact_person="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="contact_person">Contact Person</label>
-          </div>
-        </div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="addForm.name ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="name"
+							[(ngModel)]="addForm.name" #name="ngModel" required />
+						<label class="mdl-textfield__label cname-color" for="name">Restaurant Name</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="addForm.contact_person ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="contact_person"
+							[(ngModel)]="addForm.contact_person" #contact_person="ngModel" required />
+						<label class="mdl-textfield__label cname-color" for="contact_person">Contact Person</label>
+					</div>
+				</div>
 
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="addForm.mobile ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="mobile" [(ngModel)]="addForm.mobile"
-              #mobile="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="mobile">Mobile No</label>
-          </div>
-        </div>
-      </div>
+				<div class="col-md-6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="addForm.mobile ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="mobile"
+							[(ngModel)]="addForm.mobile" #mobile="ngModel" required />
+						<label class="mdl-textfield__label cname-color" for="mobile">Mobile No</label>
+					</div>
+				</div>
+			</div>
 
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="addForm.email ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="email" [(ngModel)]="addForm.email"
-              #email="ngModel" />
-            <label class="mdl-textfield__label cname-color" for="email">Email</label>
-          </div>
-        </div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="addForm.email ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="email"
+							[(ngModel)]="addForm.email" #email="ngModel" />
+						<label class="mdl-textfield__label cname-color" for="email">Email</label>
+					</div>
+				</div>
 
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="addForm.website ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="website" [(ngModel)]="addForm.website"
-              #website="ngModel" />
-            <label class="mdl-textfield__label cname-color" for="website">Website</label>
-          </div>
-        </div>
-      </div>
+				<div class="col-md-6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="addForm.website ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="website"
+							[(ngModel)]="addForm.website" #website="ngModel" />
+						<label class="mdl-textfield__label cname-color" for="website">Website</label>
+					</div>
+				</div>
+			</div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="addForm.base_url ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="base_url" [(ngModel)]="addForm.base_url"
-              #base_url="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="base_url">Base URL</label>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="addForm.error_msg" class="error-msg">{{ addForm.error_msg }}</div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 text-right">
-        <button type="button" class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
-        <button type="submit" class="btn btn-link waves-effect">DONE</button>
-      </div>
-    </div>
-  </form>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="addForm.base_url ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="base_url"
+							[(ngModel)]="addForm.base_url" #base_url="ngModel" required />
+						<label class="mdl-textfield__label cname-color" for="base_url">Base URL</label>
+					</div>
+				</div>
+			</div>
+			<div *ngIf="addForm.error_msg" class="error-msg">{{ addForm.error_msg }}</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-right">
+				<button type="button" class="btn btn-link btn-cancel waves-effect"
+					(click)="closeDialog()">CANCEL</button>
+				<button type="submit" class="btn btn-link waves-effect">DONE</button>
+			</div>
+		</div>
+	</form>
 </div>
 
 <div *ngIf="formType == 'edit'">
 
-  <form autocomplete="off" (ngSubmit)="onUpdateRestaurant(editModal)" ngNativeValidate>
-    <div class="modal-body pad25">
+	<form autocomplete="off" (ngSubmit)="onUpdateRestaurant(editModal)" ngNativeValidate>
+		<div class="modal-body pad25">
 
-      <div class="row">
-        <div class="col-md-12">
+			<div class="row">
+				<div class="col-md-12">
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="editForm.pos_rest_id ? 'is-focused': ''">
-            <select class="mdl-textfield__input clabelborder" (change)='onOptionsSelected($event)' name="pos_rest_id"
-              [(ngModel)]="editForm.pos_rest_id" #pos_rest_id="ngModel" required>
-              <option [value]="x._id" *ngFor="let x of pos_restaurant_list">{{x.name}}</option>
-            </select>
-            <label class="mdl-textfield__label cname-color" for="pos_rest_id">Restaurent Name</label>
-          </div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="editForm.pos_rest_id ? 'is-focused': ''">
+						<select class="mdl-textfield__input clabelborder" (change)='onOptionsSelected($event)'
+							name="pos_rest_id" [(ngModel)]="editForm.pos_rest_id" #pos_rest_id="ngModel" required>
+							<option [value]="x._id" *ngFor="let x of pos_restaurant_list">{{x.name}}</option>
+						</select>
+						<label class="mdl-textfield__label cname-color" for="pos_rest_id">Restaurent Name</label>
+					</div>
 
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="editForm.name ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="name" [(ngModel)]="editForm.name"
-              #name="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="name">Restaurant Name</label>
-          </div>
-        </div>
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="editForm.name ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="name"
+							[(ngModel)]="editForm.name" #name="ngModel" required />
+						<label class="mdl-textfield__label cname-color" for="name">Restaurant Name</label>
+					</div>
+				</div>
 
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="editForm.contact_person ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="contact_person"
-              [(ngModel)]="editForm.contact_person" #contact_person="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="contact_person">Contact Person</label>
-          </div>
-        </div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="editForm.contact_person ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="contact_person"
+							[(ngModel)]="editForm.contact_person" #contact_person="ngModel" required />
+						<label class="mdl-textfield__label cname-color" for="contact_person">Contact Person</label>
+					</div>
+				</div>
 
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="editForm.mobile ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="mobile" [(ngModel)]="editForm.mobile"
-              #mobile="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="mobile">Mobile No</label>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="editForm.email ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="email" [(ngModel)]="editForm.email"
-              #email="ngModel" />
-            <label class="mdl-textfield__label cname-color" for="email">Email</label>
-          </div>
-        </div>
+				<div class="col-md-6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="editForm.mobile ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="mobile"
+							[(ngModel)]="editForm.mobile" #mobile="ngModel" required />
+						<label class="mdl-textfield__label cname-color" for="mobile">Mobile No</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="editForm.email ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="email"
+							[(ngModel)]="editForm.email" #email="ngModel" />
+						<label class="mdl-textfield__label cname-color" for="email">Email</label>
+					</div>
+				</div>
 
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="editForm.website ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="website" [(ngModel)]="editForm.website"
-              #website="ngModel" />
-            <label class="mdl-textfield__label cname-color" for="website">Website</label>
-          </div>
-        </div>
-      </div>
-
-
+				<div class="col-md-6">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="editForm.website ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="website"
+							[(ngModel)]="editForm.website" #website="ngModel" />
+						<label class="mdl-textfield__label cname-color" for="website">Website</label>
+					</div>
+				</div>
+			</div>
 
 
-      <div class="row">
-        <div class="col-md-12">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="editForm.base_url ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="base_url" [(ngModel)]="editForm.base_url"
-              #base_url="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="base_url">Base URL</label>
-          </div>
-        </div>
-      </div>
 
 
-      <div *ngIf="editForm.error_msg" class="error-msg">{{ editForm.error_msg }}</div>
-    </div>
-    <div class="row text-right">
-      <div class="col-md-12">
-        <button type="button" class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
-        <button type="submit" class="btn btn-link waves-effect">UPDATE</button>
-      </div>
-    </div>
-  </form>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="editForm.base_url ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="base_url"
+							[(ngModel)]="editForm.base_url" #base_url="ngModel" required />
+						<label class="mdl-textfield__label cname-color" for="base_url">Base URL</label>
+					</div>
+				</div>
+			</div>
+
+
+			<div *ngIf="editForm.error_msg" class="error-msg">{{ editForm.error_msg }}</div>
+		</div>
+		<div class="row text-right">
+			<div class="col-md-12">
+				<button type="button" class="btn btn-link btn-cancel waves-effect"
+					(click)="closeDialog()">CANCEL</button>
+				<button type="submit" class="btn btn-link waves-effect">UPDATE</button>
+			</div>
+		</div>
+	</form>
 </div>
 
 <div *ngIf="formType == 'delete'">
-  <div class="modal-content mdl-shadow--4dp">
-    <div class="header modal-headpad">
-      <div class="col-md-10">
-        <h4 class="modal-title" id="defaultModalLabel">
-          Remove this table?
-        </h4>
-      </div>
-    </div>
-    <div class="modal-body pad25">
-      <p>Removing this table means you won't be able to use it anymore.</p>
-      <p class="p-t-30">
-        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="#616161">
-          <path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z" />
-        </svg>
-        <span class="p-l-40">{{tableName}}</span>
-      </p>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
-      <button class="btn btn-link waves-effect" type="button" (click)="onDeleteRestaurant()">DONE</button>
-    </div>
-  </div>
+	<div class="modal-content mdl-shadow--4dp">
+		<div class="header modal-headpad">
+			<div class="col-md-10">
+				<h4 class="modal-title" id="defaultModalLabel">
+					Remove this table?
+				</h4>
+			</div>
+		</div>
+		<div class="modal-body pad25">
+			<p>Removing this table means you won't be able to use it anymore.</p>
+			<p class="p-t-30">
+				<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="#616161">
+					<path d="M20 4H4v2h16V4zm1 10v-2l-1-5H4l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4H6v-4h6v4z" />
+				</svg>
+				<span class="p-l-40">{{tableName}}</span>
+			</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
+			<button class="btn btn-link waves-effect" type="button" (click)="onDeleteRestaurant()">DONE</button>
+		</div>
+	</div>
 </div>
-
-<!-- <div *ngIf="formType == 'themeAdd' ">
-  <form autocomplete="off" (ngSubmit)="onAddTheme()" ngNativeValidate>
-    <div class="modal-body pad25">
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeObject.navbarColor ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="navbarColor"
-              [(ngModel)]="themeObject.navbarColor" #navbarColor="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="navbarColor">Navbar Color</label>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeObject.navbarText ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="navbarText" [(ngModel)]="themeObject.navbarText"
-              #navbarText="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="navbarText">Navbar Text</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeObject.primaryButtonColor ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="primaryButtonColor" [(ngModel)]="themeObject.primaryButtonColor"
-              #primaryButtonColor="ngModel" />
-            <label class="mdl-textfield__label cname-color" for="primaryButtonColor">Primary Button Color</label>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeObject.primaryButtonText ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="primaryButtonText" [(ngModel)]="themeObject.primaryButtonText"
-              #primaryButtonText="ngModel" />
-            <label class="mdl-textfield__label cname-color" for="primaryButtonText">Primary Button Text</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeObject.secondaryButtonColor ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="secondaryButtonColor" [(ngModel)]="themeObject.secondaryButtonColor"
-              #secondaryButtonColor="ngModel" />
-            <label class="mdl-textfield__label cname-color" for="secondaryButtonColor">Secondary Button Color</label>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeObject.secondaryButtonText ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="secondaryButtonText" [(ngModel)]="themeObject.secondaryButtonText"
-              #secondaryButtonText="ngModel" />
-            <label class="mdl-textfield__label cname-color" for="secondaryButtonText">Secondary Button Text</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeObject.disabledButtonColor ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="disabledButtonColor" [(ngModel)]="themeObject.disabledButtonColor"
-              #disabledButtonColor="ngModel" />
-            <label class="mdl-textfield__label cname-color" for="disabledButtonColor">Disabled Button Color</label>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeObject.disabledButtonText ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="disabledButtonText" [(ngModel)]="themeObject.disabledButtonText"
-              #disabledButtonText="ngModel" />
-            <label class="mdl-textfield__label cname-color" for="disabledButtonText">Disabled Button Text</label>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeObject.spinnerColor ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="spinnerColor" [(ngModel)]="themeObject.spinnerColor"
-              #spinnerColor="ngModel" required />
-            <label class="mdl-textfield__label cname-color" for="spinnerColor">Spinner Color</label>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="themeObject.error_msg" class="error-msg">{{ themeObject.error_msg }}</div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 text-right">
-        <button type="button" class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
-        <button type="submit" class="btn btn-link waves-effect">DONE</button>
-      </div>
-    </div>
-  </form>
-</div> -->

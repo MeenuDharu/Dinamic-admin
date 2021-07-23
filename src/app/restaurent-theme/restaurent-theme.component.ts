@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../_services/api.service';
 import { MatDialog } from "@angular/material/dialog";
-import { RestaurentThemeDialogComponent } from './restaurent-theme-dialog/restaurent-theme-dialog.component';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -21,7 +20,6 @@ export class RestaurentThemeComponent implements OnInit {
 	formDataHomePage = new FormData();
 	formDataQuickHelp = new FormData();
 	formDataBrokenImages = new FormData();
-	// isDefaultImage: boolean = false;
 	isDefaultBillImage: boolean = false;
 	isDefaultHelpImage: boolean = false;
 	isDefaultVehicleImage: boolean = false;
@@ -47,29 +45,6 @@ export class RestaurentThemeComponent implements OnInit {
 
 	ngOnInit(): void {
 	}
-
-	// onEdit(modalName: any) {
-	// 	console.log('modalName', modalName);
-	// 	this.apiService.THEME_LIST({"pos_rest_id": this.selectedRestaurent.pos_rest_id}).subscribe((result) => {
-	// 		console.log('theme result:', result);
-	// 		if(result.status) {
-	// 			this.openDialog(modalName, result.data);
-	// 		} else {
-	// 			console.log('Error:', result.message);
-	// 		}
-	// 	});
-	// }
-
-	// openDialog(modalName: any, modalData: any) {
-	// 	this.dialog.open(RestaurentThemeDialogComponent, {
-	// 		maxWidth: '100vw',
-	// 		maxHeight: '100vh',
-	// 		height: 'auto',
-	// 		width: '750px',
-	// 		data: {modalName: modalName, modalData: modalData},
-	// 		disableClose: true
-	// 	});
-	// }
 
 	onEdit(formType: any) {
 		this.themeObject = [];
@@ -390,7 +365,7 @@ export class RestaurentThemeComponent implements OnInit {
 			this.apiService.ADD_QUICKHELP_THEME(this.formDataQuickHelp).subscribe((result) => {
 				console.log('quickHelp', result);
 				if (result.status) {
-					this.closeForm('quickHelp');	
+					this.closeForm('quickHelp');
 				} else {
 					console.error(result.message);
 				}
@@ -407,7 +382,7 @@ export class RestaurentThemeComponent implements OnInit {
 				} else {
 					console.error(result.message);
 				}
-				
+
 			});
 		}
 

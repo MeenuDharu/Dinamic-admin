@@ -45,8 +45,6 @@ export class TablesComponent implements OnInit {
 		this.dataSource.sort = sort;
 	}
 
-
-
 	isAllSelected() {
 		const numSelected = this.selection.selected.length;
 		const numRows = this.dataSource.data.length;
@@ -218,6 +216,6 @@ export class TablesComponent implements OnInit {
 		dialogref.afterClosed().subscribe((res) => {
 			this.tableList();
 		});
-
 	}
+	
 }
