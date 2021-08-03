@@ -27,7 +27,7 @@ export class BranchDialogComponent implements OnInit {
 	constructor(public dialogRef: MatDialogRef<BranchDialogComponent>,
 		//@Optional() is used to prevent error if no data is passed
 		@Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData, public apiService: ApiService) {
-		console.log(data);
+		console.log('branch dialog data: ',data);
 		this.local_data = data;
 		this.action = this.local_data.action;
 	}
@@ -48,9 +48,16 @@ export class BranchDialogComponent implements OnInit {
 					this.editForm.email = x.email;
 					this.editForm.address = x.address;
 				} else if (this.formType === 'payment') {
+					this.apiService.GET_GATEWAY({_id: this.local_data.y._id}).subscribe((result) => {
+						if (result.status) {
+							this.paymentForm = result.data;
+						}
+					});
 					this.paymentForm._id = x._id;
 					this.paymentForm.branch_id = x._id;
 					this.paymentForm.restaurant_id = this.selectedRestaurant._id;
+					this.paymentForm.pos_rest_id = this.selectedRestaurant.pos_rest_id;
+					this.paymentForm.pos_branch_id = this.local_data.y.pos_branch_id;
 				} else if (this.formType === 'delete') {
 					this.deleteId = x._id;
 				}
@@ -129,6 +136,7 @@ export class BranchDialogComponent implements OnInit {
 	}
 
 	onUpdateGateway() {
+		console.log("payment form...", this.paymentForm);
 		this.apiService.UPDATE_GATEWAY(this.paymentForm).subscribe((result) => {
 			if (result.status) {
 				this.doAction();

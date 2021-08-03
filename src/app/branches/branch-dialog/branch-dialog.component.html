@@ -159,6 +159,17 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="paymentForm.restaurantName ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="restaurantName"
+							[(ngModel)]="paymentForm.restaurantName" #restaurantName="ngModel" required/>
+						<label class="mdl-textfield__label cname-color" for="restaurantName">Restaurant Name</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 						[ngClass]="paymentForm.key_id ? 'is-focused': ''">
 						<input type="text" class="mdl-textfield__input clabelborder" name="key_id"
 							[(ngModel)]="paymentForm.key_id" #key_id="ngModel" required />
@@ -183,8 +194,30 @@
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 						[ngClass]="paymentForm.paymentName ? 'is-focused': ''">
 						<input type="text" class="mdl-textfield__input clabelborder" name="paymentName"
-							[(ngModel)]="paymentForm.paymentName" #paymentName="ngModel" />
+							[(ngModel)]="paymentForm.paymentName" #paymentName="ngModel" required/>
 						<label class="mdl-textfield__label cname-color" for="paymentName">Payment Name</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="paymentForm.userName ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="userName"
+							[(ngModel)]="paymentForm.userName" #userName="ngModel" />
+						<label class="mdl-textfield__label cname-color" for="userName">Payment Username</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="paymentForm.password ? 'is-focused': ''">
+						<input type="text" class="mdl-textfield__input clabelborder" name="password"
+							[(ngModel)]="paymentForm.password" #password="ngModel" />
+						<label class="mdl-textfield__label cname-color" for="password">Payment Password</label>
 					</div>
 				</div>
 			</div>

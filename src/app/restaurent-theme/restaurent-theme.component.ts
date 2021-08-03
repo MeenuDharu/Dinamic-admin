@@ -182,7 +182,7 @@ export class RestaurentThemeComponent implements OnInit {
 			let waiterImage = event.target.files[0];
 			let waiterPreview;
 			if (waiterImage) {
-				this.formDataQuickHelp.append('quickHelpImages', waiterImage, 'waiter');
+				this.formDataQuickHelp.append('quickHelpImages', waiterImage, 'call waiter');
 				waiterPreview = document.getElementById('waiterPreview');
 				waiterPreview?.setAttribute('src', URL.createObjectURL(waiterImage));
 			} else {
@@ -193,7 +193,7 @@ export class RestaurentThemeComponent implements OnInit {
 			let wifiImage = event.target.files[0];
 			let wifiPreview;
 			if (wifiImage) {
-				this.formDataQuickHelp.append('quickHelpImages', wifiImage, 'wifi');
+				this.formDataQuickHelp.append('quickHelpImages', wifiImage, 'wifi assistance');
 				wifiPreview = document.getElementById('wifiPreview');
 				wifiPreview?.setAttribute('src', URL.createObjectURL(wifiImage));
 			} else {
@@ -204,7 +204,7 @@ export class RestaurentThemeComponent implements OnInit {
 			let essentialKitImage = event.target.files[0];
 			let essentialKitPreview;
 			if (essentialKitImage) {
-				this.formDataQuickHelp.append('quickHelpImages', essentialKitImage, 'essentialKit');
+				this.formDataQuickHelp.append('quickHelpImages', essentialKitImage, 'essential kit');
 				essentialKitPreview = document.getElementById('essentialKitPreview');
 				essentialKitPreview?.setAttribute('src', URL.createObjectURL(essentialKitImage));
 			} else {

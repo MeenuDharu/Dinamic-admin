@@ -8,6 +8,8 @@ export interface UsersData {
 }
 
 export interface IThemeForm {
+	restaurantName?: string;
+	restaurant_id?: string;
 	pos_rest_id?: string;
 	isDefault?: boolean;
 	theme?: object;
@@ -132,9 +134,10 @@ export class RestaurentDialogComponent implements OnInit {
 	onAddRestaurant() {
 		console.log("add...........", this.addForm)
 		this.apiService.ADD_RESTAURANT(this.addForm).subscribe(result => {
-			if (result.status) {
-				this.ngOnInit();
-				this.onAddTheme();
+			console.log("typeof rest id", typeof result.data.restaurant_id);
+			if (result.status && result.data) {
+				// this.ngOnInit();
+				this.onAddTheme(result.data);
 			}
 			else {
 				this.addForm.error_msg = result.message;
@@ -145,9 +148,10 @@ export class RestaurentDialogComponent implements OnInit {
 
 	onUpdateRestaurant() {
 		this.apiService.UPDATE_RESTAURANT(this.editForm).subscribe(result => {
+			console.log('rest update...', result)
 			if (result.status) {
 				this.doAction();
-				this.ngOnInit();
+				// this.onAddTheme(result.data);
 			}
 			else {
 				this.editForm.error_msg = result.message;
@@ -160,30 +164,34 @@ export class RestaurentDialogComponent implements OnInit {
 			console.log('delete result', result);
 			if (result.status) {
 				this.doAction();
-				// this.ngOnInit();
-
 			}
 		});
 	}
 
-	onAddTheme() {
+	onAddTheme(data: any) {
+		this.themeObject.pos_rest_id = data.pos_rest_id;
+		this.homepageObject.pos_rest_id = data.pos_rest_id;
+		this.quickHelpObject.pos_rest_id = data.pos_rest_id;
+		this.brokenImageObject.pos_rest_id = data.pos_rest_id;
 		this.themeForm = {
 			'isDefault': true,
-			'pos_rest_id': this.themeObject.pos_rest_id,
+			'restaurantName': this.addForm.name,
+			'restaurant_id' : data.restaurant_id,
+			'pos_rest_id': data.pos_rest_id,
 			'theme': this.themeObject,
 			'homepage': this.homepageObject,
 			'quickHelp': this.quickHelpObject,
 			'brokenImages': this.brokenImageObject
 		}
-		console.log('created object', this.themeForm);
+		console.log('themeform object', this.themeForm);
 		this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {
+			console.log("add theme result ",result )
 			if (result.status) {
 				this.doAction();
 			} else {
 				this.themeObject.error_msg = result.message;
 			}
 		});
-
 	}
 
 }

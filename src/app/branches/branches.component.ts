@@ -117,11 +117,6 @@ export class BranchesComponent implements OnInit {
 		}
 	}
 
-	onBranchList(x: any) {
-		localStorage.setItem('selected_restaurant', JSON.stringify(x));
-		this.router.navigate(['/branches']);
-	}
-
 	transform(items: any[], value: string): any[] {
 		if (!items) return [];
 		if (!value || value.length == 0) return items;

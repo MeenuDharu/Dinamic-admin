@@ -73,6 +73,7 @@ export class ValetTokensDialogComponent implements OnInit {
 	}
 
 	onDeleteValetToken() {
+		console.log('delete id', this.deleteId);
 		this.apiService.DELETE_VALET_TOKEN({ '_id': this.deleteId }).subscribe((result) => {
 			if (result.status) {
 				this.doAction();

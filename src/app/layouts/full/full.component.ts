@@ -60,4 +60,10 @@ export class FullComponent implements OnInit {
 			default:
 		}
 	}
+
+	onLogout () {
+		localStorage.clear();
+		this.router.navigate(['/']);
+	}
 }
+

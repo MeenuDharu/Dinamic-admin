@@ -94,7 +94,7 @@
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 						[ngClass]="editForm.pos_rest_id ? 'is-focused': ''">
 						<select class="mdl-textfield__input clabelborder" (change)='onOptionsSelected($event)'
-							name="pos_rest_id" [(ngModel)]="editForm.pos_rest_id" #pos_rest_id="ngModel" required>
+							name="pos_rest_id" [(ngModel)]="editForm.pos_rest_id" #pos_rest_id="ngModel">
 							<option [value]="x._id" *ngFor="let x of pos_restaurant_list">{{x.name}}</option>
 						</select>
 						<label class="mdl-textfield__label cname-color" for="pos_rest_id">Restaurent Name</label>

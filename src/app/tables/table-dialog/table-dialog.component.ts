@@ -33,14 +33,14 @@ export class TableDialogComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-
+		console.log('type of rest id table', typeof this.selectedRestaurant._id)
 		this.addForm = {};
 		this.formType = this.local_data.x;
 		let x = this.local_data.y;
 
 		this.apiService.TABLE_LIST({ branch_id: this.selectedBranch._id }).subscribe(result => {
 			if (this.formType === 'tableEdit') {
-				this.editForm.pos_reataurent_id = this.selectedRestaurant.pos_rest_id;
+				this.editForm.pos_restaurant_id = this.selectedRestaurant.pos_rest_id;
 				this.editForm.pos_branch_id = this.selectedBranch.pos_branch_id;
 				this.editForm._id = x._id;
 				this.editForm.pos_floor_id = x.pos_floor_id;
@@ -140,8 +140,8 @@ export class TableDialogComponent implements OnInit {
 	onAddTable() {
 		this.addForm.restaurant_id = this.selectedRestaurant._id;
 		this.addForm.branch_id = this.selectedBranch._id;
-		this.editForm.pos_reataurent_id = this.selectedRestaurant.pos_rest_id;
-		this.editForm.pos_branch_id = this.selectedBranch.pos_branch_id;
+		this.addForm.pos_restaurant_id = this.selectedRestaurant.pos_rest_id;
+		this.addForm.pos_branch_id = this.selectedBranch.pos_branch_id;
 		this.addForm.tablestatus = true;
 		this.apiService.ADD_TABLE(this.addForm).subscribe(result => {
 			if (result.status) {
