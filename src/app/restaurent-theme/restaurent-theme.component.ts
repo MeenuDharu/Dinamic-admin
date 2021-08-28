@@ -11,34 +11,17 @@ import { environment } from 'src/environments/environment';
 export class RestaurentThemeComponent implements OnInit {
 
 	selectedRestaurent = JSON.parse(localStorage.getItem('selected_restaurant')!);
+	randomQuery: string = '';
 	formType: string = '';
 	themeForm: any = {};
 	themeObject: any = {};
 	homepageObject: any = {};
 	quickHelpObject: any = {};
 	brokenImagesObject: any = {};
+	dynamicThingsObject: any = {};
 	formDataHomePage = new FormData();
 	formDataQuickHelp = new FormData();
 	formDataBrokenImages = new FormData();
-	isDefaultBillImage: boolean = false;
-	isDefaultHelpImage: boolean = false;
-	isDefaultVehicleImage: boolean = false;
-	isDefaultOfferImage: boolean = false;
-	isDefaultExitImage: boolean = false;
-	isDefaultWaterImage: boolean = false;
-	isDefaultTeaImage: boolean = false;
-	isDefaultWaiterImage: boolean = false;
-	isDefaultWifiImage: boolean = false;
-	isDefaultEssentialKitImage: boolean = false;
-	isDefaultTissueImage: boolean = false;
-	isDefaultHomePageBanner: boolean = false;
-	isDefaultHomePageCard: boolean = false;
-	isDefaultSectionCard: boolean = false;
-	isDefaultCategoriesCard: boolean = false;
-	isDefaultLogo: boolean = false;
-	isDefaultLoginLogo: boolean = false;
-	isDefaultLoaderLogo: boolean = false;
-
 	baseUrl = environment.ws_url;
 
 	constructor(public apiService: ApiService, public dialog: MatDialog) { }
@@ -46,46 +29,46 @@ export class RestaurentThemeComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
+	// generate randomString for queryparams
+	getRandomCode = function () {
+		let randomText = '';
+		let allText = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+		for (let i = 0; i < 5; i++) {
+			randomText += allText.charAt(Math.floor(Math.random() * allText.length));
+		}
+		console.log('random Text....', randomText);
+		return randomText;
+	}
+
 	onEdit(formType: any) {
+		this.randomQuery = this.getRandomCode();
+		console.log('this.randomQuery', this.randomQuery);
 		this.themeObject = [];
 		this.homepageObject = [];
 		this.quickHelpObject = [];
 		this.apiService.THEME_LIST({ "pos_rest_id": this.selectedRestaurent.pos_rest_id }).subscribe((result) => {
+			console.log('Result: ', result);
 			if (result.status) {
 				if (formType === 'theme') {
 					this.formType = 'theme';
 					this.themeObject = result.data.theme;
+					console.log('ThemeObject: ', this.themeObject);
 				} else if (formType === 'homepage') {
 					this.formType = 'homepage';
-					// this.isDefaultImage = true;
-					this.isDefaultBillImage = true;
-					this.isDefaultHelpImage = true;
-					this.isDefaultVehicleImage = true;
-					this.isDefaultOfferImage = true;
-					this.isDefaultExitImage = true;
 					console.log('homepage', result.data.homepage)
 					this.homepageObject = result.data.homepage;
 				} else if (formType === 'quickHelp') {
 					this.formType = 'quickHelp';
-					this.isDefaultWaterImage = true;
-					this.isDefaultTeaImage = true;
-					this.isDefaultWaiterImage = true;
-					this.isDefaultWifiImage = true;
-					this.isDefaultEssentialKitImage = true;
-					this.isDefaultTissueImage = true;
 					this.quickHelpObject = result.data.quickHelp;
 					console.log('quickHelpObject', this.quickHelpObject)
 				} else if (formType === 'brokenImages') {
 					this.formType = 'brokenImages'
-					this.isDefaultHomePageBanner = true;
-					this.isDefaultHomePageCard = true;
-					this.isDefaultSectionCard = true;
-					this.isDefaultCategoriesCard = true;
-					this.isDefaultLogo = true;
-					this.isDefaultLoginLogo = true;
-					this.isDefaultLoaderLogo = true;
 					this.brokenImagesObject = result.data.brokenImages;
 					console.log('brokenImages', this.brokenImagesObject);
+				} else if (formType === 'dynamicThings') {
+					this.formType = 'dynamicThings';
+					this.dynamicThingsObject = result.data.dynamicThings;
 				}
 			} else {
 				console.error(result.message);
@@ -94,7 +77,6 @@ export class RestaurentThemeComponent implements OnInit {
 	}
 
 	onHomePageFileChange(event: any, type: string) {
-
 		if (type === "bill") {
 			let billImage = event.target?.files[0];
 			console.log('bill image', billImage)
@@ -107,52 +89,51 @@ export class RestaurentThemeComponent implements OnInit {
 				billPreview = document.getElementById('billPreview')
 				billPreview?.setAttribute('src', '');
 			}
-		} else
-			if (type === "help") {
-				let helpImage = event.target?.files[0];
-				let helpPreview;
-				if (helpImage) {
-					this.formDataHomePage.append('homepageImages', helpImage, 'helpImage');
-					helpPreview = document.getElementById('helpPreview')
-					helpPreview?.setAttribute('src', URL.createObjectURL(helpImage));
-				} else {
-					helpPreview = document.getElementById('helpPreview')
-					helpPreview?.setAttribute('src', '');
-				}
-			} else if (type === "vehicle") {
-				let vehicleImage = event.target?.files[0];
-				let vehiclePreview;
-				if (vehicleImage) {
-					this.formDataHomePage.append('homepageImages', vehicleImage, 'vehicleImage');
-					vehiclePreview = document.getElementById('vehiclePreview')
-					vehiclePreview?.setAttribute('src', URL.createObjectURL(vehicleImage));
-				} else {
-					vehiclePreview = document.getElementById('vehiclePreview')
-					vehiclePreview?.setAttribute('src', '');
-				}
-			} else if (type === "offer") {
-				let offerImage = event.target?.files[0];
-				let offerPreview;
-				if (offerImage) {
-					this.formDataHomePage.append('homepageImages', offerImage, 'offerImage');
-					offerPreview = document.getElementById('offerPreview')
-					offerPreview?.setAttribute('src', URL.createObjectURL(offerImage));
-				} else {
-					offerPreview = document.getElementById('offerPreview')
-					offerPreview?.setAttribute('src', '');
-				}
-			} else if (type === "exit") {
-				let exitImage = event.target?.files[0];
-				let exitPreview;
-				if (exitImage) {
-					this.formDataHomePage.append('homepageImages', exitImage, 'exitImage');
-					exitPreview = document.getElementById('exitPreview')
-					exitPreview?.setAttribute('src', URL.createObjectURL(exitImage));
-				} else {
-					exitPreview = document.getElementById('exitPreview')
-					exitPreview?.setAttribute('src', '');
-				}
+		} else if (type === "help") {
+			let helpImage = event.target?.files[0];
+			let helpPreview;
+			if (helpImage) {
+				this.formDataHomePage.append('homepageImages', helpImage, 'helpImage');
+				helpPreview = document.getElementById('helpPreview')
+				helpPreview?.setAttribute('src', URL.createObjectURL(helpImage));
+			} else {
+				helpPreview = document.getElementById('helpPreview')
+				helpPreview?.setAttribute('src', '');
 			}
+		} else if (type === "vehicle") {
+			let vehicleImage = event.target?.files[0];
+			let vehiclePreview;
+			if (vehicleImage) {
+				this.formDataHomePage.append('homepageImages', vehicleImage, 'vehicleImage');
+				vehiclePreview = document.getElementById('vehiclePreview')
+				vehiclePreview?.setAttribute('src', URL.createObjectURL(vehicleImage));
+			} else {
+				vehiclePreview = document.getElementById('vehiclePreview')
+				vehiclePreview?.setAttribute('src', '');
+			}
+		} else if (type === "offer") {
+			let offerImage = event.target?.files[0];
+			let offerPreview;
+			if (offerImage) {
+				this.formDataHomePage.append('homepageImages', offerImage, 'offerImage');
+				offerPreview = document.getElementById('offerPreview')
+				offerPreview?.setAttribute('src', URL.createObjectURL(offerImage));
+			} else {
+				offerPreview = document.getElementById('offerPreview')
+				offerPreview?.setAttribute('src', '');
+			}
+		} else if (type === "exit") {
+			let exitImage = event.target?.files[0];
+			let exitPreview;
+			if (exitImage) {
+				this.formDataHomePage.append('homepageImages', exitImage, 'exitImage');
+				exitPreview = document.getElementById('exitPreview')
+				exitPreview?.setAttribute('src', URL.createObjectURL(exitImage));
+			} else {
+				exitPreview = document.getElementById('exitPreview')
+				exitPreview?.setAttribute('src', '');
+			}
+		}
 	}
 
 	onQuickHelpFileChange(event: any, type: string) {
@@ -318,7 +299,7 @@ export class RestaurentThemeComponent implements OnInit {
 			}
 			this.apiService.ADD_THEME(this.themeForm).subscribe((result: any) => {
 				console.log('theme result', result);
-				this.closeForm('theme');
+				this.closeForm();
 			});
 		} else if (updateName === 'homepage') {
 			this.formDataHomePage.set('isDefault', "false");
@@ -349,7 +330,7 @@ export class RestaurentThemeComponent implements OnInit {
 
 			this.apiService.ADD_HOMEPAGE_THEME(this.formDataHomePage).subscribe((result) => {
 				console.log("homepage result", result);
-				this.closeForm('homepage');
+				this.closeForm();
 			});
 		} else if (updateName === 'quickHelp') {
 			this.formDataQuickHelp.set('isDefault', "false");
@@ -358,14 +339,15 @@ export class RestaurentThemeComponent implements OnInit {
 			this.formDataQuickHelp.set('isDefaultQuickHelp', "false");
 			this.formDataQuickHelp.set('waterStatus', this.quickHelpObject.waterStatus);
 			this.formDataQuickHelp.set('teaStatus', this.quickHelpObject.teaStatus);
-			this.formDataQuickHelp.set('waiterStatus', this.quickHelpObject.waiterStatus);
-			this.formDataQuickHelp.set('wifiStatus', this.quickHelpObject.wifiStatus);
-			this.formDataQuickHelp.set('essentialKitStatus', this.quickHelpObject.essentialKitStatus);
+			this.formDataQuickHelp.set('call waiterStatus', this.quickHelpObject['call waiterStatus']);
+			this.formDataQuickHelp.set('wifi assistanceStatus', this.quickHelpObject['wifi assistanceStatus']);
+			this.formDataQuickHelp.set('essential kitStatus', this.quickHelpObject['essential kitStatus']);
 			this.formDataQuickHelp.set('tissueStatus', this.quickHelpObject.tissueStatus);
+			console.log('quickhelp object... ', this.formDataQuickHelp.get('call waiterStatus'));
 			this.apiService.ADD_QUICKHELP_THEME(this.formDataQuickHelp).subscribe((result) => {
 				console.log('quickHelp', result);
 				if (result.status) {
-					this.closeForm('quickHelp');
+					this.closeForm();
 				} else {
 					console.error(result.message);
 				}
@@ -378,26 +360,34 @@ export class RestaurentThemeComponent implements OnInit {
 			this.apiService.ADD_BROKENIMAGES_THEME(this.formDataBrokenImages).subscribe((result) => {
 				console.log('brokenImages', result);
 				if (result.status) {
-					this.closeForm('brokenImages');
+					this.closeForm();
 				} else {
 					console.error(result.message);
 				}
 
 			});
+		} else if (updateName === 'dynamicThings') {
+			this.dynamicThingsObject.pos_rest_id = this.selectedRestaurent.pos_rest_id;
+			this.dynamicThingsObject.isDefaultDynamicThings = false;
+			this.themeForm = {
+				'isDefault': false,
+				'pos_rest_id': this.dynamicThingsObject.pos_rest_id,
+				'dynamicThings': this.dynamicThingsObject,
+			}
+			this.apiService.ADD_DYNAMIC_THINGS_THEME(this.themeForm).subscribe((result) => {
+				console.log('dynamicThings', result);
+				if (result.status) {
+					this.closeForm();
+				} else {
+					console.error(result.message);
+				}
+			})
 		}
 
 	}
 
-	closeForm(formType: any) {
-		if (formType === 'theme') {
-			this.formType = '';
-		} else if (formType === 'homepage') {
-			this.formType = '';
-		} else if (formType === 'quickHelp') {
-			this.formType = '';
-		} else if (formType === 'brokenImages') {
-			this.formType = '';
-		}
+	closeForm() {
+		this.formType = '';
 	}
 
 

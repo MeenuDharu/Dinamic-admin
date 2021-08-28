@@ -16,6 +16,7 @@ export interface IThemeForm {
 	homepage?: object;
 	quickHelp?: object;
 	brokenImages?: object;
+	dynamicThings?: object;
 }
 
 @Component({
@@ -34,6 +35,7 @@ export class RestaurentDialogComponent implements OnInit {
 	homepageObject: any = {};
 	quickHelpObject: any = {};
 	brokenImageObject: any = {};
+	dynamicThingsObject: any = {};
 	deleteId: string = '';
 	delete_pos_rest_id: string = '';
 	pos_restaurant_list: any;
@@ -173,6 +175,7 @@ export class RestaurentDialogComponent implements OnInit {
 		this.homepageObject.pos_rest_id = data.pos_rest_id;
 		this.quickHelpObject.pos_rest_id = data.pos_rest_id;
 		this.brokenImageObject.pos_rest_id = data.pos_rest_id;
+		this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
 		this.themeForm = {
 			'isDefault': true,
 			'restaurantName': this.addForm.name,
@@ -181,7 +184,8 @@ export class RestaurentDialogComponent implements OnInit {
 			'theme': this.themeObject,
 			'homepage': this.homepageObject,
 			'quickHelp': this.quickHelpObject,
-			'brokenImages': this.brokenImageObject
+			'brokenImages': this.brokenImageObject,
+			'dynamicThings': this.dynamicThingsObject
 		}
 		console.log('themeform object', this.themeForm);
 		this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {

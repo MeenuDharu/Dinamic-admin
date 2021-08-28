@@ -59,6 +59,11 @@ export class ApiService {
 		return this.http.post<any>(environment.ws_url + '/admin/restaurant/addBrokenImage', x, httpOptions);
 	}
 
+	ADD_DYNAMIC_THINGS_THEME(x: any) {
+		let httpOptions = { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('admin_token') }) };
+		return this.http.post<any>(environment.ws_url + '/admin/restaurant/addDynamicThings', x, httpOptions);
+	}
+
 	THEME_LIST(x: any) {
 		let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem("admin_token") }) };
 		return this.http.post<any>(environment.ws_url + '/admin/restaurant/getTheme', x, httpOptions);

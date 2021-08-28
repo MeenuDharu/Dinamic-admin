@@ -2,11 +2,11 @@
 	<div class="col-12">
 		<h4 class="d-inline">Change the Restaurant theme as per your wish</h4>
 		<!-- Theme Updation -->
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-md-12">
 				<mat-card class="card mat-elevation-z1 p-0">
 					<div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
-						<h4 class="card-title m-0 font500">Theme Update</h4>
+						<h4 class="card-title m-0 font600">Theme Update</h4>
 						<i class="material-icons" style="cursor: pointer;" (click)="onEdit('theme')">edit</i>
 					</div>
 				</mat-card>
@@ -119,6 +119,394 @@
 					</mat-card>
 				</ng-container>
 			</div>
+		</div> -->
+
+		<div class="row">
+			<div class="col-md-12">
+				<mat-card class="card mat-elevation-z1 p-0">
+					<div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
+						<h4 class="card-title m-0 font600">Theme Update</h4>
+						<i class="material-icons" style="cursor: pointer;" (click)="onEdit('theme')">edit</i>
+					</div>
+				</mat-card>
+				<ng-container *ngIf="formType === 'theme'">
+					<mat-card class="mat-elevation-z2 p-0">
+						<form autocomplete="off" (ngSubmit)="onUpdateTheme('theme')" ngNativeValidate>
+							<div class="modal-body p-25">
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Color</mat-label>
+											<input matInput type="text" name="primary_color"
+												[(ngModel)]="themeObject.primary_color" #primary_color="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary Color</mat-label>
+											<input matInput type="text" name="secondary_color"
+												[(ngModel)]="themeObject.secondary_color" #secondary_color="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Text Color</mat-label>
+											<input matInput type="text" name="primary_text_color"
+												[(ngModel)]="themeObject.primary_text_color" #primary_text_color="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary Text Color</mat-label>
+											<input matInput type="text" name="secondary_text_color"
+												[(ngModel)]="themeObject.secondary_text_color" #secondary_text_color="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Button Text</mat-label>
+											<input matInput type="text" name="primary_btn_text"
+												[(ngModel)]="themeObject.primary_btn_text" #primary_btn_text="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Loader Background</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Loader Background</mat-label>
+											<input matInput type="text" name="primary_loader_bg"
+												[(ngModel)]="themeObject.primary_loader_bg" #primary_loader_bg="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary Loader Background</mat-label>
+											<input matInput type="text" name="secondary_loader_bg"
+												[(ngModel)]="themeObject.secondary_loader_bg" #secondary_loader_bg="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+								
+								<h3>Payment Button</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Payment Button</mat-label>
+											<input matInput type="text" name="primary_payment_btn"
+												[(ngModel)]="themeObject.primary_payment_btn" #primary_payment_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary Payment Button</mat-label>
+											<input matInput type="text" name="secondary_payment_btn"
+												[(ngModel)]="themeObject.secondary_payment_btn" #secondary_payment_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Disable Payment Button</mat-label>
+											<input matInput type="text" name="disable_payment_btn"
+												[(ngModel)]="themeObject.disable_payment_btn" #disable_payment_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Payment Button Text</mat-label>
+											<input matInput type="text" name="primary_payment_btn_text"
+												[(ngModel)]="themeObject.primary_payment_btn_text" #primary_payment_btn_text="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Payment amount</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Payment Amount</mat-label>
+											<input matInput type="text" name="primary_payment_amount"
+												[(ngModel)]="themeObject.primary_payment_amount" #primary_payment_amount="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary Payment Amount</mat-label>
+											<input matInput type="text" name="secondary_payment_amount"
+												[(ngModel)]="themeObject.secondary_payment_amount" #secondary_payment_amount="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Payment Loader</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Payment Loader</mat-label>
+											<input matInput type="text" name="primary_payment_loader"
+												[(ngModel)]="themeObject.primary_payment_loader" #primary_payment_loader="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Itemcard</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary ItemCard</mat-label>
+											<input matInput type="text" name="primary_itemcard"
+												[(ngModel)]="themeObject.primary_itemcard" #primary_itemcard="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary ItemCard</mat-label>
+											<input matInput type="text" name="secondary_itemcard"
+												[(ngModel)]="themeObject.secondary_itemcard" #secondary_itemcard="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Itemcard Button</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary ItemCard Button</mat-label>
+											<input matInput type="text" name="primary_itemcard_btn"
+												[(ngModel)]="themeObject.primary_itemcard_btn" #primary_itemcard_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary ItemCard Button</mat-label>
+											<input matInput type="text" name="secondary_itemcard_btn"
+												[(ngModel)]="themeObject.secondary_itemcard_btn" #secondary_itemcard_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary ItemCard Button Text</mat-label>
+											<input matInput type="text" name="primary_itemcard_btn_text"
+												[(ngModel)]="themeObject.primary_itemcard_btn_text" #primary_itemcard_btn_text="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Login Background</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Login Background</mat-label>
+											<input matInput type="text" name="primary_login_bg"
+												[(ngModel)]="themeObject.primary_login_bg" #primary_login_bg="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Login Button</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Login Button</mat-label>
+											<input matInput type="text" name="primary_login_btn"
+												[(ngModel)]="themeObject.primary_login_btn" #primary_login_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary Login Button</mat-label>
+											<input matInput type="text" name="secondary_login_btn"
+												[(ngModel)]="themeObject.secondary_login_btn" #secondary_login_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Tertiary Login Button</mat-label>
+											<input matInput type="text" name="tertiary_login_btn"
+												[(ngModel)]="themeObject.tertiary_login_btn" #tertiary_login_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Disable Login Button</mat-label>
+											<input matInput type="text" name="disable_login_btn"
+												[(ngModel)]="themeObject.disable_login_btn" #disable_login_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Login Button Text</mat-label>
+											<input matInput type="text" name="primary_login_btn_text"
+												[(ngModel)]="themeObject.primary_login_btn_text" #primary_login_btn_text="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary Login Button Text</mat-label>
+											<input matInput type="text" name="secondary_login_btn_text"
+												[(ngModel)]="themeObject.secondary_login_btn_text" #secondary_login_btn_text="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Login Circle</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Login Circle</mat-label>
+											<input matInput type="text" name="primary_login_circle"
+												[(ngModel)]="themeObject.primary_login_circle" #primary_login_circle="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary Login Circle</mat-label>
+											<input matInput type="text" name="secondary_login_circle"
+												[(ngModel)]="themeObject.secondary_login_circle" #secondary_login_circle="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>QuickHelp Color</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>QuickHelp Color</mat-label>
+											<input matInput type="text" name="quickhelp_color"
+												[(ngModel)]="themeObject.quickhelp_color" #quickhelp_color="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary QuickHelp</mat-label>
+											<input matInput type="text" name="primary_quickhelp"
+												[(ngModel)]="themeObject.primary_quickhelp" #primary_quickhelp="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary QuickHelp</mat-label>
+											<input matInput type="text" name="secondary_quickhelp"
+												[(ngModel)]="themeObject.secondary_quickhelp" #secondary_quickhelp="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Popup Background</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Popup Background</mat-label>
+											<input matInput type="text" name="primary_popup_bg"
+												[(ngModel)]="themeObject.primary_popup_bg" #primary_popup_bg="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Popup Button</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Popup Button</mat-label>
+											<input matInput type="text" name="primary_popup_btn"
+												[(ngModel)]="themeObject.primary_popup_btn" #primary_popup_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary Popup Button</mat-label>
+											<input matInput type="text" name="secondary_popup_btn"
+												[(ngModel)]="themeObject.secondary_popup_btn" #secondary_popup_btn="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Popup Button Text</mat-label>
+											<input matInput type="text" name="primary_popup_btn_text"
+												[(ngModel)]="themeObject.primary_popup_btn_text" #primary_popup_btn_text="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Bill Footer</h3>
+
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Bill Foot</mat-label>	
+											<input matInput type="text" name="primary_bill_foot"
+												[(ngModel)]="themeObject.primary_bill_foot" #primary_bill_foot="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary Bill Foot</mat-label>
+											<input matInput type="text" name="secondary_bill_foot"
+												[(ngModel)]="themeObject.secondary_bill_foot" #secondary_bill_foot="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary Bill Foot Text</mat-label>
+											<input matInput type="text" name="primary_bill_foot_text"
+												[(ngModel)]="themeObject.primary_bill_foot_text" #primary_bill_foot_text="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<div *ngIf="themeObject.error_msg" class="error-msg">{{ themeObject.error_msg }}</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12 text-right p-x-25 p-b-10">
+									<button type="button" class="btn btn-link btn-cancel waves-effect"
+										(click)="closeForm('theme')">CANCEL</button>
+									<button type="submit" class="btn btn-link waves-effect">DONE</button>
+								</div>
+							</div>
+
+						</form>
+					</mat-card>
+				</ng-container>
+			</div>
 		</div>
 
 		<!-- Homepage Updation -->
@@ -126,7 +514,7 @@
 			<div class="col-md-12">
 				<mat-card class="card mat-elevation-z1 p-0">
 					<div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
-						<h4 class="card-title m-0 font500">HomePage Update</h4>
+						<h4 class="card-title m-0 font600">HomePage Update</h4>
 						<i class="material-icons" style="cursor: pointer;" (click)="onEdit('homepage')">edit</i>
 					</div>
 				</mat-card>
@@ -186,8 +574,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultBillImage === true" id="billPreview"
-												src="{{this.baseUrl+this.homepageObject.billImage}}"
+											<img class="previewImg" id="billPreview"
+												src="{{this.baseUrl+this.homepageObject.billImage}}?{{randomQuery}}"
 												alt="Bill Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -226,8 +614,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultHelpImage === true" id="helpPreview"
-												src="{{this.baseUrl+this.homepageObject.helpImage}}"
+											<img class="previewImg" id="helpPreview"
+												src="{{this.baseUrl+this.homepageObject.helpImage}}?{{randomQuery}}"
 												alt="Help Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -268,8 +656,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultVehicleImage === true" id="vehiclePreview"
-												src="{{this.baseUrl+this.homepageObject.vehicleImage}}"
+											<img class="previewImg" id="vehiclePreview"
+												src="{{this.baseUrl+this.homepageObject.vehicleImage}}?{{randomQuery}}"
 												alt="Vehicle Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -309,8 +697,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultOfferImage === true" id="offerPreview"
-												src="{{this.baseUrl+this.homepageObject.offerImage}}"
+											<img class="previewImg" id="offerPreview"
+												src="{{this.baseUrl+this.homepageObject.offerImage}}?{{randomQuery}}"
 												alt="Offer Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -349,8 +737,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultExitImage === true" id="exitPreview"
-												src="{{this.baseUrl+this.homepageObject.exitImage}}"
+											<img class="previewImg" id="exitPreview"
+												src="{{this.baseUrl+this.homepageObject.exitImage}}?{{randomQuery}}"
 												alt="Exit Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -380,11 +768,12 @@
 			</div>
 		</div>
 
+		<!-- QuickHelp Updation -->
 		<div class="row">
 			<div class="col-md-12">
 				<mat-card class="card mat-elevation-z1 p-0">
 					<div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
-						<h4 class="card-title m-0 font500">Quick Help Update</h4>
+						<h4 class="card-title m-0 font600">Quick Help Update</h4>
 						<i class="material-icons" style="cursor: pointer;" (click)="onEdit('quickHelp')">edit</i>
 					</div>
 				</mat-card>
@@ -393,7 +782,7 @@
 						<form autocomplete="off" (ngSubmit)="onUpdateTheme('quickHelp')" ngNativeValidate>
 							<div class="modal-body p-25">
 								<!-- Quick Help Water -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Water</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Water</label>
 
 								<div class="row align-items-center">
 									<div class="col-md-6">
@@ -403,8 +792,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultWaterImage === true" id="waterPreview"
-												src="{{this.baseUrl+this.quickHelpObject.waterImage}}"
+											<img class="previewImg" id="waterPreview"
+												src="{{this.baseUrl+this.quickHelpObject.water}}?{{randomQuery}}"
 												alt="Water Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -419,7 +808,7 @@
 								<mat-divider></mat-divider>
 
 								<!-- Quick Help Tea -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Tea</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Tea</label>
 								<div class="row align-items-center">
 									<div class="col-md-6">
 										<input type="file" name="teaImage" [(ngModel)]="quickHelpObject.teaImage"
@@ -428,8 +817,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultTeaImage === true" id="teaPreview"
-												src="{{this.baseUrl+this.quickHelpObject.teaImage}}"
+											<img class="previewImg" id="teaPreview"
+												src="{{this.baseUrl+this.quickHelpObject.tea}}?{{randomQuery}}"
 												alt="Tea Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -444,7 +833,7 @@
 								<mat-divider></mat-divider>
 
 								<!-- Quick Help Waiter -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Waiter</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Waiter</label>
 								<div class="row align-items-center">
 									<div class="col-md-6">
 										<input type="file" name="waiterImage" [(ngModel)]="quickHelpObject.waiterImage"
@@ -453,8 +842,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultWaiterImage === true" id="waiterPreview"
-												src="{{this.baseUrl+this.quickHelpObject.waiterImage}}"
+											<img class="previewImg" id="waiterPreview"
+												src="{{this.baseUrl+this.quickHelpObject['call waiter']}}?{{randomQuery}}"
 												alt="Waiter Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -462,14 +851,14 @@
 
 								<div class="row">
 									<mat-checkbox class="p-10" name="waiterStatus"
-										[(ngModel)]="quickHelpObject.waiterStatus">Show Waiter
+										[(ngModel)]="quickHelpObject['call waiterStatus']">Show Waiter
 									</mat-checkbox>
 								</div>
 
 								<mat-divider></mat-divider>
 
 								<!-- Quick Help Wifi -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Wifi Assistance</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Wifi Assistance</label>
 								<div class="row align-items-center">
 									<div class="col-md-6">
 										<input type="file" name="wifiImage" [(ngModel)]="quickHelpObject.wifiImage"
@@ -478,8 +867,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultWifiImage === true" id="wifiPreview"
-												src="{{this.baseUrl+this.quickHelpObject.wifiImage}}"
+											<img class="previewImg" id="wifiPreview"
+												src="{{this.baseUrl+this.quickHelpObject['wifi assistance']}}?{{randomQuery}}"
 												alt="Wifi Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -487,14 +876,14 @@
 
 								<div class="row">
 									<mat-checkbox class="p-10" name="wifiStatus"
-										[(ngModel)]="quickHelpObject.wifiStatus">Show Wifi
+										[(ngModel)]="quickHelpObject['wifi assistanceStatus']">Show Wifi
 									</mat-checkbox>
 								</div>
 
 								<mat-divider></mat-divider>
 
 								<!-- Quick Help Essential Kit -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Essential Kit</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Essential Kit</label>
 								<div class="row align-items-center">
 									<div class="col-md-6">
 										<input type="file" name="essentialKitImage"
@@ -504,8 +893,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultEssentialKitImage === true" id="essentialKitPreview"
-												src="{{this.baseUrl+this.quickHelpObject.essentialKitImage}}"
+											<img class="previewImg" id="essentialKitPreview"
+												src="{{this.baseUrl+this.quickHelpObject['essential kit']}}?{{randomQuery}}"
 												alt="EssentialKit Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -513,7 +902,7 @@
 
 								<div class="row">
 									<mat-checkbox class="p-10" name="essentialKitStatus"
-										[(ngModel)]="quickHelpObject.essentialKitStatus">
+										[(ngModel)]="quickHelpObject['essential kitStatus']">
 										Show EssentialKit
 									</mat-checkbox>
 								</div>
@@ -521,7 +910,7 @@
 								<mat-divider></mat-divider>
 
 								<!-- Quick Help Tissue -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Tissue</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Tissue</label>
 								<div class="row align-items-center">
 									<div class="col-md-6">
 										<input type="file" name="tissueImage" [(ngModel)]="quickHelpObject.tissueImage"
@@ -530,8 +919,8 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultTissueImage === true" id="tissuePreview"
-												src="{{this.baseUrl+this.quickHelpObject.tissueImage}}"
+											<img class="previewImg" id="tissuePreview"
+												src="{{this.baseUrl+this.quickHelpObject.tissue}}?{{randomQuery}}"
 												alt="Tissue Image Preview" width="100px" height="100px">
 										</div>
 									</div>
@@ -563,11 +952,12 @@
 			</div>
 		</div>
 
+		<!-- Broken Images Updation -->
 		<div class="row">
 			<div class="col-md-12">
 				<mat-card class="card mat-elevation-z1 p-0">
 					<div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
-						<h4 class="card-title m-0 font500">Broken/404 Images Update</h4>
+						<h4 class="card-title m-0 font600">Broken/404 Images Update</h4>
 						<i class="material-icons" style="cursor: pointer;" (click)="onEdit('brokenImages')">edit</i>
 					</div>
 				</mat-card>
@@ -576,7 +966,7 @@
 						<form autocomplete="off" (ngSubmit)="onUpdateTheme('brokenImages')" ngNativeValidate>
 							<div class="modal-body p-25">
 								<!-- Homepage Banner -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Homepage Banner</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Homepage Banner</label>
 
 								<div class="row align-items-center m-b-10">
 									<div class="col-md-6">
@@ -588,22 +978,17 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultHomePageBanner === true" id="homePageBannerPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenHomePageBannerImage}}"
+											<img class="previewImg" id="homePageBannerPreview"
+												src="{{this.baseUrl+this.brokenImagesObject.brokenHomePageBannerImage}}?{{randomQuery}}"
 												alt="Homepage Banner Preview" width="75px" height="75px">
 										</div>
 									</div>
 								</div>
 
-								<!-- <div class="row">
-                  <mat-checkbox class="p-10" name="waterStatus" [(ngModel)]="brokenImagesObject.waterStatus">Show Water
-                  </mat-checkbox>
-                </div> -->
-
 								<mat-divider></mat-divider>
 
 								<!-- Homepage Card List -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Homepage Card List</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Homepage Card List</label>
 								<div class="row align-items-center m-b-10">
 									<div class="col-md-6">
 										<input type="file" name="brokenHomePageCard"
@@ -614,22 +999,17 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultHomePageCard  === true" id="homePageCardPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenHomePageCard}}"
+											<img class="previewImg" id="homePageCardPreview"
+												src="{{this.baseUrl+this.brokenImagesObject.brokenHomePageCard}}?{{randomQuery}}"
 												alt="HomePage Card Preview" width="75px" height="75px">
 										</div>
 									</div>
 								</div>
 
-								<!-- <div class="row">
-                  <mat-checkbox class="p-10" name="teaStatus" [(ngModel)]="brokenImagesObject.teaStatus">Show Tea
-                  </mat-checkbox>
-                </div> -->
-
 								<mat-divider></mat-divider>
 
 								<!-- Section Card List -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Section Card List</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Section Card List</label>
 								<div class="row align-items-center m-b-10">
 									<div class="col-md-6">
 										<input type="file" name="brokenSectionCard"
@@ -640,23 +1020,17 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultSectionCard === true" id="sectionCardPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenSectionCard}}"
+											<img class="previewImg" id="sectionCardPreview"
+												src="{{this.baseUrl+this.brokenImagesObject.brokenSectionCard}}?{{randomQuery}}"
 												alt="Section Card Preview" width="75px" height="75px">
 										</div>
 									</div>
 								</div>
 
-								<!-- <div class="row">
-                  <mat-checkbox class="p-10" name="waiterStatus" [(ngModel)]="brokenImagesObject.waiterStatus">Show
-                    Waiter
-                  </mat-checkbox>
-                </div> -->
-
 								<mat-divider></mat-divider>
 
 								<!-- Categories Card List -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Categories Card
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Categories Card
 									List</label>
 								<div class="row align-items-center m-b-10">
 									<div class="col-md-6">
@@ -668,22 +1042,17 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultCategoriesCard === true" id="categoriesCardPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenCategoriesCard}}"
+											<img class="previewImg" id="categoriesCardPreview"
+												src="{{this.baseUrl+this.brokenImagesObject.brokenCategoriesCard}}?{{randomQuery}}"
 												alt="Categories Card Preview" width="75px" height="75px">
 										</div>
 									</div>
 								</div>
 
-								<!-- <div class="row">
-                  <mat-checkbox class="p-10" name="wifiStatus" [(ngModel)]="brokenImagesObject.wifiStatus">Show Wifi
-                  </mat-checkbox>
-                </div> -->
-
 								<mat-divider></mat-divider>
 
 								<!-- Broken Logo -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Broken Logo</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Broken Logo</label>
 								<div class="row align-items-center m-b-10">
 									<div class="col-md-6">
 										<input type="file" name="brokenLogo" [(ngModel)]="brokenImagesObject.brokenLogo"
@@ -692,24 +1061,17 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultLogo === true" id="logoPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenLogo}}"
+											<img class="previewImg" id="logoPreview"
+												src="{{this.baseUrl+this.brokenImagesObject.brokenLogo}}?{{randomQuery}}"
 												alt="Logo Preview" width="75px" height="75px">
 										</div>
 									</div>
 								</div>
 
-								<!-- <div class="row">
-                  <mat-checkbox class="p-10" name="essentialKitStatus"
-                    [(ngModel)]="brokenImagesObject.essentialKitStatus">
-                    Show EssentialKit
-                  </mat-checkbox>
-                </div> -->
-
 								<mat-divider></mat-divider>
 
 								<!-- Login Logo -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Login Logo</label>
+								<!-- <label for="" class="w-100 m-t-10 m-b-0 text-center font600">Login Logo</label>
 								<div class="row align-items-center m-b-10">
 									<div class="col-md-6">
 										<input type="file" name="brokenLoginLogo"
@@ -719,23 +1081,17 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultLoginLogo === true" id="loginLogoPreview"
+											<img class="previewImg" id="loginLogoPreview"
 												src="{{this.baseUrl+this.brokenImagesObject.brokenLoginLogo}}"
 												alt="Login Logo Preview" width="75px" height="75px">
 										</div>
 									</div>
-								</div>
-
-								<!-- <div class="row">
-                  <mat-checkbox class="p-10" name="tissueStatus" [(ngModel)]="brokenImagesObject.tissueStatus">Show
-                    Tissue
-                  </mat-checkbox>
-                </div> -->
+								</div> -->
 
 								<mat-divider></mat-divider>
 
 								<!-- Loader Logo -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font500">Loader Logo</label>
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Login & Loader Logo</label>
 								<div class="row align-items-center m-b-10">
 									<div class="col-md-6">
 										<input type="file" name="brokenLoaderLogo"
@@ -746,18 +1102,12 @@
 
 									<div class="col-md-6">
 										<div class="text-center">
-											<img *ngIf="isDefaultLoaderLogo === true" id="loaderLogoPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenLoaderLogo}}"
+											<img class="previewImg" id="loaderLogoPreview"
+												src="{{this.baseUrl+this.brokenImagesObject.brokenLoaderLogo}}?{{randomQuery}}"
 												alt="Loader Logo Preview" width="75px" height="75px">
 										</div>
 									</div>
 								</div>
-
-								<!-- <div class="row">
-                  <mat-checkbox class="p-10" name="tissueStatus" [(ngModel)]="brokenImagesObject.tissueStatus">Show
-                    Tissue
-                  </mat-checkbox>
-                </div> -->
 
 								<mat-divider></mat-divider>
 
@@ -769,6 +1119,60 @@
 								<div class="col-md-12 text-right p-x-25 p-b-10">
 									<button type="button" class="btn btn-link btn-cancel waves-effect"
 										(click)="closeForm('brokenImages')">CANCEL</button>
+									<button type="submit" class="btn btn-link waves-effect">DONE</button>
+								</div>
+							</div>
+
+						</form>
+					</mat-card>
+				</ng-container>
+			</div>
+		</div>
+
+		<!-- Dynamic things updation -->
+		<div class="row">
+			<div class="col-md-12">
+				<mat-card class="card mat-elevation-z1 p-0">
+					<div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
+						<h4 class="card-title m-0 font600">Dynamic things Update</h4>
+						<i class="material-icons" style="cursor: pointer;" (click)="onEdit('dynamicThings')">edit</i>
+					</div>
+				</mat-card>
+				<ng-container *ngIf="formType === 'dynamicThings'">
+					<mat-card class="mat-elevation-z-2 p-0">
+						<form autocomplete="off" (ngSubmit)="onUpdateTheme('dynamicThings')" ngNativeValidate>
+							<div class="modal-body p-25">
+								<!-- Show Footer -->
+								<div class="row">
+									<mat-checkbox class="p-10" name="footerStatus"
+										[(ngModel)]="dynamicThingsObject.footerStatus">Show Footer
+									</mat-checkbox>
+								</div>
+
+								<!-- Enable or disable smsApiStatus -->
+								<div class="row">
+									<mat-checkbox class="p-10" name="smsApiStatus"
+										[(ngModel)]="dynamicThingsObject.smsApiStatus">Enable SMS Api
+									</mat-checkbox>
+								</div>
+
+								<!-- Show Pdf -->
+								<div class="row">
+									<mat-checkbox class="p-10" name="pdfStatus"
+										[(ngModel)]="dynamicThingsObject.pdfStatus">Show PDF
+									</mat-checkbox>
+								</div>
+
+								<mat-divider></mat-divider>
+
+								<div *ngIf="quickHelpObject.error_msg" class="error-msg">{{ quickHelpObject.error_msg }}
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12 text-right p-x-25 p-b-10">
+									<button type="button" class="btn btn-link btn-cancel waves-effect"
+										(click)="closeForm('quickHelp')">CANCEL</button>
 									<button type="submit" class="btn btn-link waves-effect">DONE</button>
 								</div>
 							</div>
