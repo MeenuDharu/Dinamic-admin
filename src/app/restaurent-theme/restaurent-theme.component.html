@@ -121,7 +121,7 @@
 			</div>
 		</div> -->
 
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-md-12">
 				<mat-card class="card mat-elevation-z1 p-0">
 					<div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
@@ -507,7 +507,93 @@
 					</mat-card>
 				</ng-container>
 			</div>
+		</div> -->
+
+		<div class="row">
+			<div class="col-md-12">
+				<mat-card class="card mat-elevation-z1 p-0">
+					<div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
+						<h4 class="card-title m-0 font600">Theme Update</h4>
+						<i class="material-icons" style="cursor: pointer;" (click)="onEdit('theme')">edit</i>
+					</div>
+				</mat-card>
+				<ng-container *ngIf="formType === 'theme'">
+					<mat-card class="mat-elevation-z2 p-0">
+						<form autocomplete="off" (ngSubmit)="onUpdateTheme('theme')" ngNativeValidate>
+							<div class="modal-body p-25">
+
+								<h3>Primary Theme</h3>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Background</mat-label>
+											<input matInput type="text" name="primary_theme_background"
+												[(ngModel)]="themeObject.primary_theme_background" #primary_theme_background="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Text Color</mat-label>
+											<input matInput type="text" name="primary_theme_text"
+												[(ngModel)]="themeObject.primary_theme_text" #primary_theme_text="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Secondary Theme</h3>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Card Background</mat-label>
+											<input matInput type="text" name="primary_card_background"
+												[(ngModel)]="themeObject.primary_card_background" #primary_card_background="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Card Text Color</mat-label>
+											<input matInput type="text" name="primary_card_text"
+												[(ngModel)]="themeObject.primary_card_text" #primary_card_text="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Button Background</mat-label>
+											<input matInput type="text" name="primary_button_background"
+												[(ngModel)]="themeObject.primary_button_background" #primary_button_background="ngModel" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Button Text Color</mat-label>
+											<input matInput type="text" name="primary_button_text"
+												[(ngModel)]="themeObject.primary_button_text" #primary_button_text="ngModel" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<div *ngIf="themeObject.error_msg" class="error-msg">{{ themeObject.error_msg }}</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12 text-right p-x-25 p-b-10">
+									<button type="button" class="btn btn-link btn-cancel waves-effect"
+										(click)="closeForm('theme')">CANCEL</button>
+									<button type="submit" class="btn btn-link waves-effect">DONE</button>
+								</div>
+							</div>
+						</form>
+					</mat-card>
+				</ng-container>
+			</div>
 		</div>
+
 
 		<!-- Homepage Updation -->
 		<div class="row">
@@ -781,6 +867,59 @@
 					<mat-card class="mat-elevation-z-2 p-0">
 						<form autocomplete="off" (ngSubmit)="onUpdateTheme('quickHelp')" ngNativeValidate>
 							<div class="modal-body p-25">
+
+								<!-- Quick Help mainMenu -->
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Main Menu</label>
+
+								<div class="row align-items-center">
+									<div class="col-md-6">
+										<input type="file" name="mainMenu" [(ngModel)]="quickHelpObject.mainMenu"
+											#mainMenu="ngModel" (change)="onQuickHelpFileChange($event, 'mainMenu')" />
+									</div>
+
+									<div class="col-md-6">
+										<div class="text-center">
+											<img class="previewImg" id="mainMenuPreview"
+												src="{{this.baseUrl+this.quickHelpObject.mainMenu}}?{{randomQuery}}"
+												alt="Main Menu Image Preview" width="100px" height="100px">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<mat-checkbox class="p-10" name="mainMenuStatus"
+										[(ngModel)]="quickHelpObject.mainMenuStatus">Show Main menu
+									</mat-checkbox>
+								</div>
+
+								<mat-divider></mat-divider>
+
+								<!-- Quick Help viewBill -->
+								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">View Bill</label>
+
+								<div class="row align-items-center">
+									<div class="col-md-6">
+										<input type="file" name="viewBill" [(ngModel)]="quickHelpObject.viewBill"
+											#viewBill="ngModel" (change)="onQuickHelpFileChange($event, 'viewBill')" />
+									</div>
+
+									<div class="col-md-6">
+										<div class="text-center">
+											<img class="previewImg" id="viewBillPreview"
+												src="{{this.baseUrl+this.quickHelpObject.viewBill}}?{{randomQuery}}"
+												alt="View bill Image Preview" width="100px" height="100px">
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<mat-checkbox class="p-10" name="viewBillStatus"
+										[(ngModel)]="quickHelpObject.viewBillStatus">Show View Bill
+									</mat-checkbox>
+								</div>
+
+								<mat-divider></mat-divider>
+
 								<!-- Quick Help Water -->
 								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Water</label>
 

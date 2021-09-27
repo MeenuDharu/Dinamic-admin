@@ -136,8 +136,46 @@ export class RestaurentThemeComponent implements OnInit {
 		}
 	}
 
+	resolution(event: any) {
+		console.log(event);
+		let img = new Image();
+		img.src = window.URL.createObjectURL(event.target.files[0]);
+		img.onload = () => {
+			if (((img.width < 150) || (img.width === 150)) && ((img.height < 150) || (img.height === 150))) {
+				return alert(`Nice, image is the right size. It can be uploaded`)
+			} else {
+				return alert(`Sorry, this image doesn't look like the size we wanted. It's ${img.width} x ${img.height} but we require 100 x 100 size image.`);
+			}
+		}
+	}
+
 	onQuickHelpFileChange(event: any, type: string) {
-		if (type === 'water') {
+		if (type === "mainMenu") {
+			// this.resolution(event);
+			let mainMenu = event.target?.files[0];
+			console.log('mainMenu image', mainMenu)
+			let mainMenuPreview;
+			if (mainMenu) {
+				this.formDataQuickHelp.append('quickHelpImages', mainMenu, 'mainMenu');
+				mainMenuPreview = document.getElementById('mainMenuPreview')
+				mainMenuPreview?.setAttribute('src', URL.createObjectURL(mainMenu));
+			} else {
+				mainMenuPreview = document.getElementById('mainMenuPreview')
+				mainMenuPreview?.setAttribute('src', '');
+			}
+		} else if (type === "viewBill") {
+			let viewBill = event.target?.files[0];
+			console.log('viewBill image', viewBill)
+			let viewBillPreview;
+			if (viewBill) {
+				this.formDataQuickHelp.append('quickHelpImages', viewBill, 'viewBill');
+				viewBillPreview = document.getElementById('viewBillPreview')
+				viewBillPreview?.setAttribute('src', URL.createObjectURL(viewBill));
+			} else {
+				viewBillPreview = document.getElementById('viewBillPreview')
+				viewBillPreview?.setAttribute('src', '');
+			}
+		} else if (type === 'water') {
 			let waterImage = event.target.files[0];
 			let waterPreview;
 			if (waterImage) {
@@ -337,6 +375,8 @@ export class RestaurentThemeComponent implements OnInit {
 			this.formDataQuickHelp.set('pos_rest_id', this.selectedRestaurent.pos_rest_id);
 			this.formDataQuickHelp.set('formType', 'quickHelp');
 			this.formDataQuickHelp.set('isDefaultQuickHelp', "false");
+			this.formDataQuickHelp.set('mainMenuStatus', this.quickHelpObject.mainMenuStatus);
+			this.formDataQuickHelp.set('viewBillStatus', this.quickHelpObject.viewBillStatus);
 			this.formDataQuickHelp.set('waterStatus', this.quickHelpObject.waterStatus);
 			this.formDataQuickHelp.set('teaStatus', this.quickHelpObject.teaStatus);
 			this.formDataQuickHelp.set('call waiterStatus', this.quickHelpObject['call waiterStatus']);
@@ -388,6 +428,9 @@ export class RestaurentThemeComponent implements OnInit {
 
 	closeForm() {
 		this.formType = '';
+		this.formDataHomePage.delete('homepageImages');
+		this.formDataQuickHelp.delete('quickHelpImages');
+		this.formDataBrokenImages.delete('brokenImages');
 	}
 
 
