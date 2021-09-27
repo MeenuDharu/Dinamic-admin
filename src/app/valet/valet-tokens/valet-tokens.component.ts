@@ -24,7 +24,7 @@ export class ValetTokensComponent implements OnInit {
 
 	dataSource = new MatTableDataSource<IValetToken>();
 	selection = new SelectionModel<IValetToken>(true, []);
-	displayedColumns: string[] = ['select', 'name', 'serialNumber', 'qrCodeId', 'action'];
+	displayedColumns: string[] = ['no', 'name', 'serialNumber', 'qrCodeId', 'action'];
 	pageNo: number | undefined;
 	entryLimit: number | undefined;
 	isLoading: boolean = true;
@@ -35,7 +35,7 @@ export class ValetTokensComponent implements OnInit {
 	@ViewChild(MatPaginator) set matPaginator(paginator: MatPaginator) {
 		this.dataSource.paginator = paginator
 	}
-	@ViewChild(MatSort) set matSort(sort: MatSort){
+	@ViewChild(MatSort) set matSort(sort: MatSort) {
 		this.dataSource.sort = sort;
 	}
 
@@ -49,13 +49,13 @@ export class ValetTokensComponent implements OnInit {
 	/** Selects all rows if they are not all selected; otherwise clear selection. */
 	masterToggle() {
 		this.isAllSelected() ?
-		this.selection.clear() :
-		this.dataSource.data.forEach((row) => this.selection.select(row));
+			this.selection.clear() :
+			this.dataSource.data.forEach((row) => this.selection.select(row));
 	}
 
 	/** The label for the checkbox on the passed row */
 	checkboxLabel(row?: IValetToken): string {
-		if(!row) {
+		if (!row) {
 			return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
 		}
 		return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.name + 1}`;
@@ -72,9 +72,9 @@ export class ValetTokensComponent implements OnInit {
 	}
 
 	getValetTokensList() {
-		this.apiService.VALET_TOKEN_LIST({branch_id: this.selectedBranch._id}).subscribe((result: any) => {
+		this.apiService.VALET_TOKEN_LIST({ branch_id: this.selectedBranch._id }).subscribe((result: any) => {
 			console.log('result:', result);
-			if(result.status) {
+			if (result.status) {
 				this.isLoading = false;
 				this.dataSource.data = result.data;
 			}
@@ -88,15 +88,19 @@ export class ValetTokensComponent implements OnInit {
 		}
 	}
 
-	openDialog(x: any, y: any){
-		console.log('x:', x, 'y:', y);
-		this.dialog.open(ValetTokensDialogComponent, {
+	openDialog(x: any, y: any) {
+		let dialogref = this.dialog.open(ValetTokensDialogComponent, {
 			maxWidth: '100vw',
 			maxHeight: '100vh',
 			width: '750px',
 			height: 'auto',
-			data: {x: x, y: y}
+			data: { x: x, y: y }
 		});
+
+		dialogref.afterClosed().subscribe((res) => {
+			this.getValetTokensList();
+		});
+
 	}
 
 	saveAsImage(parent: any, x: any) {
@@ -104,17 +108,17 @@ export class ValetTokensComponent implements OnInit {
 		let parentSrc = "#QR" + parent;
 		console.log("parent:", parentSrc);
 		//const parentElement = $("#parent1").find("img").attr("src");
-		const  parentElement = $(parentSrc).find("img").attr("src");
+		const parentElement = $(parentSrc).find("img").attr("src");
 		console.log("parentElement:", parentElement);
 
 		// converts base 64 encoded image to blobData
 		let blobData = this.convertBase64ToBlob(parentElement);
 
 		// saves as image
-		if(window.navigator && window.navigator.msSaveOrOpenBlob) { // IE
+		if (window.navigator && window.navigator.msSaveOrOpenBlob) { // IE
 			window.navigator.msSaveOrOpenBlob(blobData, 'Qrcode');
 		} else { // chrome
-			const blob = new Blob([blobData], {type: "image/png"});
+			const blob = new Blob([blobData], { type: "image/png" });
 			const url = window.URL.createObjectURL(blob);
 			// window.open(url);
 			const link = document.createElement('a');
@@ -134,10 +138,10 @@ export class ValetTokensComponent implements OnInit {
 		// Create UNIT8ARRAY of size same as row data length
 		const uInt8Array = new Uint8Array(decodedData.length);
 		// Insert all character code into UINT8ARRAY
-		for(let i = 0; i < decodedData.length; i++) {
+		for (let i = 0; i < decodedData.length; i++) {
 			uInt8Array[i] = decodedData.charCodeAt(i);
 		}
 		// Return Blob Image after conversion
-		return new Blob([uInt8Array], {type: imageType});
+		return new Blob([uInt8Array], { type: imageType });
 	}
 }

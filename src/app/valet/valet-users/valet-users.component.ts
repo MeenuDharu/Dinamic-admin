@@ -21,7 +21,7 @@ export class ValetUsersComponent implements OnInit {
 
 	dataSource = new MatTableDataSource<IValetUser>();
 	selection = new SelectionModel<IValetUser>(true, []);
-	displayedColumns: string[] = ['select', 'name', 'username', 'action'];
+	displayedColumns: string[] = ['no', 'name', 'username', 'action'];
 	pageNo: number | undefined;
 	entryLimit: number | undefined;
 	isLoading: boolean = true;
@@ -84,12 +84,16 @@ export class ValetUsersComponent implements OnInit {
 
 	openDialog(x: any, y: any){
 		console.log('x:', x, 'y:', y);
-		this.dialog.open(ValetUsersDialogComponent, {
+		let dialogref = this.dialog.open(ValetUsersDialogComponent, {
 			maxWidth: '100vw',
 			maxHeight: '100vh',
 			width: '750px',
 			height: 'auto',
 			data: {x: x, y: y}
+		});
+
+		dialogref.afterClosed().subscribe((res) => {
+			this.getValetUsersList();
 		});
 	}
 

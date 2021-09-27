@@ -54,7 +54,7 @@ export class ValetTokensDialogComponent implements OnInit {
 		this.apiService.ADD_VALET_TOKEN(this.addForm).subscribe((result) => {
 			console.log('add valet:', result);
 			if(result.status){
-				this.closeDialog();
+				this.doAction();
 			} else {
 				this.addForm.error_msg = result.message;
 			}
@@ -65,7 +65,7 @@ export class ValetTokensDialogComponent implements OnInit {
 		this.apiService.UPDATE_VALET_TOKEN(this.editForm).subscribe((result)=>{
 			console.log('valet token update:', result);
 			if(result.status){
-				this.closeDialog();
+				this.doAction();
 			} else {
 				this.editForm.error_msg = result.message;
 			}
@@ -75,13 +75,17 @@ export class ValetTokensDialogComponent implements OnInit {
 	onDeleteValetToken(){
 		this.apiService.DELETE_VALET_TOKEN({'_id': this.deleteId}).subscribe((result) => {
 			if(result.status){
-				this.closeDialog();
+				this.doAction();
 			}
 		})
 	}
 
+	doAction () {
+		this.dialogRef.close({ event: this.formType, data: this.localData });
+	}
+
 	closeDialog() {
-		this.dialogRef.close({event: 'Cancel'});
+		this.dialogRef.close({event: 'cancel'});
 	}
 
 }

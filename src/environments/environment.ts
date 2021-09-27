@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   // ws_url: 'https://dinamic.io/mobileapi'
-  ws_url: 'http://192.168.43.247:4000'
+  // ws_url: 'http://192.168.43.247:4000'
+  ws_url: 'http://192.168.0.102:4000' 
 };
 
 /*

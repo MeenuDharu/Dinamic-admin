@@ -8,16 +8,16 @@ export interface IValetUserDialog {
 }
 
 @Component({
-  selector: 'app-valet-users-dialog',
-  templateUrl: './valet-users-dialog.component.html',
-  styleUrls: ['./valet-users-dialog.component.css']
+	selector: 'app-valet-users-dialog',
+	templateUrl: './valet-users-dialog.component.html',
+	styleUrls: ['./valet-users-dialog.component.css']
 })
 export class ValetUsersDialogComponent implements OnInit {
 
-  formType:any;
+	formType: any;
 	localData: any;
-	addForm:any = {};
-	pwdForm:any = {};
+	addForm: any = {};
+	pwdForm: any = {};
 	deleteId: any = '';
 	tableName: any;
 	selectedRestaurant = JSON.parse(localStorage.getItem('selected_restaurant')!);
@@ -28,49 +28,53 @@ export class ValetUsersDialogComponent implements OnInit {
 		//@Optional() is used to prevent error if no data is passed
 		@Optional() @Inject(MAT_DIALOG_DATA) public valetUserData: IValetUserDialog,
 		public apiService: ApiService) {
-			console.log('dialogData:', valetUserData);
-			this.localData = valetUserData;
+		console.log('dialogData:', valetUserData);
+		this.localData = valetUserData;
 	}
 
-  ngOnInit(): void {
-    this.addForm = {};
+	ngOnInit(): void {
+		this.addForm = {};
 		this.formType = this.localData.x;
 		let x = this.localData.y;
-		if(this.formType === 'lock') {
+		if (this.formType === 'lock') {
 			this.pwdForm._id = x._id;
 			this.pwdForm.name = x.name;
-		} else if(this.formType === 'delete') {
+		} else if (this.formType === 'delete') {
 			this.deleteId = x._id;
 		}
-  }
+	}
 
-  onAddUserToken(){
-    this.addForm.restaurant_id = this.selectedRestaurant._id;
+	onAddUserToken() {
+		this.addForm.restaurant_id = this.selectedRestaurant._id;
 		this.addForm.branch_id = this.selectedBranch._id;
 		this.addForm.pos_restaurant_id = this.selectedRestaurant.pos_rest_id;
 		this.addForm.pos_branch_id = this.selectedBranch.pos_branch_id;
 		this.apiService.ADD_VALET_USER(this.addForm).subscribe((result) => {
 			console.log('add valet:', result);
-      if(result.status){
-        this.closeDialog();
-      } else {
-        this.addForm.error_msg = result.message;
-      }
+			if (result.status) {
+				this.doAction();
+			} else {
+				this.addForm.error_msg = result.message;
+			}
 		});
-  }
+	}
 
-  onResetPwd(){
-    this.apiService.VALET_USER_RESET_PWD(this.pwdForm).subscribe((result) => {
-      if(result.status){
-        this.closeDialog();
-      } else {
-        this.pwdForm.error_msg = result.message;
-      }
-    });
-  }
+	onResetPwd() {
+		this.apiService.VALET_USER_RESET_PWD(this.pwdForm).subscribe((result) => {
+			if (result.status) {
+				this.doAction();
+			} else {
+				this.pwdForm.error_msg = result.message;
+			}
+		});
+	}
 
-  closeDialog() {
-		this.dialogRef.close({event: 'Cancel'});
+	doAction () {
+		this.dialogRef.close({ event: this.formType, data: this.localData });
+	}
+
+	closeDialog() {
+		this.dialogRef.close({ event: 'Cancel' });
 	}
 
 }

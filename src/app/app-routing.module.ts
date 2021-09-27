@@ -35,6 +35,10 @@ export const Approutes: Routes = [
         loadChildren: () => import('./restaurent/restaurent.module').then(m => m.RestaurentModule)
       },
       {
+        path: 'restaurent-theme',
+        loadChildren: () => import('./restaurent-theme/restaurent-theme.module').then(m => m.RestaurentThemeModule)
+      },
+      {
         path: 'branches',
         loadChildren: () => import('./branches/branches.module').then(m => m.BranchesModule)
       },

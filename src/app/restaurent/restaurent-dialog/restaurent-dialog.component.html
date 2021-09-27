@@ -193,29 +193,29 @@
     </div>
     <div class="modal-footer">
       <button class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
-      <button class="btn btn-link waves-effect" type="button" (click)="onDeleteRestaurant(deleteModal)">DONE</button>
+      <button class="btn btn-link waves-effect" type="button" (click)="onDeleteRestaurant()">DONE</button>
     </div>
   </div>
 </div>
 
-<div *ngIf="formType == 'themeAdd' ">
+<!-- <div *ngIf="formType == 'themeAdd' ">
   <form autocomplete="off" (ngSubmit)="onAddTheme()" ngNativeValidate>
     <div class="modal-body pad25">
 
       <div class="row">
         <div class="col-md-6">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeForm.navbarColor ? 'is-focused': ''">
+            [ngClass]="themeObject.navbarColor ? 'is-focused': ''">
             <input type="text" class="mdl-textfield__input clabelborder" name="navbarColor"
-              [(ngModel)]="themeForm.navbarColor" #navbarColor="ngModel" required />
+              [(ngModel)]="themeObject.navbarColor" #navbarColor="ngModel" required />
             <label class="mdl-textfield__label cname-color" for="navbarColor">Navbar Color</label>
           </div>
         </div>
 
         <div class="col-md-6">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeForm.navbarText ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="navbarText" [(ngModel)]="themeForm.navbarText"
+            [ngClass]="themeObject.navbarText ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="navbarText" [(ngModel)]="themeObject.navbarText"
               #navbarText="ngModel" required />
             <label class="mdl-textfield__label cname-color" for="navbarText">Navbar Text</label>
           </div>
@@ -225,8 +225,8 @@
       <div class="row">
         <div class="col-md-6">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeForm.primaryButtonColor ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="primaryButtonColor" [(ngModel)]="themeForm.primaryButtonColor"
+            [ngClass]="themeObject.primaryButtonColor ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="primaryButtonColor" [(ngModel)]="themeObject.primaryButtonColor"
               #primaryButtonColor="ngModel" />
             <label class="mdl-textfield__label cname-color" for="primaryButtonColor">Primary Button Color</label>
           </div>
@@ -234,8 +234,8 @@
 
         <div class="col-md-6">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeForm.primaryButtonText ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="primaryButtonText" [(ngModel)]="themeForm.primaryButtonText"
+            [ngClass]="themeObject.primaryButtonText ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="primaryButtonText" [(ngModel)]="themeObject.primaryButtonText"
               #primaryButtonText="ngModel" />
             <label class="mdl-textfield__label cname-color" for="primaryButtonText">Primary Button Text</label>
           </div>
@@ -245,8 +245,8 @@
       <div class="row">
         <div class="col-md-6">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeForm.secondaryButtonColor ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="secondaryButtonColor" [(ngModel)]="themeForm.secondaryButtonColor"
+            [ngClass]="themeObject.secondaryButtonColor ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="secondaryButtonColor" [(ngModel)]="themeObject.secondaryButtonColor"
               #secondaryButtonColor="ngModel" />
             <label class="mdl-textfield__label cname-color" for="secondaryButtonColor">Secondary Button Color</label>
           </div>
@@ -254,8 +254,8 @@
 
         <div class="col-md-6">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeForm.secondaryButtonText ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="secondaryButtonText" [(ngModel)]="themeForm.secondaryButtonText"
+            [ngClass]="themeObject.secondaryButtonText ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="secondaryButtonText" [(ngModel)]="themeObject.secondaryButtonText"
               #secondaryButtonText="ngModel" />
             <label class="mdl-textfield__label cname-color" for="secondaryButtonText">Secondary Button Text</label>
           </div>
@@ -265,8 +265,8 @@
       <div class="row">
         <div class="col-md-6">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeForm.disabledButtonColor ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="disabledButtonColor" [(ngModel)]="themeForm.disabledButtonColor"
+            [ngClass]="themeObject.disabledButtonColor ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="disabledButtonColor" [(ngModel)]="themeObject.disabledButtonColor"
               #disabledButtonColor="ngModel" />
             <label class="mdl-textfield__label cname-color" for="disabledButtonColor">Disabled Button Color</label>
           </div>
@@ -274,8 +274,8 @@
 
         <div class="col-md-6">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeForm.disabledButtonText ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="disabledButtonText" [(ngModel)]="themeForm.disabledButtonText"
+            [ngClass]="themeObject.disabledButtonText ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="disabledButtonText" [(ngModel)]="themeObject.disabledButtonText"
               #disabledButtonText="ngModel" />
             <label class="mdl-textfield__label cname-color" for="disabledButtonText">Disabled Button Text</label>
           </div>
@@ -285,14 +285,14 @@
       <div class="row">
         <div class="col-md-12">
           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-            [ngClass]="themeForm.spinnerColor ? 'is-focused': ''">
-            <input type="text" class="mdl-textfield__input clabelborder" name="spinnerColor" [(ngModel)]="themeForm.spinnerColor"
+            [ngClass]="themeObject.spinnerColor ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="spinnerColor" [(ngModel)]="themeObject.spinnerColor"
               #spinnerColor="ngModel" required />
             <label class="mdl-textfield__label cname-color" for="spinnerColor">Spinner Color</label>
           </div>
         </div>
       </div>
-      <div *ngIf="themeForm.error_msg" class="error-msg">{{ themeForm.error_msg }}</div>
+      <div *ngIf="themeObject.error_msg" class="error-msg">{{ themeObject.error_msg }}</div>
     </div>
     <div class="row">
       <div class="col-md-12 text-right">
@@ -301,4 +301,4 @@
       </div>
     </div>
   </form>
-</div>
+</div> -->

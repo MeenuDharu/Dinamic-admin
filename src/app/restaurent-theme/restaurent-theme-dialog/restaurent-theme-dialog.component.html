@@ -1,0 +1,381 @@
+<!-- Restaurent Theme updation  -->
+<div *ngIf="modalType == 'theme'">
+  <form autocomplete="off" (ngSubmit)="onUpdateTheme('theme')" ngNativeValidate>
+    <div class="modal-body pad25">
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="themeObject.navbarColor ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="navbarColor"
+              [(ngModel)]="themeObject.navbarColor" #navbarColor="ngModel" required />
+            <label class="mdl-textfield__label cname-color" for="navbarColor">Navbar Color</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="themeObject.navbarText ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="navbarText"
+              [(ngModel)]="themeObject.navbarText" #navbarText="ngModel" required />
+            <label class="mdl-textfield__label cname-color" for="navbarText">Navbar Text</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="themeObject.primaryButtonColor ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="primaryButtonColor"
+              [(ngModel)]="themeObject.primaryButtonColor" #primaryButtonColor="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="primaryButtonColor">Primary Button Color</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="themeObject.primaryButtonText ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="primaryButtonText"
+              [(ngModel)]="themeObject.primaryButtonText" #primaryButtonText="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="primaryButtonText">Primary Button Text</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="themeObject.secondaryButtonColor ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="secondaryButtonColor"
+              [(ngModel)]="themeObject.secondaryButtonColor" #secondaryButtonColor="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="secondaryButtonColor">Secondary Button Color</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="themeObject.secondaryButtonText ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="secondaryButtonText"
+              [(ngModel)]="themeObject.secondaryButtonText" #secondaryButtonText="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="secondaryButtonText">Secondary Button Text</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="themeObject.disabledButtonColor ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="disabledButtonColor"
+              [(ngModel)]="themeObject.disabledButtonColor" #disabledButtonColor="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="disabledButtonColor">Disabled Button Color</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="themeObject.disabledButtonText ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="disabledButtonText"
+              [(ngModel)]="themeObject.disabledButtonText" #disabledButtonText="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="disabledButtonText">Disabled Button Text</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="themeObject.spinnerColor ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="spinnerColor"
+              [(ngModel)]="themeObject.spinnerColor" #spinnerColor="ngModel" required />
+            <label class="mdl-textfield__label cname-color" for="spinnerColor">Spinner Color</label>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="themeObject.error_msg" class="error-msg">{{ themeObject.error_msg }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <button type="button" class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
+        <button type="submit" class="btn btn-link waves-effect">DONE</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Restaurent Theme updation End -->
+
+<!-- Restaurent Homepage updation -->
+<div *ngIf="modalType == 'homepage'">
+  <form autocomplete="off" (ngSubmit)="onUpdateTheme('homepage')" ngNativeValidate>
+    <div class="modal-body pad25">
+
+      <!-- <div class="container">
+        <div class="line"><mat-divider></mat-divider></div>
+        <div class="text mat-typography">Homepage Header</div>
+        <div class="line"><mat-divider></mat-divider></div>
+       </div> -->
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.header ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="header"
+              [(ngModel)]="homepageObject.header" #header="ngModel" required />
+            <label class="mdl-textfield__label cname-color" for="header">Homepage Header</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.subHeader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="subHeader" 
+              [(ngModel)]="homepageObject.subHeader" #subHeader="ngModel" required />
+            <label class="mdl-textfield__label cname-color" for="subHeader">Homepage Subheader</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <mat-checkbox name="headerStatus" [(ngModel)]="homepageObject.headerStatus">Show Header</mat-checkbox>
+      </div>
+
+     <!-- <div class="container">
+      <div class="line"><mat-divider></mat-divider></div>
+      <div class="text mat-typography">Bill Card</div>
+      <div class="line"><mat-divider></mat-divider></div>
+     </div> -->
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.billHeader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="billHeader" 
+              [(ngModel)]="homepageObject.billHeader" #billHeader="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="billHeader">Bill Header</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.billSubheader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="billSubheader" 
+              [(ngModel)]="homepageObject.billSubheader" #billSubheader="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="billSubheader">Bill Subheader</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.billImage ? 'is-focused': ''">
+            <input  type="file" class="mdl-textfield__input clabelborder" name="billImage" 
+            [(ngModel)]="homepageObject.billImage" #billImage="ngModel" (change)="onFileChange($event, 'bill')" />
+            <label class="mdl-textfield__label cname-color" for="billImage">Bill Image</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="text-center">
+            <img id="billPreview" alt="Bill Image Preview" width="200px" height="100px">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <mat-checkbox name="billStatus" [(ngModel)]="homepageObject.billStatus">Show Bill Card</mat-checkbox>
+      </div>
+
+      <!-- <div class="container">
+        <div class="line"><mat-divider></mat-divider></div>
+        <div class="text mat-typography">Help Card</div>
+        <div class="line"><mat-divider></mat-divider></div>
+       </div> -->
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.helpHeader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="helpHeader" 
+              [(ngModel)]="homepageObject.helpHeader" #helpHeader="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="helpHeader">Help Header</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.helpSubheader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="helpSubheader" 
+              [(ngModel)]="homepageObject.helpSubheader" #helpSubheader="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="helpSubheader">Help Subheader</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.helpImage ? 'is-focused': ''">
+            <input type="file" class="mdl-textfield__input clabelborder" name="helpImage" 
+            [(ngModel)]="homepageObject.helpImage" #helpImage="ngModel" (change)="onFileChange($event, 'help')"/>
+            <label class="mdl-textfield__label cname-color" for="helpImage">Help Image</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="text-center">
+            <img id="helpPreview" alt="Help Image Preview" width="200px" height="100px">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <mat-checkbox name="helpStatus" [(ngModel)]="homepageObject.helpStatus">Show Help Card</mat-checkbox>
+      </div>
+
+      <!-- <div class="container">
+        <div class="line"><mat-divider></mat-divider></div>
+        <div class="text mat-typography">Vehicle Card</div>
+        <div class="line"><mat-divider></mat-divider></div>
+       </div> -->
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.vehicleHeader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="vehicleHeader" 
+              [(ngModel)]="homepageObject.vehicleHeader" #vehicleHeader="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="vehicleHeader">Vehicle Header</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.vehicleSubheader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="vehicleSubheader" 
+              [(ngModel)]="homepageObject.vehicleSubheader" #vehicleSubheader="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="vehicleSubheader">Vehicle Subheader</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.vehicleImage ? 'is-focused': ''">
+            <input type="file" class="mdl-textfield__input clabelborder" name="vehicleImage" 
+            [(ngModel)]="homepageObject.vehicleImage" #vehicleImage="ngModel" (change)="onFileChange($event, 'vehicle')"/>
+            <label class="mdl-textfield__label cname-color" for="vehicleImage">Vehicle Image</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="text-center">
+            <img id="vehiclePreview" alt="Vehicle Image Preview" width="200px" height="100px">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <mat-checkbox name="vehicleStatus" [(ngModel)]="homepageObject.vehicleStatus">Show Vehicle Card</mat-checkbox>
+      </div>
+
+      <!-- <div class="container">
+        <div class="line"><mat-divider></mat-divider></div>
+        <div class="text mat-typography">Offer Card</div>
+        <div class="line"><mat-divider></mat-divider></div>
+       </div> -->
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.offerHeader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="offerHeader" 
+              [(ngModel)]="homepageObject.offerHeader" #offerHeader="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="offerHeader">Offer Header</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.offerSubheader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="offerSubheader" 
+              [(ngModel)]="homepageObject.offerSubheader" #offerSubheader="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="offerSubheader">Offer Subheader</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.offerImage ? 'is-focused': ''">
+            <input type="file" class="mdl-textfield__input clabelborder" name="offerImage" 
+            [(ngModel)]="homepageObject.offerImage" #offerImage="ngModel" (change)="onFileChange($event, 'offer')"/>
+            <label class="mdl-textfield__label cname-color" for="offerImage">Offer Image</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="text-center">
+            <img id="offerPreview" alt="Offer Image Preview" width="200px" height="100px">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <mat-checkbox name="offerStatus" [(ngModel)]="homepageObject.offerStatus">Show Offer Card</mat-checkbox>
+      </div>
+
+      <!-- <div class="container">
+        <div class="line"><mat-divider></mat-divider></div>
+        <div class="text mat-typography">Exit Card</div>
+        <div class="line"><mat-divider></mat-divider></div>
+       </div> -->
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.exitHeader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="exitHeader" 
+              [(ngModel)]="homepageObject.exitHeader" #exitHeader="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="exitHeader">Exit Header</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.exitSubheader ? 'is-focused': ''">
+            <input type="text" class="mdl-textfield__input clabelborder" name="exitSubheader" 
+              [(ngModel)]="homepageObject.exitSubheader" #exitSubheader="ngModel" />
+            <label class="mdl-textfield__label cname-color" for="exitSubheader">Exit Subheader</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+            [ngClass]="homepageObject.exitImage ? 'is-focused': ''">
+            <input type="file" class="mdl-textfield__input clabelborder" name="exitImage" 
+            [(ngModel)]="homepageObject.exitImage" #exitImage="ngModel" (change)="onFileChange($event, 'exit')"/>
+            <label class="mdl-textfield__label cname-color" for="exitImage">Exit Image</label>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="text-center">
+            <img id="exitPreview" alt="Exit Image Preview" width="200px" height="100px">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <mat-checkbox name="exitStatus" [(ngModel)]="homepageObject.exitStatus">Show Exit Card</mat-checkbox>
+      </div>
+
+      <div *ngIf="homepageObject.error_msg" class="error-msg">{{ homepageObject.error_msg }}</div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <button type="button" class="btn btn-link btn-cancel waves-effect" (click)="closeDialog()">CANCEL</button>
+        <button type="submit" class="btn btn-link waves-effect">DONE</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Restaurent Homepage updation End -->
+
+
+
