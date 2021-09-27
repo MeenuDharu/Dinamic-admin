@@ -1,5 +1,6 @@
-.font500 {
-    font-weight: 500;
+.font600 {
+    font-weight: 600;
+    color: #000000af;
 }
 
 .p-x-25 {
@@ -20,4 +21,18 @@
 .card {
     margin-top: 20px;
     margin-bottom: 0;
+}
+
+h3 {
+    font-weight: 500;
+}
+
+mat-label {
+    font-size: 18px;
+}
+
+.previewImg {
+    background: #1111ff0f;
+    border-radius: 10px;
+    padding: 10px;
 }

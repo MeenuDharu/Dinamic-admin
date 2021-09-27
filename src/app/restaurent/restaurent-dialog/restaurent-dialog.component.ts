@@ -8,12 +8,15 @@ export interface UsersData {
 }
 
 export interface IThemeForm {
-	pos_rest_id ?: string;
-	isDefault ?: boolean;
-	theme ?: object;
-	homepage ?: object;
-	quickHelp ?: object;
-	brokenImages ?: object;
+	restaurantName?: string;
+	restaurant_id?: string;
+	pos_rest_id?: string;
+	isDefault?: boolean;
+	theme?: object;
+	homepage?: object;
+	quickHelp?: object;
+	brokenImages?: object;
+	dynamicThings?: object;
 }
 
 @Component({
@@ -32,6 +35,7 @@ export class RestaurentDialogComponent implements OnInit {
 	homepageObject: any = {};
 	quickHelpObject: any = {};
 	brokenImageObject: any = {};
+	dynamicThingsObject: any = {};
 	deleteId: string = '';
 	delete_pos_rest_id: string = '';
 	pos_restaurant_list: any;
@@ -45,7 +49,7 @@ export class RestaurentDialogComponent implements OnInit {
 		@Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
 		public apiService: ApiService) {
 		console.log('dialogData ', data);
-		this.local_data = {...data};
+		this.local_data = { ...data };
 		this.formType = this.local_data.x;
 	}
 	ngOnInit(): void {
@@ -102,27 +106,26 @@ export class RestaurentDialogComponent implements OnInit {
 	}
 
 	onOptionsSelected(event: any) {
-		  this.addForm={};
-		  const value = event.target.value;
-		  let name, address, email, phone;
-		  this.pos_restaurant_list.filter(function(item :any){
-		   if(item._id === value)
-		   {
-		    console.log("item..............",item);
-		   //  this.addForm.pos_rest_id = value; 
-		  // this.addForm['name'] = item.name;
-		    phone = item.phone;
-		    email = item.email;
-		    address = item.address;
-		    name= item.name;
-		   }
+		this.addForm = {};
+		const value = event.target.value;
+		let name, address, email, phone;
+		this.pos_restaurant_list.filter(function (item: any) {
+			if (item._id === value) {
+				console.log("item..............", item);
+				//  this.addForm.pos_rest_id = value; 
+				// this.addForm['name'] = item.name;
+				phone = item.phone;
+				email = item.email;
+				address = item.address;
+				name = item.name;
+			}
 		});
 		this.addForm.name = name;
 		this.addForm.mobile = phone;
 		this.addForm.email = email;
 		this.addForm.address = address;
-		this.addForm.pos_rest_id =  event.target.value;
-		this.editForm.pos_rest_id =  event.target.value;
+		this.addForm.pos_rest_id = event.target.value;
+		this.editForm.pos_rest_id = event.target.value;
 		this.themeObject.pos_rest_id = event.target.value;
 		this.homepageObject.pos_rest_id = event.target.value;
 		this.quickHelpObject.pos_rest_id = event.target.value;
@@ -133,9 +136,10 @@ export class RestaurentDialogComponent implements OnInit {
 	onAddRestaurant() {
 		console.log("add...........", this.addForm)
 		this.apiService.ADD_RESTAURANT(this.addForm).subscribe(result => {
-			if (result.status) {
-				this.ngOnInit();
-				this.onAddTheme();
+			console.log("typeof rest id", typeof result.data.restaurant_id);
+			if (result.status && result.data) {
+				// this.ngOnInit();
+				this.onAddTheme(result.data);
 			}
 			else {
 				this.addForm.error_msg = result.message;
@@ -146,9 +150,10 @@ export class RestaurentDialogComponent implements OnInit {
 
 	onUpdateRestaurant() {
 		this.apiService.UPDATE_RESTAURANT(this.editForm).subscribe(result => {
+			console.log('rest update...', result)
 			if (result.status) {
 				this.doAction();
-				this.ngOnInit();
+				// this.onAddTheme(result.data);
 			}
 			else {
 				this.editForm.error_msg = result.message;
@@ -161,30 +166,36 @@ export class RestaurentDialogComponent implements OnInit {
 			console.log('delete result', result);
 			if (result.status) {
 				this.doAction();
-				// this.ngOnInit();
-				
 			}
 		});
 	}
 
-	onAddTheme() {		
+	onAddTheme(data: any) {
+		this.themeObject.pos_rest_id = data.pos_rest_id;
+		this.homepageObject.pos_rest_id = data.pos_rest_id;
+		this.quickHelpObject.pos_rest_id = data.pos_rest_id;
+		this.brokenImageObject.pos_rest_id = data.pos_rest_id;
+		this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
 		this.themeForm = {
-			'isDefault' : true,
-			'pos_rest_id': this.themeObject.pos_rest_id,
+			'isDefault': true,
+			'restaurantName': this.addForm.name,
+			'restaurant_id' : data.restaurant_id,
+			'pos_rest_id': data.pos_rest_id,
 			'theme': this.themeObject,
 			'homepage': this.homepageObject,
 			'quickHelp': this.quickHelpObject,
-			'brokenImages': this.brokenImageObject
+			'brokenImages': this.brokenImageObject,
+			'dynamicThings': this.dynamicThingsObject
 		}
-		console.log('created object', this.themeForm);
+		console.log('themeform object', this.themeForm);
 		this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {
+			console.log("add theme result ",result )
 			if (result.status) {
 				this.doAction();
 			} else {
 				this.themeObject.error_msg = result.message;
 			}
 		});
-
 	}
 
 }

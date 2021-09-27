@@ -7,7 +7,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { SelectionModel } from '@angular/cdk/collections';
 import { BranchDialogComponent } from './branch-dialog/branch-dialog.component';
+
 export interface branchData {
+	no: string;
 	location: string;
 	manager_name: string;
 	mobile: String;
@@ -113,11 +115,6 @@ export class BranchesComponent implements OnInit {
 		if (this.dataSource.paginator) {
 			this.dataSource.paginator.firstPage();
 		}
-	}
-
-	onBranchList(x: any) {
-		localStorage.setItem('selected_restaurant', JSON.stringify(x));
-		this.router.navigate(['/branches']);
 	}
 
 	transform(items: any[], value: string): any[] {

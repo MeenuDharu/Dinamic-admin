@@ -43,30 +43,31 @@
                         </td>
                     </ng-container> -->
 
-					<!-- No Column -->
+					<!-- Serial No -->
 					<ng-container matColumnDef="no">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header>No</th>
 						<td mat-cell *matCellDef="let row; let i = index"> {{i+1}} </td>
 					</ng-container>
 
-					<!-- Name Column -->
+					<!-- Name -->
 					<ng-container matColumnDef="name">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
 						<td mat-cell *matCellDef="let row"> {{row.name}} </td>
 					</ng-container>
 
-					<!-- SerialNumber Column -->
+					<!-- Serial Number -->
 					<ng-container matColumnDef="serialNumber">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header>Serial Number</th>
 						<td mat-cell *matCellDef="let row"> {{row.serial_number}} </td>
 					</ng-container>
 
-					<!-- QRCode Id Column -->
+					<!-- QRCode Id  -->
 					<ng-container matColumnDef="qrCodeId">
 						<th mat-header-cell *matHeaderCellDef mat-sort-header>QRCode ID</th>
 						<td mat-cell *matCellDef="let row">{{row._id}}</td>
 					</ng-container>
 
+					<!-- Action -->
 					<ng-container matColumnDef="action">
 						<th mat-header-cell *matHeaderCellDef> Action </th>
 						<td mat-cell *matCellDef="let row">
@@ -78,7 +79,6 @@
 								style="margin-left: 10px; cursor: pointer;">delete</i>
 						</td>
 					</ng-container>
-
 
 					<tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 					<tr mat-row *matRowDef="let row; columns: displayedColumns;"> </tr>

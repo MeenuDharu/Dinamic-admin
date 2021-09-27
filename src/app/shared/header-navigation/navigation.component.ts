@@ -1,15 +1,21 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from "@angular/router";
 declare var $: any;
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html'
+	selector: 'app-navigation',
+	templateUrl: './navigation.component.html'
 })
 export class NavigationComponent {
-  @Output()
-  toggleSidebar = new EventEmitter<void>();
+	@Output()
+	toggleSidebar = new EventEmitter<void>();
 
-  public showSearch = false;
+	public showSearch = false;
 
-  constructor() {}
+	constructor(private router: Router) { }
+
+	onLogout () {
+		localStorage.clear();
+		this.router.navigate(['/'])
+	}
 }
