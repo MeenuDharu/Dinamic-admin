@@ -136,6 +136,7 @@ export class RestaurentDialogComponent implements OnInit {
 	onAddRestaurant() {
 		console.log("add...........", this.addForm)
 		this.apiService.ADD_RESTAURANT(this.addForm).subscribe(result => {
+			console.log('result of rest added', result);
 			console.log("typeof rest id", typeof result.data.restaurant_id);
 			if (result.status && result.data) {
 				// this.ngOnInit();
@@ -178,7 +179,7 @@ export class RestaurentDialogComponent implements OnInit {
 		this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
 		this.themeForm = {
 			'isDefault': true,
-			'restaurantName': this.addForm.name,
+			'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,
 			'restaurant_id' : data.restaurant_id,
 			'pos_rest_id': data.pos_rest_id,
 			'theme': this.themeObject,
