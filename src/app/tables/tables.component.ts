@@ -8,8 +8,11 @@ import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { SelectionModel } from '@angular/cdk/collections';
 import { TableDialogComponent } from './table-dialog/table-dialog.component';
 import * as $ from 'jquery';
+import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
 
-
+const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+const EXCEL_EXTENSION = '.xlsx';
 export interface branchData {
 	name: string;
 	qr_count: string;
@@ -184,6 +187,43 @@ export class TablesComponent implements OnInit {
 		//  this.excelService.exportAsExcelFile(filterList, 'Mailreport'); 
 	}
 
+	ExportAsExcel(excelName: string, clientName: string) {
+		let excelList: any = [];
+		let dataArray: any = [];
+		this.apiService.TABLE_LIST({ branch_id: this.selectedBranch._id }).subscribe(result => {
+			console.log("result data..........", result)
+			if (result.status) {
+				this.table_list = result.data;
+				for (let i = 0; i < this.table_list.length; i++) {
+					let data: any = {};
+					data['Name'] = this.table_list[i].name;
+					clientName  
+						? data['Access Code'] = `https://dqr.app/${clientName}/#/q/` + this.table_list[i].access_code
+						: data['Access Code'] = `https://dqr.app/#/q/` + this.table_list[i].access_code
+					data['No'] = i + 1;
+					dataArray.push(data);
+				}
+				console.log(dataArray)
+			}
+			if (dataArray.length !== 0) {
+				const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(dataArray);
+				//console.log('worksheet',worksheet);
+				const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+				const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+				//const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
+				this.saveAsExcelFile(excelBuffer, excelName);
+			}
+	
+		});
+	}
+
+	saveAsExcelFile(buffer: any, fileName: string): void {
+		const data: Blob = new Blob([buffer], {
+		  type: EXCEL_TYPE
+		});
+		FileSaver.saveAs(data, fileName + '_export_'+ EXCEL_EXTENSION);
+	}
+
 
 	checkValue(event: any, id: any) {
 		console.log(event);
@@ -210,10 +250,14 @@ export class TablesComponent implements OnInit {
 			maxHeight: '100vh',
 			width: '750px',
 			height: 'auto',
-			data: { x: x, y: y }
+			data: { x: x, y: y },
 		});
 
 		dialogref.afterClosed().subscribe((res) => {
+			console.log('dialog close res.. ', res);
+			if(res.event === 'exportExcel') {
+				this.ExportAsExcel(res.data.name, res.data.urlName);
+			}
 			this.tableList();
 		});
 	}
