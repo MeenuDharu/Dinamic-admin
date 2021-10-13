@@ -18,6 +18,7 @@ export class TableDialogComponent implements OnInit {
 	pos_table_list: any = [];
 	table_list: any = [];
 	addForm: any = {}; editForm: any = {};
+	excelForm: any = {};
 	tableName: string = ''; deleteId: any = '';
 	selectedRestaurant: any = JSON.parse(localStorage.getItem('selected_restaurant')!);
 	selectedBranch: any = JSON.parse(localStorage.getItem('selected_branch')!);
@@ -35,6 +36,7 @@ export class TableDialogComponent implements OnInit {
 	ngOnInit(): void {
 		console.log('type of rest id table', typeof this.selectedRestaurant._id)
 		this.addForm = {};
+		this.excelForm = {};
 		this.formType = this.local_data.x;
 		let x = this.local_data.y;
 
@@ -171,6 +173,11 @@ export class TableDialogComponent implements OnInit {
 				this.doAction();
 			}
 		});
+	}
+
+	onExportExcel() {
+		console.log(this.excelForm);
+		this.dialogRef.close({event: this.formType, data: this.excelForm});
 	}
 
 	doAction() {

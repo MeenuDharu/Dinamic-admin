@@ -124,5 +124,34 @@
 			<button type="button" (click)="onDeleteTable(deleteModal)" class="btn btn-link waves-effect">DONE</button>
 		</div>
 	</div>
+</div>
 
+<!-- Export Excel details form -->
+<div *ngIf="formType == 'exportExcel'">
+	<form autocomplete="off" (ngSubmit)="onExportExcel()" ngNativeValidate>
+		<div class="modal-body pad25">
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="excelForm.name ? 'is-focused': ''">
+				<input type="text" class="mdl-textfield__input clabelborder" name="name" [(ngModel)]="excelForm.name"
+					#name="ngModel" required />
+				<label class="mdl-textfield__label cname-color" for="name">Save Excel as:</label>
+			</div>
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+				[ngClass]="excelForm.urlName ? 'is-focused': ''">
+				<input type="text" class="mdl-textfield__input clabelborder" name="urlName" [(ngModel)]="excelForm.urlName"
+					#urlName="ngModel" />
+				<label class="mdl-textfield__label cname-color" for="urlName">URL client name</label>
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-12 text-right">
+				<button type="button" class="btn btn-link btn-cancel waves-effect"
+					(click)="closeDialog()">CANCEL</button>
+				<button type="submit" class="btn btn-link waves-effect">DONE</button>
+			</div>
+		</div>
+	</form>
 </div>
