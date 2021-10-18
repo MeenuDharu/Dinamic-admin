@@ -27,9 +27,8 @@
 					<option [value]="x.table_id" *ngFor="let x of pos_table_list">{{x.table_name}}</option>
 				</select>
 				<label class="mdl-textfield__label cname-color" for="table_name">POS Table Name</label>
-
-
 			</div>
+			
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 				[ngClass]="addForm.name ? 'is-focused': ''">
 				<input type="text" class="mdl-textfield__input clabelborder" name="name" [(ngModel)]="addForm.name"

@@ -94,10 +94,18 @@ export class TableDialogComponent implements OnInit {
 						}
 					}
 					return true;
-				});
-				this.pos_table_list = b
-
+				})
+				.sort((a: any,b: any) => a.table_name.toLowerCase() > b.table_name.toLowerCase() ? 1 : -1);
+				this.pos_table_list = b;
 			}
+
+			// if (this.pos_table_list.length) {
+			// 	this.pos_table_list.forEach((table: any) => {
+			// 		this.addForm.pos_table_id = table.table_id;
+			// 		this.addForm.table_api = "detail/tables/" + table.table_id;
+			// 		this.addForm.name = table.table_name;
+			// 	})
+			// }
 
 
 		});
