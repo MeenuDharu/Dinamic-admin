@@ -203,6 +203,7 @@ export class TablesComponent implements OnInit {
 					data['No'] = i + 1;
 					dataArray.push(data);
 				}
+				dataArray.sort((a: any,b: any) => a.Name > b.Name ? 1 : -1);
 				console.log(dataArray)
 			}
 			if (dataArray.length !== 0) {
