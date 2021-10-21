@@ -2,8 +2,8 @@
 	<form autocomplete="off" (ngSubmit)="onAddTable()" ngNativeValidate>
 		<div class="modal-body pad25">
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-				[ngClass]="addForm.type ? 'is-focused': ''">
-				<select class="mdl-textfield__input clabelborder" name="type" [(ngModel)]="addForm.type" #type="ngModel"
+				[ngClass]="locationType ? 'is-focused': ''">
+				<select class="mdl-textfield__input clabelborder" name="type" [(ngModel)]="locationType" #type="ngModel"
 					required>
 					<option value="location">Location</option>
 					<option value="locationless">Locationless</option>
@@ -12,15 +12,15 @@
 			</div>
 
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
-				[ngClass]="addForm.floor_name ? 'is-focused': ''">
-				<select class="mdl-textfield__input clabelborder" name="floor_name" [(ngModel)]="addForm.floor_name"
+				[ngClass]="table_floor_name ? 'is-focused': ''">
+				<select class="mdl-textfield__input clabelborder" name="floor_name" [(ngModel)]="table_floor_name"
 					#floor_name="ngModel" (change)='onOptionsSelected($event)' required>
 					<option [value]="x._id" *ngFor="let x of pos_floor_list">{{x.name}}</option>
 				</select>
 				<label class="mdl-textfield__label cname-color" for="floor_name">Floor Name</label>
 			</div>
 
-			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+			<!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
 				[ngClass]="addForm.table_name ? 'is-focused': ''">
 				<select class="mdl-textfield__input clabelborder" name="table_name" [(ngModel)]="addForm.table_name"
 					#table_name="ngModel" (change)='onOptionsSelected1($event)' required>
@@ -42,7 +42,7 @@
 					[(ngModel)]="addForm.table_api" #table_api="ngModel" required />
 
 				<label class="mdl-textfield__label cname-color" for="table_api">Table API</label>
-			</div>
+			</div> -->
 
 			<div *ngIf="addForm.error_msg" class="error-msg">{{ addForm.error_msg }}</div>
 		</div>

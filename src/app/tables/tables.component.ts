@@ -39,7 +39,7 @@ export class TablesComponent implements OnInit {
 	selectedBranch: any = JSON.parse(localStorage.getItem('selected_branch')!);
 	isChecked: any;
 	table_status: any;
-	displayedColumns: string[] = ['no', 'name', 'qr_count', 'nfc_count', 'access_code', 'action'];
+	displayedColumns: string[] = ['select', 'no', 'name', 'qr_count', 'nfc_count', 'access_code', 'action'];
 	pageNo: any; entryLimit: any; directoryName: any; mkid: any;
 	@ViewChild(MatPaginator) set matPaginator(paginator: MatPaginator) {
 		this.dataSource.paginator = paginator;
@@ -101,6 +101,7 @@ export class TablesComponent implements OnInit {
 					data["table_api"] = this.table_list[i].table_api;
 					this.dataArray.push(data);
 				}
+				this.dataArray.sort((a: any, b: any) => a.name > b.name ? 1 : -1);
 				this.dataSource.data = this.dataArray as branchData[];
 			}
 		});

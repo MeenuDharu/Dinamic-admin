@@ -73,7 +73,31 @@ File: scss
   --breakpoint-xl: 1600px;
   --font-family-sans-serif: "Rubik", sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --webfont:#3d3d3d;
+  --webfont-dark:#3d3d3d;
+  --purple:#5B32BC;
+  --yellow:#FFBB00;
+  --green:#55D292;
+  --white:#fff;
+  --red:#FF0044;
+  --blue:#336fff;
+  --lblue:#DFE8FF;
+  --black: #3D3D3D;
+  --lpurple:#E5DEF4;
+  --lyellow:#FEF0CE;
+  --tgreen:#55D292;
+  --ltgreen:#D9F5E7;
+  --lred:#FFD7E1;
+  --head-band:#ffffff;
+  --hover-bg:#f5f5f5;
+  --tgray:#999999;
+  --pink:#EC366B;
+  --lpink:#FCDFE7;
+  --border-color:rgba(153, 153, 153, 0.2);
 }
+
+
 
 *,
 *::before,
