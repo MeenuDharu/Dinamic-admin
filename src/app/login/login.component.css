@@ -19,6 +19,19 @@ html, body{height:100%;width: 100%;margin: 0;padding: 0;border: 0;}
 .something-else-semantic{display: table-cell;text-align: center;vertical-align: middle;}
 .center-log{width:80%; margin:0 auto;}.center-log h1{color: rgba(0,0,0,.66); font-weight:normal; padding-bottom:20px;}
 .txt-italic{font-style:italic; color: rgba(0,0,0,.66); font-size:14px;}
+.forgot{
+    margin-bottom: 15px;
+}
+.login-btn {
+    margin-top: 30px;
+}
+.login-header h1 {
+    font-size: 35px;
+    font-weight: 500;
+}
+.login-header h1::first-letter {
+    font-size: 50px;
+}
 .forgot a{color: rgba(0,0,0,.66); font-size:14px; font-style:italic}.forgot a:hover{text-decoration:none;}
 .launch-span{font-style:italic; font-size:20px; color: rgba(0,0,0,.66); padding-left:15px;}
 .launch-margin{padding-top:15%}

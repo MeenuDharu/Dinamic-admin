@@ -61,7 +61,7 @@ export class TableDialogComponent implements OnInit {
 			}
 			this.addForm = {};
 			this.apiService.POS_FLOOR_LIST({ pos_branch_id: this.selectedBranch.pos_branch_id }).subscribe(result => {
-				console.log("Pos Restaurent Floor............", result);
+				console.log("Pos restaurant Floor............", result);
 				if (result) {
 					this.pos_floor_list = result.table_plans
 				}
@@ -84,7 +84,7 @@ export class TableDialogComponent implements OnInit {
 		const value = event.target.value;
 		this.pos_floor_id = event.target.value;
 		this.apiService.POS_TABLE_LIST({ pos_floor_id: event.target.value }).subscribe(result => {
-			console.log("Pos Restaurent Floor............", result[0].tables_list);
+			console.log("Pos restaurant Floor............", result[0].tables_list);
 
 			console.log("this.table_list1............", this.table_list);
 			if (result) {

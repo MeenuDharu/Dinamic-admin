@@ -10,9 +10,9 @@ export const ROUTES: RouteInfo[] = [
   //   submenu: []
   // },
   {
-    path: '/restaurents',
-    title: 'Restaurents',
-    icon: 'mdi mdi-file',
+    path: '/restaurants',
+    title: 'Restaurants',
+    icon: 'mdi mdi-food',
     class: '',
     extralink: false,
     submenu: []

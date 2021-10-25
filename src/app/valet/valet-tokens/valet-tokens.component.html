@@ -15,7 +15,7 @@
 							<button type="button" (click)="openDialog('add','data')" class="btn btn-info">ADD</button>
 						</div>
 						<div class="text-right" style="padding-left: 10px;">
-							<button type="button" routerLink='/valet-users' class="btn btn-info">VALET USERS</button>
+							<button type="button" routerLink='/restaurants/valet-users' class="btn btn-info">VALET USERS</button>
 						</div>
 					</div>
 				</div>
@@ -73,9 +73,9 @@
 						<td mat-cell *matCellDef="let row">
 							<i class="material-icons" (click)="saveAsImage(row.i,row)"
 								style="cursor: pointer;">arrow_downward</i>
-							<i class="material-icons" (click)="openDialog('edit',row )"
+							<i class="material-icons edit-icon" (click)="openDialog('edit',row )"
 								style="cursor: pointer;margin-left: 10px; ">edit</i>
-							<i class="material-icons" (click)="openDialog('delete',row )"
+							<i class="material-icons delete-icon" (click)="openDialog('delete',row )"
 								style="margin-left: 10px; cursor: pointer;">delete</i>
 						</td>
 					</ng-container>

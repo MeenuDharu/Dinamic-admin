@@ -5,6 +5,7 @@ import { ValetUsersComponent } from './valet-users.component';
 import { Routes, RouterModule } from "@angular/router";
 import { ValetUsersDialogComponent } from './valet-users-dialog/valet-users-dialog.component';
 import { AngularMaterialModule } from "../../angular-material/angular-material.module";
+import { AuthGuard } from 'src/app/_guards/auth.guard';
 
 const valet_users_routes: Routes = [
   {
@@ -12,10 +13,15 @@ const valet_users_routes: Routes = [
     data: {
       title: 'Valet-Users',
       urls: [
-        { title: 'Valet-Users', url: '/valet-users' }
+        { 
+          title: 'Valet-Users', 
+          url: '/valet-users',
+          back_url: '/restaurants/valet-tokens' 
+        }
       ]
     },
-    component: ValetUsersComponent
+    component: ValetUsersComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

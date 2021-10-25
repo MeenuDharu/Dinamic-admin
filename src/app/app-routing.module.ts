@@ -21,39 +21,39 @@ export const Approutes: Routes = [
     path: '',
     component: FullComponent,
     children: [
-      { path: '', redirectTo: '/restaurents', pathMatch: 'full' },
+      { path: '', redirectTo: '/restaurants', pathMatch: 'full' },
+      // {
+      //   path: 'dashboard',
+      //   loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      // },
+      // {
+      //   path: 'component',
+      //   loadChildren: () => import('./component/component.module').then(m => m.ComponentsModule)
+      // },
       {
-        path: 'dashboard',
-        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+        path: 'restaurants',
+        loadChildren: () => import('./restaurant/restaurant.module').then(m => m.restaurantModule)
       },
-      {
-        path: 'component',
-        loadChildren: () => import('./component/component.module').then(m => m.ComponentsModule)
-      },
-      {
-        path: 'restaurents',
-        loadChildren: () => import('./restaurent/restaurent.module').then(m => m.RestaurentModule)
-      },
-      {
-        path: 'restaurent-theme',
-        loadChildren: () => import('./restaurent-theme/restaurent-theme.module').then(m => m.RestaurentThemeModule)
-      },
-      {
-        path: 'branches',
-        loadChildren: () => import('./branches/branches.module').then(m => m.BranchesModule)
-      },
-      {
-        path: 'tables',
-        loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule)
-      },
-      {
-        path: 'valet-tokens',
-        loadChildren: () => import('./valet/valet-tokens/valet-tokens.module').then(m => m.ValetTokensModule)
-      },
-      {
-        path: 'valet-users',
-        loadChildren: () => import('./valet/valet-users/valet-users.module').then(m => m.ValetUsersModule)
-      },
+      // {
+      //   path: 'restaurant-theme',
+      //   loadChildren: () => import('./restaurant-theme/restaurant-theme.module').then(m => m.restaurantThemeModule)
+      // },
+      // {
+      //   path: 'branches',
+      //   loadChildren: () => import('./branches/branches.module').then(m => m.BranchesModule)
+      // },
+      // {
+      //   path: 'tables',
+      //   loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule)
+      // },
+      // {
+      //   path: 'valet-tokens',
+      //   loadChildren: () => import('./valet/valet-tokens/valet-tokens.module').then(m => m.ValetTokensModule)
+      // },
+      // {
+      //   path: 'valet-users',
+      //   loadChildren: () => import('./valet/valet-users/valet-users.module').then(m => m.ValetUsersModule)
+      // },
       {
         path: 'users',
         loadChildren: () => import('./users/users.module').then(m => m.UsersModule)

@@ -39,7 +39,7 @@ export class TablesComponent implements OnInit {
 	selectedBranch: any = JSON.parse(localStorage.getItem('selected_branch')!);
 	isChecked: any;
 	table_status: any;
-	displayedColumns: string[] = ['select', 'no', 'name', 'qr_count', 'nfc_count', 'access_code', 'action'];
+	displayedColumns: string[] = ['no', 'name', 'qr_count', 'nfc_count', 'access_code', 'action'];
 	pageNo: any; entryLimit: any; directoryName: any; mkid: any;
 	@ViewChild(MatPaginator) set matPaginator(paginator: MatPaginator) {
 		this.dataSource.paginator = paginator;
@@ -214,6 +214,8 @@ export class TablesComponent implements OnInit {
 				const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
 				//const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
 				this.saveAsExcelFile(excelBuffer, excelName);
+			} else {
+				alert('No tables to export');
 			}
 	
 		});

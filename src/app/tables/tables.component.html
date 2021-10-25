@@ -20,7 +20,7 @@
 								class="btn btn-info">ADD</button>
 						</div>
 						<div class="text-right" style="padding-left: 10px;">
-							<button type="button" routerLink='/valet-tokens' class="btn btn-info">VALETS</button>
+							<button type="button" routerLink='/restaurants/valet-tokens' class="btn btn-info">VALETS</button>
 						</div>
 					</div>
 				</div>
@@ -94,9 +94,9 @@
 						<td mat-cell *matCellDef="let row">
 							<i class="material-icons" (click)="saveAsImage(row.i,row)"
 								style="cursor: pointer;">arrow_downward</i>
-							<i class="material-icons" (click)="openDialog('tableEdit',row )"
+							<i class="material-icons edit-icon" (click)="openDialog('tableEdit',row )"
 								style="cursor: pointer;margin-left: 10px; ">edit</i>
-							<i class="material-icons" (click)="openDialog('tableDelete',row )"
+							<i class="material-icons delete-icon" (click)="openDialog('tableDelete',row )"
 								style="margin-left: 10px; cursor: pointer;">delete</i>
 							<span style="margin-left: 10px;">
 								<label class="switch">

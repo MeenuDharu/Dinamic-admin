@@ -1,1 +1,138 @@
-/* No CSS *//*# sourceMappingURL=custom.css.map */
+:root {
+  --webfont:#3d3d3d;
+  --webfont-dark:#3d3d3d;
+  --purple:#5B32BC;
+  --yellow:#FFBB00;
+  --green:#55D292;
+  --white:#fff;
+  --red:#FF0044;
+  --blue:#336fff;
+  --lblue:#DFE8FF;
+  --black: #3D3D3D;
+  --lpurple:#E5DEF4;
+  --lyellow:#FEF0CE;
+  --tgreen:#55D292;
+  --ltgreen:#D9F5E7;
+  --lred:#FFD7E1;
+  --head-band:#ffffff;
+  --hover-bg:#f5f5f5;
+  --tgray:#999999;
+  --pink:#EC366B;
+  --lpink:#FCDFE7;
+  --border-color:rgba(153, 153, 153, 0.2);
+}
+
+.page-breadcrumb {
+  background-color: var(--purple) !important;
+}
+
+.btn-info {
+  color: var(--purple);
+  background-color: var(--lpurple);
+  border-color: var(--purple);
+  border-radius: 10px;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.btn-info:hover {
+  color: var(--white);
+  background-color: var(--purple);
+  border-color: var(--lpurple);
+}
+
+.sidebar-nav ul .sidebar-item.active > .sidebar-link,
+.sidebar-nav ul .sidebar-item .sidebar-link i {
+  color: var(--tgray) !important;
+}
+
+.sidebar-nav ul .sidebar-item.active > .sidebar-link:hover,
+.sidebar-nav ul .sidebar-item .sidebar-link i:hover {
+  background-color: var(--hover-bg) !important;
+}
+
+.sidebar-nav ul .sidebar-item.active > .sidebar-link:active,
+.sidebar-nav ul .sidebar-item .sidebar-link i:active {
+  color: var(--purple) !important;
+  background-color: var(--lpurple) !important;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link.active i {
+  color: var(--purple) !important;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link.active:hover i {
+  color: var(--purple) !important;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link:hover {
+  background-color: var(--hover-bg) !important;
+  color: var(--tgray) !important;
+  border-left: 5px solid var(--purple);
+  border-radius: 0 0 30px 0;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link.active {
+  background-color: var(--lpurple) !important;
+  color: var(--purple) !important;
+  border-radius: 0 0 30px 0;
+  border-left: 5px solid var(--purple);
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link.active:hover {
+  background-color: var(--lpurple) !important;
+  color: var(--purple) !important;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link.active:active {
+  background-color: var(--lpurple) !important;
+  color: var(--purple) !important;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link i {
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link {
+  font-size: 16px;
+  font-weight: 500 !important;
+}
+
+.mat-typography h4 {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+
+.theme-icon,
+.visible-icon,
+.edit-icon,
+.delete-icon {
+  padding: 5px !important;
+  border-radius: 50%;
+}
+
+.edit-icon {
+  color: var(--purple);
+  background-color: var(--lpurple);
+  border-color: var(--purple);
+}
+
+.edit-icon:hover {
+  border-radius: 50%;
+  background-color: var(--purple);
+  color: var(--white);
+}
+
+.delete-icon {
+  color: var(--red);
+  background-color: var(--lred);
+  border-color: var(--red);
+}
+
+.delete-icon:hover {
+  border-radius: 50%;
+  background-color: var(--red);
+  color: var(--white);
+}
+/*# sourceMappingURL=custom.css.map */

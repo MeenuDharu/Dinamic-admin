@@ -3,7 +3,8 @@
 <!-- ============================================================== -->
 <div class="page-breadcrumb">
     <div class="row">
-        <div class="col-12 align-self-center">
+        <div class="col-12 align-self-center" style="display: flex; ">
+            <a *ngIf="showBackArrow" routerLink="{{pageInfo?.urls[0]?.back_url}}" style="margin-right: 10px; color: inherit;"><span class="material-icons material-icons-outlined" style="font-size: 20px; margin-top: 2px;">arrow_back</span></a>
             <h4 class="page-title">{{pageInfo?.title}}</h4>
         </div>
     </div>

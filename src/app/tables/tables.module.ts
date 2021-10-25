@@ -6,16 +6,22 @@ import { Routes, RouterModule } from '@angular/router';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { TableDialogComponent } from './table-dialog/table-dialog.component';
 import { QRCodeModule } from 'angular2-qrcode';
+import { AuthGuard } from '../_guards/auth.guard';
 const routes: Routes = [
 	{
 		path: '',
 		data: {
 			title: 'Tables',
 			urls: [
-				{ title: 'Tables', url: '/tables' }			
+				{ 
+					title: 'Tables', 
+					url: '/tables',
+					back_url: '/restaurants/branches' 
+				}			
 			]
 		},
-		component: TablesComponent
+		component: TablesComponent,
+		canActivate: [AuthGuard]
 	}
 ];
 

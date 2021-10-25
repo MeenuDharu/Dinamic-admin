@@ -1,1 +1,225 @@
 // In this scss you can overwrite all our scss, we suggested you to add your scss into this, so whenever the update comes it will not affect your code.
+
+:root {
+    --webfont:#3d3d3d;
+  --webfont-dark:#3d3d3d;
+  --purple:#5B32BC;
+  --yellow:#FFBB00;
+  --green:#55D292;
+  --white:#fff;
+  --red:#FF0044;
+  --blue:#336fff;
+  --lblue:#DFE8FF;
+  --black: #3D3D3D;
+  --lpurple:#E5DEF4;
+  --lyellow:#FEF0CE;
+  --tgreen:#55D292;
+  --ltgreen:#D9F5E7;
+  --lred:#FFD7E1;
+  --head-band:#ffffff;
+  --hover-bg:#f5f5f5;
+  --tgray:#999999;
+  --pink:#EC366B;
+  --lpink:#FCDFE7;
+  --border-color:rgba(153, 153, 153, 0.2);
+}
+
+.page-breadcrumb {
+    background-color: var(--purple) !important;
+}
+
+.btn-info {
+    color: var(--purple);
+    background-color: var(--lpurple);
+    border-color: var(--purple);
+    border-radius: 10px;
+    transition: .3s ease-in-out;
+    outline: none;
+
+    &:hover {
+        color: var(--white);
+        background-color: var(--purple);
+        border-color: var(--lpurple);
+    }
+}
+
+.btn-login {
+    width: 100%;
+    color: var(--yellow);
+    background-color: var(--lyellow);
+    transition: .3s ease-in-out;
+    border-radius: 10px;
+    outline: none;
+    font-size: 18px;
+    font-weight: 500;
+    // box-shadow: 0px -1px 4px 0px #666;
+
+    &:hover {
+        color: var(--white);
+        background-color: var(--yellow);
+        // border-color: var(--white);
+        box-shadow: 0px 2px 4px -2px #000;        
+    }
+}
+
+.login-label {
+    font-style: normal;
+    color: var(--purple) !important;
+    font-size: 14px !important;
+}
+
+.sidebar-nav ul .sidebar-item.active > .sidebar-link,
+.sidebar-nav ul .sidebar-item .sidebar-link i {
+    color: var(--tgray) !important;
+    
+    &:hover {
+        background-color: var(--hover-bg) !important;
+    }
+
+    &:active {
+        color: var(--purple) !important;
+        background-color: var(--lpurple) !important;
+    }
+
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link.active i {
+    color: var(--purple) !important;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link.active:hover i {
+    color: var(--purple) !important;
+}
+ 
+.sidebar-nav ul .sidebar-item .sidebar-link:hover {
+    background-color: var(--hover-bg) !important;
+    color: var(--tgray) !important;
+    border-left: 5px solid var(--purple);
+    border-radius: 0 0 30px 0;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link.active {
+    background-color: var(--lpurple) !important;
+    color: var(--purple) !important;
+    border-radius: 0 0 30px 0;
+    border-left: 5px solid var(--purple);
+
+    &:hover {
+        background-color: var(--lpurple) !important;
+    color: var(--purple) !important;
+    }
+
+    &:active {
+        background-color: var(--lpurple) !important;
+    color: var(--purple) !important;
+    }
+
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link i {
+    font-size: 25px;
+    margin-right: 5px;
+}
+
+.sidebar-nav ul .sidebar-item .sidebar-link {
+    font-size: 16px;
+    font-weight: 500 !important;
+}
+
+.mat-typography h4 {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+}
+
+.theme-icon,
+.visible-icon,
+.edit-icon,
+.delete-icon {
+    padding: 5px !important;
+    border-radius: 50%;
+}
+
+// .theme-icon {
+//     color: var(--tgreen);
+//     background-color: var(--ltgreen);
+
+//     &:hover {
+//         border-radius: 50%;
+//         background-color: var(--tgreen);
+//         color: var(--white);
+//     }
+// }
+
+// .visible-icon {
+//     color: var(--blue);
+//     background-color: var(--lblue);
+//     border-color: var(--blue);
+
+//     &:hover {
+//         border-radius: 50%;
+//         background-color: var(--blue);
+//         color: var(--white);
+//     }
+// }
+
+.edit-icon {
+    color: var(--purple);
+    background-color: var(--lpurple);
+    border-color: var(--purple);
+
+    &:hover {
+        border-radius: 50%;
+        background-color: var(--purple);
+        color: var(--white);
+    }
+}
+
+.delete-icon {
+    color: var(--red);
+    background-color: var(--lred);
+    border-color: var(--red);
+
+    &:hover {
+        border-radius: 50%;
+        background-color: var(--red);
+        color: var(--white);
+    }
+}
+
+.user-profile {
+    padding-top: 20px !important;
+    display: flex;
+    flex-wrap: wrap;
+
+    img {
+        margin: 0 2px;
+    }
+
+    span {
+        align-self: center;
+    }
+}
+
+/*Scroll bar nav*/
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-border-radius: 5px !important;
+    -webkit-box-shadow: none !important;
+    border-radius: 5px !important;   
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 5px !important;
+    border-radius: 5px !important;
+    background: #0000004f !important;
+    -webkit-box-shadow: none !important; 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: auto; 
+}
+
