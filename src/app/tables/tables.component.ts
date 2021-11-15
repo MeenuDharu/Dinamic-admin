@@ -120,6 +120,7 @@ export class TablesComponent implements OnInit {
 	}
 
 	saveAsImage(parent: any, x: any) {
+		console.log({parent}, {x});
 		// fetches base 64 date from image
 		let parentSrc = "#QR" + parent;
 		console.log("parent...............", parentSrc)

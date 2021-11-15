@@ -97,6 +97,7 @@ export class restaurantComponent implements OnInit {
 					data["email"] = this.restaurant_list[i].email;
 					data["website"] = this.restaurant_list[i].website;
 					data["base_url"] = this.restaurant_list[i].base_url;
+					data["sellout"] = this.restaurant_list[i].sellout;
 					this.dataArray.push(data);
 				}
 				this.dataSource.data = this.dataArray as restData[];

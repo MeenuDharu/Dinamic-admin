@@ -71,6 +71,21 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="addForm.sellout ? 'is-focused': ''">
+						<label class="switch">
+							<input type="checkbox" name="sellout" [(ngModel)]="dinamicSellout"
+								(change)="checkSellout($event, 'add')"/>
+							<div>
+								<span>DiNAMIC Sellout</span>
+							</div>
+						</label>
+					</div>
+				</div>
+			</div>
 			<div *ngIf="addForm.error_msg" class="error-msg">{{ addForm.error_msg }}</div>
 		</div>
 		<div class="row">
@@ -162,6 +177,20 @@
 				</div>
 			</div>
 
+			<div class="row">
+				<div class="col-md-12">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						[ngClass]="editForm.sellout ? 'is-focused': ''">
+						<label class="switch">
+							<input type="checkbox" name="sellout" [(ngModel)]="dinamicSellout"
+								(change)="checkSellout($event, 'edit')"/>
+							<div>
+								<span>DiNAMIC Sellout</span>
+							</div>
+						</label>
+					</div>
+				</div>
+			</div>
 
 			<div *ngIf="editForm.error_msg" class="error-msg">{{ editForm.error_msg }}</div>
 		</div>

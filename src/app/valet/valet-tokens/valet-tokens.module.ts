@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ValetTokensDialogComponent } from './valet-tokens-dialog/valet-tokens-dialog.component';
 import { AngularMaterialModule } from "../../angular-material/angular-material.module";
 import { AuthGuard } from 'src/app/_guards/auth.guard';
+import { QRCodeModule } from 'angular2-qrcode';
 
 const valet_tokens_routes: Routes = [
   {
@@ -36,6 +37,7 @@ const valet_tokens_routes: Routes = [
     FormsModule,
     AngularMaterialModule,
     RouterModule.forChild(valet_tokens_routes),
+    QRCodeModule
   ]
 })
 export class ValetTokensModule { }

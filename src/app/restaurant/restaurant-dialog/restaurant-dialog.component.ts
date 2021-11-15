@@ -42,12 +42,14 @@ export class restaurantDialogComponent implements OnInit {
 	formType: any;
 	restData: any;
 	tableName: any = '';
+	dinamicSellout: boolean = false;
 
 	constructor(
 		public dialogRef: MatDialogRef<restaurantDialogComponent>,
 		//@Optional() is used to prevent error if no data is passed
 		@Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
-		public apiService: ApiService) {
+		public apiService: ApiService
+	) {
 		console.log('dialogData ', data);
 		this.local_data = { ...data };
 		this.formType = this.local_data.x;
@@ -65,6 +67,8 @@ export class restaurantDialogComponent implements OnInit {
 			this.editForm.email = x.email;
 			this.editForm.website = x.website;
 			this.editForm.base_url = x.base_url;
+			this.editForm.sellout = x.sellout;
+			x.sellout === 'active' ? this.dinamicSellout = true : this.dinamicSellout = false;
 		} else if (this.formType === 'delete') {
 			this.deleteId = x._id;
 			this.delete_pos_rest_id = x.pos_rest_id;
@@ -133,6 +137,20 @@ export class restaurantDialogComponent implements OnInit {
 		console.log(this.addForm);
 	}
 
+	checkSellout(event: any, type: string) {
+		if (type === 'add') {
+			event.target.checked ?
+				this.addForm.sellout = 'active' :
+				this.addForm.sellout = 'inactive';
+			console.log(this.addForm.sellout)
+		} else if (type === 'edit') {
+			event.target.checked ?
+				this.editForm.sellout = 'active' :
+				this.editForm.sellout = 'inactive';
+			console.log(this.editForm.sellout)
+		}
+	}
+
 	onAddRestaurant() {
 		console.log("add...........", this.addForm)
 		this.apiService.ADD_RESTAURANT(this.addForm).subscribe(result => {
@@ -180,7 +198,7 @@ export class restaurantDialogComponent implements OnInit {
 		this.themeForm = {
 			'isDefault': true,
 			'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,
-			'restaurant_id' : data.restaurant_id,
+			'restaurant_id': data.restaurant_id,
 			'pos_rest_id': data.pos_rest_id,
 			'theme': this.themeObject,
 			'homepage': this.homepageObject,
@@ -190,7 +208,7 @@ export class restaurantDialogComponent implements OnInit {
 		}
 		console.log('themeform object', this.themeForm);
 		this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {
-			console.log("add theme result ",result )
+			console.log("add theme result ", result)
 			if (result.status) {
 				this.doAction();
 			} else {
