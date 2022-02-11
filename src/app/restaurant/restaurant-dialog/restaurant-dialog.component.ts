@@ -43,6 +43,7 @@ export class restaurantDialogComponent implements OnInit {
 	restData: any;
 	tableName: any = '';
 	dinamicSellout: boolean = false;
+	box: boolean = false;
 
 	constructor(
 		public dialogRef: MatDialogRef<restaurantDialogComponent>,
@@ -69,6 +70,8 @@ export class restaurantDialogComponent implements OnInit {
 			this.editForm.base_url = x.base_url;
 			this.editForm.sellout = x.sellout;
 			x.sellout === 'active' ? this.dinamicSellout = true : this.dinamicSellout = false;
+			x.box === 'active' ? this.box = true : this.box = false;
+			console.log({x})
 		} else if (this.formType === 'delete') {
 			this.deleteId = x._id;
 			this.delete_pos_rest_id = x.pos_rest_id;
@@ -148,6 +151,21 @@ export class restaurantDialogComponent implements OnInit {
 				this.editForm.sellout = 'active' :
 				this.editForm.sellout = 'inactive';
 			console.log(this.editForm.sellout)
+		}
+	}
+
+	checkBox(event: any, type: string) {
+		console.log(event, type);
+		if (type === 'add') {
+			event.target.checked ?
+				this.addForm.box = 'active' :
+				this.addForm.box = 'inactive';
+			console.log(this.addForm.box)
+		} else if (type === 'edit') {
+			event.target.checked ?
+				this.editForm.box = 'active' :
+				this.editForm.box = 'inactive';
+			console.log(this.editForm.box)
 		}
 	}
 

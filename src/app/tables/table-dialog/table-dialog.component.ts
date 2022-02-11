@@ -114,7 +114,7 @@ export class TableDialogComponent implements OnInit {
 				this.addForm.pos_restaurant_id = this.selectedRestaurant.pos_rest_id;
 				this.addForm.pos_branch_id = this.selectedBranch.pos_branch_id;
 				this.addForm.tablestatus = true;
-				this.addForm.locationType = this.locationType;
+				this.addForm.type = this.locationType;
 					this.addForm.pos_table_id = table.table_id;
 					this.addForm.table_api = "/detail/tables/" + table.table_id;
 					this.addForm.name = table.table_name;
