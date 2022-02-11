@@ -20,11 +20,11 @@ export interface IThemeForm {
 }
 
 @Component({
-	selector: 'app-restaurent-dialog',
-	templateUrl: './restaurent-dialog.component.html',
-	styleUrls: ['./restaurent-dialog.component.css']
+	selector: 'app-restaurant-dialog',
+	templateUrl: './restaurant-dialog.component.html',
+	styleUrls: ['./restaurant-dialog.component.css']
 })
-export class RestaurentDialogComponent implements OnInit {
+export class restaurantDialogComponent implements OnInit {
 
 	local_data: any;
 	restaurant_list: any = [];
@@ -44,7 +44,7 @@ export class RestaurentDialogComponent implements OnInit {
 	tableName: any = '';
 
 	constructor(
-		public dialogRef: MatDialogRef<RestaurentDialogComponent>,
+		public dialogRef: MatDialogRef<restaurantDialogComponent>,
 		//@Optional() is used to prevent error if no data is passed
 		@Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData,
 		public apiService: ApiService) {
@@ -75,7 +75,7 @@ export class RestaurentDialogComponent implements OnInit {
 				this.restaurant_list = result.data;
 
 				this.apiService.POS_RESTAURANT_LIST().subscribe(result => {
-					console.log("Pos Restaurent............", this.restaurant_list);
+					console.log("Pos restaurant............", this.restaurant_list);
 
 					if (result) {
 						let a = this.restaurant_list;

@@ -4,6 +4,7 @@ import { UsersComponent } from './users.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { AuthGuard } from '../_guards/auth.guard';
 
 const user_routes: Routes = [
   {
@@ -11,10 +12,14 @@ const user_routes: Routes = [
     data: {
       title: 'Users',
       urls: [
-        { title: 'Users', url: '/users' }
+        { 
+          title: 'Users', 
+          url: '/users' 
+        }
       ]
     },
-    component: UsersComponent
+    component: UsersComponent,
+    canActivate: [AuthGuard]
   }
 ]
 

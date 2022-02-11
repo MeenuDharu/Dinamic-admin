@@ -160,12 +160,12 @@ export class BranchesComponent implements OnInit {
 
 	onTableList(x: any) {
 		localStorage.setItem('selected_branch', JSON.stringify(x));
-		this.router.navigate(['/tables']);
+		this.router.navigate(['/restaurants/tables']);
 	}
 
 	onValetList(x: any) {
 		localStorage.setItem('selected_branch', JSON.stringify(x));
-		this.router.navigate(['/valet-tokens']);
+		this.router.navigate(['/restaurants/valet-tokens']);
 	}
 
 }

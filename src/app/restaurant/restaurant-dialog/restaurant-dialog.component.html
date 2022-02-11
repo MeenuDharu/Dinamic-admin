@@ -10,7 +10,7 @@
 							name="pos_rest_id" [(ngModel)]="addForm.pos_rest_id" #pos_rest_id="ngModel" required>
 							<option [value]="x._id" *ngFor="let x of pos_restaurant_list">{{x.name}}</option>
 						</select>
-						<label class="mdl-textfield__label cname-color" for="pos_rest_id">Restaurent Name</label>
+						<label class="mdl-textfield__label cname-color" for="pos_rest_id">restaurant Name</label>
 					</div>
 
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
@@ -97,7 +97,7 @@
 							name="pos_rest_id" [(ngModel)]="editForm.pos_rest_id" #pos_rest_id="ngModel">
 							<option [value]="x._id" *ngFor="let x of pos_restaurant_list">{{x.name}}</option>
 						</select>
-						<label class="mdl-textfield__label cname-color" for="pos_rest_id">Restaurent Name</label>
+						<label class="mdl-textfield__label cname-color" for="pos_rest_id">restaurant Name</label>
 					</div>
 
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"

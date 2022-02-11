@@ -10,6 +10,7 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 export class BreadcrumbComponent implements OnInit {
   //@Input() layout;
   pageInfo:Data=Object.create(null);
+  showBackArrow: any;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -29,8 +30,15 @@ export class BreadcrumbComponent implements OnInit {
       .pipe(filter(route => route.outlet === 'primary'))
       .pipe(mergeMap(route => route.data))
       .subscribe(event => {
+        console.log({event})
         this.titleService.setTitle(event['title']);
         this.pageInfo = event;
+        if (this.pageInfo.urls['0'].url !== '/restaurants' && this.pageInfo.urls['0'].url !== '/users') {
+          this.showBackArrow = true;
+        } else {
+          this.showBackArrow = false;
+        }
+        console.log(this.pageInfo?.urls[0]?.url, '!== /restaurants ' , this.showBackArrow)
       });
   }
   ngOnInit() {}

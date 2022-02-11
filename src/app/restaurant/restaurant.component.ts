@@ -6,7 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from "@angular/material/dialog";
 import { SelectionModel } from '@angular/cdk/collections';
-import { RestaurentDialogComponent } from './restaurent-dialog/restaurent-dialog.component';
+import { restaurantDialogComponent } from './restaurant-dialog/restaurant-dialog.component';
 
 export interface restData {
 	name: string;
@@ -17,12 +17,12 @@ export interface restData {
 }
 
 @Component({
-	selector: 'app-restaurent',
-	templateUrl: './restaurent.component.html',
-	styleUrls: ['./restaurent.component.css']
+	selector: 'app-restaurant',
+	templateUrl: './restaurant.component.html',
+	styleUrls: ['./restaurant.component.css']
 })
 
-export class RestaurentComponent implements OnInit {
+export class restaurantComponent implements OnInit {
 	restaurant_list: any = [];
 	addForm: any = {}; editForm: any = {};
 	restaurantName: string = ''; deleteId: any = '';
@@ -73,10 +73,10 @@ export class RestaurentComponent implements OnInit {
 	ngOnInit() {
 		this.pageNo = 1;
 		this.entryLimit = 10;
-		this.restaurentList();
+		this.restaurantList();
 	}
 
-	restaurentList() {
+	restaurantList() {
 		this.dataArray = [];
 		this.apiService.RESTAURANT_LIST().subscribe(result => {
 			console.log("result data..........", result)
@@ -143,7 +143,7 @@ export class RestaurentComponent implements OnInit {
 
 	onBranchList(x: any) {
 		localStorage.setItem('selected_restaurant', JSON.stringify(x));
-		this.router.navigate(['/branches']);
+		this.router.navigate(['/restaurants/branches']);
 	}
 
 	transform(items: any[], value: string): any[] {
@@ -174,13 +174,13 @@ export class RestaurentComponent implements OnInit {
 
 	onChangeTheme(selectedRestaurantData : any) {
 		localStorage.setItem('selected_restaurant', JSON.stringify(selectedRestaurantData));
-		this.router.navigate(['/restaurent-theme']);
+		this.router.navigate(['/restaurants/restaurant-theme']);
 	}
 
 
 	openDialog(x: any, y: any) {
 		console.log('x:. ', x, 'y:. ', y)
-		let dialogref = this.dialog.open(RestaurentDialogComponent, {
+		let dialogref = this.dialog.open(restaurantDialogComponent, {
 			maxWidth: '100vw',
 			maxHeight: '100vh',
 			width: '750px',
@@ -190,7 +190,7 @@ export class RestaurentComponent implements OnInit {
 
 		dialogref.afterClosed().subscribe(res => {			
 				console.log('res evnt....', res.event)
-				this.restaurentList();					
+				this.restaurantList();					
 		})
 	}
 

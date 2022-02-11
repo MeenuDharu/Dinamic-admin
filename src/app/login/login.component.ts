@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 	constructor(private router: Router, private apiService: ApiService) { }
 
 	ngOnInit(): void {
-		localStorage.clear();
+		// localStorage.clear();
 	}
 
 	onSubmit() {
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 			console.log("result.............")
 			if (result.status) {
 				localStorage.setItem('admin_token', result.token);
-				this.router.navigate(['/restaurents']);
+				this.router.navigate(['/restaurants']);
 			}
 			else {
 				this.loginForm.error_msg = result.message;

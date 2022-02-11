@@ -4,13 +4,13 @@ import { MatDialog } from "@angular/material/dialog";
 import { environment } from 'src/environments/environment';
 
 @Component({
-	selector: 'app-restaurent-theme',
-	templateUrl: './restaurent-theme.component.html',
-	styleUrls: ['./restaurent-theme.component.css']
+	selector: 'app-restaurant-theme',
+	templateUrl: './restaurant-theme.component.html',
+	styleUrls: ['./restaurant-theme.component.css']
 })
-export class RestaurentThemeComponent implements OnInit {
+export class restaurantThemeComponent implements OnInit {
 
-	selectedRestaurent = JSON.parse(localStorage.getItem('selected_restaurant')!);
+	selectedrestaurant = JSON.parse(localStorage.getItem('selected_restaurant')!);
 	randomQuery: string = '';
 	formType: string = '';
 	themeForm: any = {};
@@ -47,7 +47,7 @@ export class RestaurentThemeComponent implements OnInit {
 		this.themeObject = [];
 		this.homepageObject = [];
 		this.quickHelpObject = [];
-		this.apiService.THEME_LIST({ "pos_rest_id": this.selectedRestaurent.pos_rest_id }).subscribe((result) => {
+		this.apiService.THEME_LIST({ "pos_rest_id": this.selectedrestaurant.pos_rest_id }).subscribe((result) => {
 			console.log('Result: ', result);
 			if (result.status) {
 				if (formType === 'theme') {
@@ -328,7 +328,7 @@ export class RestaurentThemeComponent implements OnInit {
 	onUpdateTheme(updateName: any) {
 
 		if (updateName === 'theme') {
-			this.themeObject.pos_rest_id = this.selectedRestaurent.pos_rest_id;
+			this.themeObject.pos_rest_id = this.selectedrestaurant.pos_rest_id;
 			this.themeObject.isDefaultTheme = false;
 			this.themeForm = {
 				'isDefault': false,
@@ -341,7 +341,7 @@ export class RestaurentThemeComponent implements OnInit {
 			});
 		} else if (updateName === 'homepage') {
 			this.formDataHomePage.set('isDefault', "false");
-			this.formDataHomePage.set('pos_rest_id', this.selectedRestaurent.pos_rest_id);
+			this.formDataHomePage.set('pos_rest_id', this.selectedrestaurant.pos_rest_id);
 			this.formDataHomePage.set('isDefaultHomepage', "false");
 			this.formDataHomePage.set('formType', 'homepage');
 			this.formDataHomePage.set('header', this.homepageObject.header);
@@ -372,7 +372,7 @@ export class RestaurentThemeComponent implements OnInit {
 			});
 		} else if (updateName === 'quickHelp') {
 			this.formDataQuickHelp.set('isDefault', "false");
-			this.formDataQuickHelp.set('pos_rest_id', this.selectedRestaurent.pos_rest_id);
+			this.formDataQuickHelp.set('pos_rest_id', this.selectedrestaurant.pos_rest_id);
 			this.formDataQuickHelp.set('formType', 'quickHelp');
 			this.formDataQuickHelp.set('isDefaultQuickHelp', "false");
 			this.formDataQuickHelp.set('mainMenuStatus', this.quickHelpObject.mainMenuStatus);
@@ -395,7 +395,7 @@ export class RestaurentThemeComponent implements OnInit {
 		} else if (updateName === 'brokenImages') {
 			this.formDataBrokenImages.set('isDefault', 'false');
 			this.formDataBrokenImages.set('isDefaultBrokenImages', 'false');
-			this.formDataBrokenImages.set('pos_rest_id', this.selectedRestaurent.pos_rest_id);
+			this.formDataBrokenImages.set('pos_rest_id', this.selectedrestaurant.pos_rest_id);
 			this.formDataBrokenImages.set('formType', 'brokenImages');
 			this.apiService.ADD_BROKENIMAGES_THEME(this.formDataBrokenImages).subscribe((result) => {
 				console.log('brokenImages', result);
@@ -407,7 +407,7 @@ export class RestaurentThemeComponent implements OnInit {
 
 			});
 		} else if (updateName === 'dynamicThings') {
-			this.dynamicThingsObject.pos_rest_id = this.selectedRestaurent.pos_rest_id;
+			this.dynamicThingsObject.pos_rest_id = this.selectedrestaurant.pos_rest_id;
 			this.dynamicThingsObject.isDefaultDynamicThings = false;
 			this.themeForm = {
 				'isDefault': false,

@@ -38,9 +38,9 @@ File: scss
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-@import url(e:\hari\dinamic-new-git\DQRAdmin\src\assets\scss\icons\font-awesome\css\fontawesome-all.css);
-@import url(e:\hari\dinamic-new-git\DQRAdmin\src\assets\scss\icons\themify-icons\themify-icons.css);
-@import url(e:\hari\dinamic-new-git\DQRAdmin\src\assets\scss\icons\material-design-iconic-font\css\materialdesignicons.min.css);
+/* @import url(d:\DiNAMIC MOBILE\DiNAMIC Projects\Dinamic-admin\src\assets\scss\icons\font-awesome\css\fontawesome-all.css);
+@import url(d:\DiNAMIC MOBILE\DiNAMIC Projects\Dinamic-admin\src\assets\scss\icons\themify-icons\themify-icons.css);
+@import url(d:\DiNAMIC MOBILE\DiNAMIC Projects\Dinamic-admin\src\assets\scss\icons\material-design-iconic-font\css\materialdesignicons.min.css); */
 :root {
   --blue: #009efb;
   --indigo: #6610f2;
@@ -11590,5 +11590,13 @@ File: scss
   .do-block {
     display: block !important;
   }
+}
+
+.btn-info {
+  background-color: brown !important;
+}
+
+.btn-info:hover {
+  background-color: chartreuse !important;
 }
 /*# sourceMappingURL=style.css.map */

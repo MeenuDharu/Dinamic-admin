@@ -25,6 +25,11 @@ export class TableDialogComponent implements OnInit {
 	isChecked: any;
 	table_status: any;
 	formType: any;
+	locationType: any;
+	table_floor_name: any;
+	pos_floor_id: any;
+	addForm_array: any = [];
+
 
 	constructor(public dialogRef: MatDialogRef<TableDialogComponent>,
 		//@Optional() is used to prevent error if no data is passed
@@ -56,7 +61,7 @@ export class TableDialogComponent implements OnInit {
 			}
 			this.addForm = {};
 			this.apiService.POS_FLOOR_LIST({ pos_branch_id: this.selectedBranch.pos_branch_id }).subscribe(result => {
-				console.log("Pos Restaurent Floor............", result);
+				console.log("Pos restaurant Floor............", result);
 				if (result) {
 					this.pos_floor_list = result.table_plans
 				}
@@ -77,9 +82,9 @@ export class TableDialogComponent implements OnInit {
 
 	onOptionsSelected(event: any) {
 		const value = event.target.value;
-		this.addForm.pos_floor_id = event.target.value;
+		this.pos_floor_id = event.target.value;
 		this.apiService.POS_TABLE_LIST({ pos_floor_id: event.target.value }).subscribe(result => {
-			console.log("Pos Restaurent Floor............", result[0].tables_list);
+			console.log("Pos restaurant Floor............", result[0].tables_list);
 
 			console.log("this.table_list1............", this.table_list);
 			if (result) {
@@ -99,13 +104,26 @@ export class TableDialogComponent implements OnInit {
 				this.pos_table_list = b;
 			}
 
-			// if (this.pos_table_list.length) {
-			// 	this.pos_table_list.forEach((table: any) => {
-			// 		this.addForm.pos_table_id = table.table_id;
-			// 		this.addForm.table_api = "detail/tables/" + table.table_id;
-			// 		this.addForm.name = table.table_name;
-			// 	})
-			// }
+			if (this.pos_table_list.length) {
+				this.addForm_array = [];
+				this.pos_table_list.forEach((table: any) => {
+				this.addForm.floor_name = this.table_floor_name;
+				this.addForm.restaurant_id = this.selectedRestaurant._id;
+				this.addForm.branch_id = this.selectedBranch._id;
+				this.addForm.pos_floor_id = this.pos_floor_id;
+				this.addForm.pos_restaurant_id = this.selectedRestaurant.pos_rest_id;
+				this.addForm.pos_branch_id = this.selectedBranch.pos_branch_id;
+				this.addForm.tablestatus = true;
+				this.addForm.locationType = this.locationType;
+					this.addForm.pos_table_id = table.table_id;
+					this.addForm.table_api = "/detail/tables/" + table.table_id;
+					this.addForm.name = table.table_name;
+					this.addForm_array.push(this.addForm);
+					this.addForm = {};
+				})
+				console.log('addForm ', this.addForm);
+				console.log('addForm Array ',this.addForm_array);
+			}
 
 
 		});
@@ -148,12 +166,12 @@ export class TableDialogComponent implements OnInit {
 	}
 
 	onAddTable() {
-		this.addForm.restaurant_id = this.selectedRestaurant._id;
-		this.addForm.branch_id = this.selectedBranch._id;
-		this.addForm.pos_restaurant_id = this.selectedRestaurant.pos_rest_id;
-		this.addForm.pos_branch_id = this.selectedBranch.pos_branch_id;
-		this.addForm.tablestatus = true;
-		this.apiService.ADD_TABLE(this.addForm).subscribe(result => {
+		// this.addForm.restaurant_id = this.selectedRestaurant._id;
+		// this.addForm.branch_id = this.selectedBranch._id;
+		// this.addForm.pos_restaurant_id = this.selectedRestaurant.pos_rest_id;
+		// this.addForm.pos_branch_id = this.selectedBranch.pos_branch_id;
+		// this.addForm.tablestatus = true;
+		this.apiService.ADD_TABLE(this.addForm_array).subscribe(result => {
 			if (result.status) {
 				this.doAction();
 			}

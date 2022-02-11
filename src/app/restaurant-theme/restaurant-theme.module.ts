@@ -1,25 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RestaurentThemeComponent } from './restaurent-theme.component';
+import { restaurantThemeComponent } from './restaurant-theme.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { AuthGuard } from '../_guards/auth.guard';
 
 const rest_theme_routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Restaurent Theme',
+      title: 'Restaurant Theme',
       urls: [
-        { title: 'Restaurent Theme', url: '/restaurent-theme' }
+        { 
+          title: 'Restaurant Theme', 
+          url: '/restaurant-theme',
+          back_url: '/restaurants' 
+        }
       ]
     },
-    component: RestaurentThemeComponent
+    component: restaurantThemeComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
-  declarations: [RestaurentThemeComponent],
+  declarations: [restaurantThemeComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -27,4 +33,4 @@ const rest_theme_routes: Routes = [
     RouterModule.forChild(rest_theme_routes),
   ]
 })
-export class RestaurentThemeModule { }
+export class restaurantThemeModule { }

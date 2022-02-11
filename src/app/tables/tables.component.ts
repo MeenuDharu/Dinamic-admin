@@ -101,6 +101,7 @@ export class TablesComponent implements OnInit {
 					data["table_api"] = this.table_list[i].table_api;
 					this.dataArray.push(data);
 				}
+				this.dataArray.sort((a: any, b: any) => a.name > b.name ? 1 : -1);
 				this.dataSource.data = this.dataArray as branchData[];
 			}
 		});
@@ -213,6 +214,8 @@ export class TablesComponent implements OnInit {
 				const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
 				//const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
 				this.saveAsExcelFile(excelBuffer, excelName);
+			} else {
+				alert('No tables to export');
 			}
 	
 		});
