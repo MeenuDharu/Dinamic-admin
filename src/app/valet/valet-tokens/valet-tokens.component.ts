@@ -104,6 +104,7 @@ export class ValetTokensComponent implements OnInit {
 	}
 
 	saveAsImage(parent: any, x: any) {
+		console.log({parent}, {x})
 		//fetches base 64 date from image
 		let parentSrc = "#QR" + parent;
 		console.log("parent:", parentSrc);
@@ -123,7 +124,7 @@ export class ValetTokensComponent implements OnInit {
 			// window.open(url);
 			const link = document.createElement('a');
 			link.href = url;
-			link.download = x.access_code;
+			link.download = x.qrcode_link;
 			link.click();
 		}
 	}
