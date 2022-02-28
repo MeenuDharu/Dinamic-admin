@@ -37,3 +37,44 @@ mat-label {
     border-radius: 10px;
     padding: 10px;
 }
+
+.group-card {
+	padding: 25px;
+	border-radius: 10px;
+	box-shadow: inset 1px 0 10px 0px #FFBB00;
+}
+
+.divider {								/* minor cosmetics */
+	display: table; 
+	font-size: 20px; 
+	font-weight: 500;
+	text-align: center; 
+	width: 75%; 						/* divider width */
+	margin: 40px auto;					/* spacing above/below */
+}
+.divider span { display: table-cell; position: relative; }
+.divider span:first-child, .divider span:last-child {
+	width: 50%;
+	top: 13px;							/* adjust vertical align */
+	-moz-background-size: 100% 2px; 	/* line width */
+	background-size: 100% 2px; 			/* line width */
+	background-position: 0 0, 0 100%;
+	background-repeat: no-repeat;
+}
+.divider span:first-child {				/* color changes in here */
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), to(#FFBB00));
+	background-image: -webkit-linear-gradient(180deg, transparent, #FFBB00);
+	background-image: -moz-linear-gradient(180deg, transparent, #FFBB00);
+	background-image: -o-linear-gradient(180deg, transparent, #FFBB00);
+	background-image: linear-gradient(90deg, transparent, #FFBB00);
+}
+.divider span:nth-child(2) {
+	color: #5B32BC; padding: 0px 5px; width: auto; white-space: nowrap;
+}
+.divider span:last-child {				/* color changes in here */
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#FFBB00), to(transparent));
+	background-image: -webkit-linear-gradient(180deg, #FFBB00, transparent);
+	background-image: -moz-linear-gradient(180deg, #FFBB00, transparent);
+	background-image: -o-linear-gradient(180deg, #FFBB00, transparent);
+	background-image: linear-gradient(90deg, #FFBB00, transparent);
+}

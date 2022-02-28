@@ -528,7 +528,8 @@
 										<mat-form-field class="w-100">
 											<mat-label>Background</mat-label>
 											<input matInput type="text" name="primary_theme_background"
-												[(ngModel)]="themeObject.primary_theme_background" #primary_theme_background="ngModel" required />
+												[(ngModel)]="themeObject.primary_theme_background"
+												#primary_theme_background="ngModel" required />
 										</mat-form-field>
 									</div>
 
@@ -536,7 +537,8 @@
 										<mat-form-field class="w-100">
 											<mat-label>Text Color</mat-label>
 											<input matInput type="text" name="primary_theme_text"
-												[(ngModel)]="themeObject.primary_theme_text" #primary_theme_text="ngModel" required />
+												[(ngModel)]="themeObject.primary_theme_text"
+												#primary_theme_text="ngModel" required />
 										</mat-form-field>
 									</div>
 								</div>
@@ -547,7 +549,8 @@
 										<mat-form-field class="w-100">
 											<mat-label>Card Background</mat-label>
 											<input matInput type="text" name="primary_card_background"
-												[(ngModel)]="themeObject.primary_card_background" #primary_card_background="ngModel" required />
+												[(ngModel)]="themeObject.primary_card_background"
+												#primary_card_background="ngModel" required />
 										</mat-form-field>
 									</div>
 
@@ -555,17 +558,19 @@
 										<mat-form-field class="w-100">
 											<mat-label>Card Text Color</mat-label>
 											<input matInput type="text" name="primary_card_text"
-												[(ngModel)]="themeObject.primary_card_text" #primary_card_text="ngModel" required />
+												[(ngModel)]="themeObject.primary_card_text" #primary_card_text="ngModel"
+												required />
 										</mat-form-field>
 									</div>
 								</div>
-								
+
 								<div class="row">
 									<div class="col-md-3">
 										<mat-form-field class="w-100">
 											<mat-label>Button Background</mat-label>
 											<input matInput type="text" name="primary_button_background"
-												[(ngModel)]="themeObject.primary_button_background" #primary_button_background="ngModel" required />
+												[(ngModel)]="themeObject.primary_button_background"
+												#primary_button_background="ngModel" required />
 										</mat-form-field>
 									</div>
 
@@ -573,7 +578,8 @@
 										<mat-form-field class="w-100">
 											<mat-label>Button Text Color</mat-label>
 											<input matInput type="text" name="primary_button_text"
-												[(ngModel)]="themeObject.primary_button_text" #primary_button_text="ngModel" required />
+												[(ngModel)]="themeObject.primary_button_text"
+												#primary_button_text="ngModel" required />
 										</mat-form-field>
 									</div>
 								</div>
@@ -594,6 +600,159 @@
 			</div>
 		</div>
 
+		<!-- Instruction page Updation -->
+		<div class="row">
+			<div class="col-md-12">
+				<mat-card class="card mat-elevation-z1 p-0">
+					<div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
+						<h4 class="card-title m-0 font600">InstructionPage Update</h4>
+						<i class="material-icons edit-icon" style="cursor: pointer;"
+							(click)="onEdit('instructionPage')">edit</i>
+					</div>
+				</mat-card>
+				<ng-container *ngIf="formType === 'instructionPage'">
+					<mat-card class="mat-elevation-z-2 p-0">
+						<form autocomplete="off" (ngSubmit)="onUpdateTheme('instructionPage')" ngNativeValidate>
+							<div class="modal-body p-t-25 p-b-25">
+								<!-- Homepage Header -->
+								<div class="divider" style="margin-top: 0;"><span></span><span>Instruction
+									Header</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Header</mat-label>
+												<input matInput type="text" name="header"
+													[(ngModel)]="instructionObject.header" #header="ngModel" />
+											</mat-form-field>
+										</div>
+	
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Subheader</mat-label>
+												<input matInput type="text" name="subHeader"
+													[(ngModel)]="instructionObject.subHeader" #subHeader="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+	
+									<div class="row">
+										<mat-checkbox class="p-10" name="headerStatus"
+											[(ngModel)]="instructionObject.headerStatus">Show Ins-Header
+										</mat-checkbox>
+									</div>
+								</div>
+
+								<!-- Card-1 -->
+								<div class="divider"><span></span><span>Card 1</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>card Title</mat-label>
+												<input matInput type="text" name="card1_title"
+													[(ngModel)]="instructionObject.card1_title" #card1_title="ngModel" />
+											</mat-form-field>
+										</div>
+	
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Description</mat-label>
+												<input matInput type="text" name="card1_desc"
+													[(ngModel)]="instructionObject.card1_desc"
+													#card1_desc="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+	
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="card1_img"
+												[(ngModel)]="instructionObject.card1_img" #card1_img="ngModel"
+												(change)="onInstructionFileChange($event, 'card1_img', 'card1_prev')" />
+										</div>
+	
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="card1_prev"
+													src="{{this.baseUrl+this.instructionObject.card1_img}}?{{randomQuery}}"
+													alt="Card1 Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+	
+									<div class="row">
+										<mat-checkbox class="p-10" name="card1_status"
+											[(ngModel)]="instructionObject.card1_status">Show card-1
+										</mat-checkbox>
+									</div>
+								</div>
+
+								<!-- Card-2 -->
+								<div class="divider"><span></span><span>Card 2</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>card Title</mat-label>
+												<input matInput type="text" name="card2_title"
+													[(ngModel)]="instructionObject.card2_title" #card2_title="ngModel" />
+											</mat-form-field>
+										</div>
+	
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Description</mat-label>
+												<input matInput type="text" name="card2_desc"
+													[(ngModel)]="instructionObject.card2_desc"
+													#card2_desc="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+	
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="card2_img"
+												[(ngModel)]="instructionObject.card2_img" #card2_img="ngModel"
+												(change)="onInstructionFileChange($event, 'card2_img', 'card2_prev')" />
+										</div>
+	
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="card2_prev"
+													src="{{this.baseUrl+this.instructionObject.card2_img}}?{{randomQuery}}"
+													alt="Card2 Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+	
+									<div class="row">
+										<mat-checkbox class="p-10" name="card2_status"
+											[(ngModel)]="instructionObject.card2_status">Show card-2
+										</mat-checkbox>
+									</div>
+								</div>
+
+								<mat-divider></mat-divider>
+								
+								<div *ngIf="instructionObject.error_msg" class="error-msg">{{
+									instructionObject.error_msg }}
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12 text-right p-x-25 p-b-10">
+									<button type="button" class="btn btn-link btn-cancel waves-effect"
+										(click)="closeForm()">CANCEL</button>
+									<button type="submit" class="btn btn-link waves-effect">DONE</button>
+								</div>
+							</div>
+
+						</form>
+					</mat-card>
+				</ng-container>
+			</div>
+		</div>
 
 		<!-- Homepage Updation -->
 		<div class="row">
@@ -601,240 +760,269 @@
 				<mat-card class="card mat-elevation-z1 p-0">
 					<div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
 						<h4 class="card-title m-0 font600">HomePage Update</h4>
-						<i class="material-icons edit-icon" style="cursor: pointer;" (click)="onEdit('homepage')">edit</i>
+						<i class="material-icons edit-icon" style="cursor: pointer;"
+							(click)="onEdit('homepage')">edit</i>
 					</div>
 				</mat-card>
 				<ng-container *ngIf="formType === 'homepage'">
 					<mat-card class="mat-elevation-z-2 p-0">
 						<form autocomplete="off" (ngSubmit)="onUpdateTheme('homepage')" ngNativeValidate>
-							<div class="modal-body p-25">
+							<div class="modal-body p-t-25 p-b-25">
+
 								<!-- Homepage Header -->
-								<div class="row">
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Homepage Header</mat-label>
-											<input matInput type="text" name="header"
-												[(ngModel)]="homepageObject.header" #header="ngModel" />
-										</mat-form-field>
+								<div class="divider" style="margin-top: 0;"><span></span><span>HomePage
+										Header</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Homepage Header</mat-label>
+												<input matInput type="text" name="header"
+													[(ngModel)]="homepageObject.header" #header="ngModel" />
+											</mat-form-field>
+										</div>
+
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Homepage Subheader</mat-label>
+												<input matInput type="text" name="subHeader"
+													[(ngModel)]="homepageObject.subHeader" #subHeader="ngModel" />
+											</mat-form-field>
+										</div>
 									</div>
 
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Homepage Subheader</mat-label>
-											<input matInput type="text" name="subHeader"
-												[(ngModel)]="homepageObject.subHeader" #subHeader="ngModel" />
-										</mat-form-field>
+									<div class="row">
+										<mat-checkbox class="p-10" name="headerStatus"
+											[(ngModel)]="homepageObject.headerStatus">Show Header
+										</mat-checkbox>
 									</div>
-								</div>
-
-								<div class="row">
-									<mat-checkbox class="p-10" name="headerStatus"
-										[(ngModel)]="homepageObject.headerStatus">Show Header
-									</mat-checkbox>
 								</div>
 
 								<!-- Homepage Bill -->
-								<div class="row">
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Bill Header</mat-label>
-											<input matInput type="text" name="billHeader"
-												[(ngModel)]="homepageObject.billHeader" #billHeader="ngModel" />
-										</mat-form-field>
-									</div>
+								<div class="divider"><span></span><span>Bill Card</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Bill Header</mat-label>
+												<input matInput type="text" name="billHeader"
+													[(ngModel)]="homepageObject.billHeader" #billHeader="ngModel" />
+											</mat-form-field>
+										</div>
 
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Bill Subheader</mat-label>
-											<input matInput type="text" name="billSubheader"
-												[(ngModel)]="homepageObject.billSubheader" #billSubheader="ngModel" />
-										</mat-form-field>
-									</div>
-								</div>
-
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="billImage" [(ngModel)]="homepageObject.billImage"
-											#billImage="ngModel" (change)="onHomePageFileChange($event, 'bill')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="billPreview"
-												src="{{this.baseUrl+this.homepageObject.billImage}}?{{randomQuery}}"
-												alt="Bill Image Preview" width="100px" height="100px">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Bill Subheader</mat-label>
+												<input matInput type="text" name="billSubheader"
+													[(ngModel)]="homepageObject.billSubheader"
+													#billSubheader="ngModel" />
+											</mat-form-field>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="billStatus"
-										[(ngModel)]="homepageObject.billStatus">Show Bill
-									</mat-checkbox>
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="billImage" [(ngModel)]="homepageObject.billImage"
+												#billImage="ngModel" (change)="onHomePageFileChange($event, 'bill')" />
+										</div>
+
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="billPreview"
+													src="{{this.baseUrl+this.homepageObject.billImage}}?{{randomQuery}}"
+													alt="Bill Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<mat-checkbox class="p-10" name="billStatus"
+											[(ngModel)]="homepageObject.billStatus">Show Bill
+										</mat-checkbox>
+									</div>
 								</div>
 
 								<!-- Homepage Help -->
-								<div class="row">
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Help Header</mat-label>
-											<input matInput type="text" name="helpHeader"
-												[(ngModel)]="homepageObject.helpHeader" #helpHeader="ngModel" />
-										</mat-form-field>
-									</div>
+								<div class="divider"><span></span><span>Help card</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Help Header</mat-label>
+												<input matInput type="text" name="helpHeader"
+													[(ngModel)]="homepageObject.helpHeader" #helpHeader="ngModel" />
+											</mat-form-field>
+										</div>
 
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Help Subheader</mat-label>
-											<input matInput type="text" name="helpSubheader"
-												[(ngModel)]="homepageObject.helpSubheader" #helpSubheader="ngModel" />
-										</mat-form-field>
-									</div>
-								</div>
-
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="helpImage" [(ngModel)]="homepageObject.helpImage"
-											#helpImage="ngModel" (change)="onHomePageFileChange($event, 'help')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="helpPreview"
-												src="{{this.baseUrl+this.homepageObject.helpImage}}?{{randomQuery}}"
-												alt="Help Image Preview" width="100px" height="100px">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Help Subheader</mat-label>
+												<input matInput type="text" name="helpSubheader"
+													[(ngModel)]="homepageObject.helpSubheader"
+													#helpSubheader="ngModel" />
+											</mat-form-field>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="helpStatus"
-										[(ngModel)]="homepageObject.helpStatus">Show Help
-									</mat-checkbox>
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="helpImage" [(ngModel)]="homepageObject.helpImage"
+												#helpImage="ngModel" (change)="onHomePageFileChange($event, 'help')" />
+										</div>
+
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="helpPreview"
+													src="{{this.baseUrl+this.homepageObject.helpImage}}?{{randomQuery}}"
+													alt="Help Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<mat-checkbox class="p-10" name="helpStatus"
+											[(ngModel)]="homepageObject.helpStatus">Show Help
+										</mat-checkbox>
+									</div>
 								</div>
 
 								<!-- Homepage Vehicle -->
-								<div class="row">
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Vehicle Header</mat-label>
-											<input matInput type="text" name="vehicleHeader"
-												[(ngModel)]="homepageObject.vehicleHeader" #vehicleHeader="ngModel" />
-										</mat-form-field>
-									</div>
+								<div class="divider"><span></span><span>Vehicle card</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Vehicle Header</mat-label>
+												<input matInput type="text" name="vehicleHeader"
+													[(ngModel)]="homepageObject.vehicleHeader"
+													#vehicleHeader="ngModel" />
+											</mat-form-field>
+										</div>
 
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Vehicle Subheader</mat-label>
-											<input matInput type="text" name="vehicleSubheader"
-												[(ngModel)]="homepageObject.vehicleSubheader"
-												#vehicleSubheader="ngModel" />
-										</mat-form-field>
-									</div>
-								</div>
-
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="vehicleImage" [(ngModel)]="homepageObject.vehicleImage"
-											#vehicleImage="ngModel"
-											(change)="onHomePageFileChange($event, 'vehicle')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="vehiclePreview"
-												src="{{this.baseUrl+this.homepageObject.vehicleImage}}?{{randomQuery}}"
-												alt="Vehicle Image Preview" width="100px" height="100px">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Vehicle Subheader</mat-label>
+												<input matInput type="text" name="vehicleSubheader"
+													[(ngModel)]="homepageObject.vehicleSubheader"
+													#vehicleSubheader="ngModel" />
+											</mat-form-field>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="vehicleStatus"
-										[(ngModel)]="homepageObject.vehicleStatus">Show
-										Vehicle
-									</mat-checkbox>
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="vehicleImage"
+												[(ngModel)]="homepageObject.vehicleImage" #vehicleImage="ngModel"
+												(change)="onHomePageFileChange($event, 'vehicle')" />
+										</div>
+
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="vehiclePreview"
+													src="{{this.baseUrl+this.homepageObject.vehicleImage}}?{{randomQuery}}"
+													alt="Vehicle Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<mat-checkbox class="p-10" name="vehicleStatus"
+											[(ngModel)]="homepageObject.vehicleStatus">Show
+											Vehicle
+										</mat-checkbox>
+									</div>
 								</div>
 
 								<!-- Homepage Offer -->
-								<div class="row">
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Offer Header</mat-label>
-											<input matInput type="text" name="offerHeader"
-												[(ngModel)]="homepageObject.offerHeader" #offerHeader="ngModel" />
-										</mat-form-field>
-									</div>
+								<div class="divider"><span></span><span>Offer card</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Offer Header</mat-label>
+												<input matInput type="text" name="offerHeader"
+													[(ngModel)]="homepageObject.offerHeader" #offerHeader="ngModel" />
+											</mat-form-field>
+										</div>
 
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Offer Subheader</mat-label>
-											<input matInput type="text" name="offerSubheader"
-												[(ngModel)]="homepageObject.offerSubheader" #offerSubheader="ngModel" />
-										</mat-form-field>
-									</div>
-								</div>
-
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="offerImage" [(ngModel)]="homepageObject.offerImage"
-											#offerImage="ngModel" (change)="onHomePageFileChange($event, 'offer')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="offerPreview"
-												src="{{this.baseUrl+this.homepageObject.offerImage}}?{{randomQuery}}"
-												alt="Offer Image Preview" width="100px" height="100px">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Offer Subheader</mat-label>
+												<input matInput type="text" name="offerSubheader"
+													[(ngModel)]="homepageObject.offerSubheader"
+													#offerSubheader="ngModel" />
+											</mat-form-field>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="offerStatus"
-										[(ngModel)]="homepageObject.offerStatus">Show Offer
-									</mat-checkbox>
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="offerImage" [(ngModel)]="homepageObject.offerImage"
+												#offerImage="ngModel"
+												(change)="onHomePageFileChange($event, 'offer')" />
+										</div>
+
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="offerPreview"
+													src="{{this.baseUrl+this.homepageObject.offerImage}}?{{randomQuery}}"
+													alt="Offer Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<mat-checkbox class="p-10" name="offerStatus"
+											[(ngModel)]="homepageObject.offerStatus">Show Offer
+										</mat-checkbox>
+									</div>
 								</div>
 
 								<!-- Homepage Exit -->
-								<div class="row">
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Exit Header</mat-label>
-											<input matInput type="text" name="exitHeader"
-												[(ngModel)]="homepageObject.exitHeader" #exitHeader="ngModel" />
-										</mat-form-field>
-									</div>
+								<div class="divider"><span></span><span>Exit card</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Exit Header</mat-label>
+												<input matInput type="text" name="exitHeader" 
+													[(ngModel)]="homepageObject.exitHeader" #exitHeader="ngModel" />
+											</mat-form-field>
+										</div>
 
-									<div class="col-md-6">
-										<mat-form-field class="w-100">
-											<mat-label>Exit Subheader</mat-label>
-											<input matInput type="text" name="exitSubheader"
-												[(ngModel)]="homepageObject.exitSubheader" #exitSubheader="ngModel" />
-										</mat-form-field>
-									</div>
-								</div>
-
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="exitImage" [(ngModel)]="homepageObject.exitImage"
-											#exitImage="ngModel" (change)="onHomePageFileChange($event, 'exit')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="exitPreview"
-												src="{{this.baseUrl+this.homepageObject.exitImage}}?{{randomQuery}}"
-												alt="Exit Image Preview" width="100px" height="100px">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Exit Subheader</mat-label>
+												<input matInput type="text" name="exitSubheader"
+													[(ngModel)]="homepageObject.exitSubheader"
+													#exitSubheader="ngModel" />
+											</mat-form-field>
 										</div>
 									</div>
+
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="exitImage" [(ngModel)]="homepageObject.exitImage"
+												#exitImage="ngModel" (change)="onHomePageFileChange($event, 'exit')" />
+										</div>
+
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="exitPreview"
+													src="{{this.baseUrl+this.homepageObject.exitImage}}?{{randomQuery}}"
+													alt="Exit Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<mat-checkbox class="p-10" name="exitStatus"
+											[(ngModel)]="homepageObject.exitStatus">Show Exit
+										</mat-checkbox>
+									</div>
 								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="exitStatus"
-										[(ngModel)]="homepageObject.exitStatus">Show Exit
-									</mat-checkbox>
-								</div>
+								<mat-divider></mat-divider>
 
 								<div *ngIf="homepageObject.error_msg" class="error-msg">{{ homepageObject.error_msg }}
 								</div>
@@ -860,215 +1048,215 @@
 				<mat-card class="card mat-elevation-z1 p-0">
 					<div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
 						<h4 class="card-title m-0 font600">Quick Help Update</h4>
-						<i class="material-icons edit-icon" style="cursor: pointer;" (click)="onEdit('quickHelp')">edit</i>
+						<i class="material-icons edit-icon" style="cursor: pointer;"
+							(click)="onEdit('quickHelp')">edit</i>
 					</div>
 				</mat-card>
 				<ng-container *ngIf="formType === 'quickHelp'">
 					<mat-card class="mat-elevation-z-2 p-0">
 						<form autocomplete="off" (ngSubmit)="onUpdateTheme('quickHelp')" ngNativeValidate>
-							<div class="modal-body p-25">
+							<div class="modal-body p-t-25 p-b-25">
 
 								<!-- Quick Help mainMenu -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Main Menu</label>
-
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="mainMenu" [(ngModel)]="quickHelpObject.mainMenu"
-											#mainMenu="ngModel" (change)="onQuickHelpFileChange($event, 'mainMenu')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="mainMenuPreview"
-												src="{{this.baseUrl+this.quickHelpObject.mainMenu}}?{{randomQuery}}"
-												alt="Main Menu Image Preview" width="100px" height="100px">
+								<div class="divider" style="margin-top: 0;"><span></span><span>Main
+										Menu</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="mainMenu" [(ngModel)]="quickHelpObject.mainMenu"
+												#mainMenu="ngModel"
+												(change)="onQuickHelpFileChange($event, 'mainMenu')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="mainMenuPreview"
+													src="{{this.baseUrl+this.quickHelpObject.mainMenu}}?{{randomQuery}}"
+													alt="Main Menu Image Preview" width="100px" height="100px">
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="mainMenuStatus"
-										[(ngModel)]="quickHelpObject.mainMenuStatus">Show Main menu
-									</mat-checkbox>
+									<div class="row">
+										<mat-checkbox class="p-10" name="mainMenuStatus"
+											[(ngModel)]="quickHelpObject.mainMenuStatus">Show Main menu
+										</mat-checkbox>
+									</div>
 								</div>
-
-								<mat-divider></mat-divider>
 
 								<!-- Quick Help viewBill -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">View Bill</label>
-
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="viewBill" [(ngModel)]="quickHelpObject.viewBill"
-											#viewBill="ngModel" (change)="onQuickHelpFileChange($event, 'viewBill')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="viewBillPreview"
-												src="{{this.baseUrl+this.quickHelpObject.viewBill}}?{{randomQuery}}"
-												alt="View bill Image Preview" width="100px" height="100px">
+								<div class="divider"><span></span><span>View Bill</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="viewBill" [(ngModel)]="quickHelpObject.viewBill"
+												#viewBill="ngModel"
+												(change)="onQuickHelpFileChange($event, 'viewBill')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="viewBillPreview"
+													src="{{this.baseUrl+this.quickHelpObject.viewBill}}?{{randomQuery}}"
+													alt="View bill Image Preview" width="100px" height="100px">
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="viewBillStatus"
-										[(ngModel)]="quickHelpObject.viewBillStatus">Show View Bill
-									</mat-checkbox>
+									<div class="row">
+										<mat-checkbox class="p-10" name="viewBillStatus"
+											[(ngModel)]="quickHelpObject.viewBillStatus">Show View Bill
+										</mat-checkbox>
+									</div>
 								</div>
-
-								<mat-divider></mat-divider>
 
 								<!-- Quick Help Water -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Water</label>
-
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="waterImage" [(ngModel)]="quickHelpObject.waterImage"
-											#waterImage="ngModel" (change)="onQuickHelpFileChange($event, 'water')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="waterPreview"
-												src="{{this.baseUrl+this.quickHelpObject.water}}?{{randomQuery}}"
-												alt="Water Image Preview" width="100px" height="100px">
+								<div class="divider"><span></span><span>Water</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="waterImage"
+												[(ngModel)]="quickHelpObject.waterImage" #waterImage="ngModel"
+												(change)="onQuickHelpFileChange($event, 'water')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="waterPreview"
+													src="{{this.baseUrl+this.quickHelpObject.water}}?{{randomQuery}}"
+													alt="Water Image Preview" width="100px" height="100px">
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="waterStatus"
-										[(ngModel)]="quickHelpObject.waterStatus">Show Water
-									</mat-checkbox>
+									<div class="row">
+										<mat-checkbox class="p-10" name="waterStatus"
+											[(ngModel)]="quickHelpObject.waterStatus">Show Water
+										</mat-checkbox>
+									</div>
 								</div>
-
-								<mat-divider></mat-divider>
 
 								<!-- Quick Help Tea -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Tea</label>
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="teaImage" [(ngModel)]="quickHelpObject.teaImage"
-											#teaImage="ngModel" (change)="onQuickHelpFileChange($event, 'tea')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="teaPreview"
-												src="{{this.baseUrl+this.quickHelpObject.tea}}?{{randomQuery}}"
-												alt="Tea Image Preview" width="100px" height="100px">
+								<div class="divider"><span></span><span>Tea</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="teaImage" [(ngModel)]="quickHelpObject.teaImage"
+												#teaImage="ngModel" (change)="onQuickHelpFileChange($event, 'tea')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="teaPreview"
+													src="{{this.baseUrl+this.quickHelpObject.tea}}?{{randomQuery}}"
+													alt="Tea Image Preview" width="100px" height="100px">
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="teaStatus" [(ngModel)]="quickHelpObject.teaStatus">
-										Show Tea
-									</mat-checkbox>
+									<div class="row">
+										<mat-checkbox class="p-10" name="teaStatus"
+											[(ngModel)]="quickHelpObject.teaStatus">
+											Show Tea
+										</mat-checkbox>
+									</div>
 								</div>
-
-								<mat-divider></mat-divider>
 
 								<!-- Quick Help Waiter -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Waiter</label>
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="waiterImage" [(ngModel)]="quickHelpObject.waiterImage"
-											#waiterImage="ngModel" (change)="onQuickHelpFileChange($event, 'waiter')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="waiterPreview"
-												src="{{this.baseUrl+this.quickHelpObject['call waiter']}}?{{randomQuery}}"
-												alt="Waiter Image Preview" width="100px" height="100px">
+								<div class="divider"><span></span><span>Waiter</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="waiterImage"
+												[(ngModel)]="quickHelpObject.waiterImage" #waiterImage="ngModel"
+												(change)="onQuickHelpFileChange($event, 'waiter')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="waiterPreview"
+													src="{{this.baseUrl+this.quickHelpObject['call waiter']}}?{{randomQuery}}"
+													alt="Waiter Image Preview" width="100px" height="100px">
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="waiterStatus"
-										[(ngModel)]="quickHelpObject['call waiterStatus']">Show Waiter
-									</mat-checkbox>
+									<div class="row">
+										<mat-checkbox class="p-10" name="waiterStatus"
+											[(ngModel)]="quickHelpObject['call waiterStatus']">Show Waiter
+										</mat-checkbox>
+									</div>
 								</div>
-
-								<mat-divider></mat-divider>
 
 								<!-- Quick Help Wifi -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Wifi Assistance</label>
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="wifiImage" [(ngModel)]="quickHelpObject.wifiImage"
-											#wifiImage="ngModel" (change)="onQuickHelpFileChange($event, 'wifi')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="wifiPreview"
-												src="{{this.baseUrl+this.quickHelpObject['wifi assistance']}}?{{randomQuery}}"
-												alt="Wifi Image Preview" width="100px" height="100px">
+								<div class="divider"><span></span><span>Wifi Assistance</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="wifiImage" [(ngModel)]="quickHelpObject.wifiImage"
+												#wifiImage="ngModel" (change)="onQuickHelpFileChange($event, 'wifi')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="wifiPreview"
+													src="{{this.baseUrl+this.quickHelpObject['wifi assistance']}}?{{randomQuery}}"
+													alt="Wifi Image Preview" width="100px" height="100px">
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="wifiStatus"
-										[(ngModel)]="quickHelpObject['wifi assistanceStatus']">Show Wifi
-									</mat-checkbox>
+									<div class="row">
+										<mat-checkbox class="p-10" name="wifiStatus"
+											[(ngModel)]="quickHelpObject['wifi assistanceStatus']">Show Wifi
+										</mat-checkbox>
+									</div>
 								</div>
-
-								<mat-divider></mat-divider>
 
 								<!-- Quick Help Essential Kit -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Essential Kit</label>
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="essentialKitImage"
-											[(ngModel)]="quickHelpObject.essentialKitImage" #essentialKitImage="ngModel"
-											(change)="onQuickHelpFileChange($event, 'essentialKit')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="essentialKitPreview"
-												src="{{this.baseUrl+this.quickHelpObject['essential kit']}}?{{randomQuery}}"
-												alt="EssentialKit Image Preview" width="100px" height="100px">
+								<div class="divider"><span></span><span>Essential Kit</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="essentialKitImage"
+												[(ngModel)]="quickHelpObject.essentialKitImage"
+												#essentialKitImage="ngModel"
+												(change)="onQuickHelpFileChange($event, 'essentialKit')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="essentialKitPreview"
+													src="{{this.baseUrl+this.quickHelpObject['essential kit']}}?{{randomQuery}}"
+													alt="EssentialKit Image Preview" width="100px" height="100px">
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="essentialKitStatus"
-										[(ngModel)]="quickHelpObject['essential kitStatus']">
-										Show EssentialKit
-									</mat-checkbox>
+									<div class="row">
+										<mat-checkbox class="p-10" name="essentialKitStatus"
+											[(ngModel)]="quickHelpObject['essential kitStatus']">
+											Show EssentialKit
+										</mat-checkbox>
+									</div>
 								</div>
-
-								<mat-divider></mat-divider>
 
 								<!-- Quick Help Tissue -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Tissue</label>
-								<div class="row align-items-center">
-									<div class="col-md-6">
-										<input type="file" name="tissueImage" [(ngModel)]="quickHelpObject.tissueImage"
-											#tissueImage="ngModel" (change)="onQuickHelpFileChange($event, 'tissue')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="tissuePreview"
-												src="{{this.baseUrl+this.quickHelpObject.tissue}}?{{randomQuery}}"
-												alt="Tissue Image Preview" width="100px" height="100px">
+								<div class="divider"><span></span><span>Tissue</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="tissueImage"
+												[(ngModel)]="quickHelpObject.tissueImage" #tissueImage="ngModel"
+												(change)="onQuickHelpFileChange($event, 'tissue')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="tissuePreview"
+													src="{{this.baseUrl+this.quickHelpObject.tissue}}?{{randomQuery}}"
+													alt="Tissue Image Preview" width="100px" height="100px">
+											</div>
 										</div>
 									</div>
-								</div>
 
-								<div class="row">
-									<mat-checkbox class="p-10" name="tissueStatus"
-										[(ngModel)]="quickHelpObject.tissueStatus">Show Tissue
-									</mat-checkbox>
+									<div class="row">
+										<mat-checkbox class="p-10" name="tissueStatus"
+											[(ngModel)]="quickHelpObject.tissueStatus">Show Tissue
+										</mat-checkbox>
+									</div>
 								</div>
 
 								<mat-divider></mat-divider>
@@ -1097,107 +1285,105 @@
 				<mat-card class="card mat-elevation-z1 p-0">
 					<div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
 						<h4 class="card-title m-0 font600">Broken/404 Images Update</h4>
-						<i class="material-icons edit-icon" style="cursor: pointer;" (click)="onEdit('brokenImages')">edit</i>
+						<i class="material-icons edit-icon" style="cursor: pointer;"
+							(click)="onEdit('brokenImages')">edit</i>
 					</div>
 				</mat-card>
 				<ng-container *ngIf="formType === 'brokenImages'">
 					<mat-card class="mat-elevation-z-2 p-0">
 						<form autocomplete="off" (ngSubmit)="onUpdateTheme('brokenImages')" ngNativeValidate>
-							<div class="modal-body p-25">
+							<div class="modal-body p-t-25 p-b-25">
+
 								<!-- Homepage Banner -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Homepage Banner</label>
+								<div class="divider" style="margin-top: 0;"><span></span><span>Homepage
+										Banner</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center m-b-10">
+										<div class="col-md-6">
+											<input type="file" name="brokenHomePageBannerImage"
+												[(ngModel)]="brokenImagesObject.brokenHomePageBannerImage"
+												#brokenHomePageBannerImage="ngModel"
+												(change)="onBrokenImageFileChange($event, 'homePageBanner')" />
+										</div>
 
-								<div class="row align-items-center m-b-10">
-									<div class="col-md-6">
-										<input type="file" name="brokenHomePageBannerImage"
-											[(ngModel)]="brokenImagesObject.brokenHomePageBannerImage"
-											#brokenHomePageBannerImage="ngModel"
-											(change)="onBrokenImageFileChange($event, 'homePageBanner')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="homePageBannerPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenHomePageBannerImage}}?{{randomQuery}}"
-												alt="Homepage Banner Preview" width="75px" height="75px">
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="homePageBannerPreview"
+													src="{{this.baseUrl+this.brokenImagesObject.brokenHomePageBannerImage}}?{{randomQuery}}"
+													alt="Homepage Banner Preview" width="75px" height="75px">
+											</div>
 										</div>
 									</div>
 								</div>
-
-								<mat-divider></mat-divider>
 
 								<!-- Homepage Card List -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Homepage Card List</label>
-								<div class="row align-items-center m-b-10">
-									<div class="col-md-6">
-										<input type="file" name="brokenHomePageCard"
-											[(ngModel)]="brokenImagesObject.brokenHomePageCard"
-											#brokenHomePageCard="ngModel"
-											(change)="onBrokenImageFileChange($event, 'homePageCard')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="homePageCardPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenHomePageCard}}?{{randomQuery}}"
-												alt="HomePage Card Preview" width="75px" height="75px">
+								<div class="divider"><span></span><span>Homepage CardList</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center m-b-10">
+										<div class="col-md-6">
+											<input type="file" name="brokenHomePageCard"
+												[(ngModel)]="brokenImagesObject.brokenHomePageCard"
+												#brokenHomePageCard="ngModel"
+												(change)="onBrokenImageFileChange($event, 'homePageCard')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="homePageCardPreview"
+													src="{{this.baseUrl+this.brokenImagesObject.brokenHomePageCard}}?{{randomQuery}}"
+													alt="HomePage Card Preview" width="75px" height="75px">
+											</div>
 										</div>
 									</div>
 								</div>
-
-								<mat-divider></mat-divider>
 
 								<!-- Section Card List -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Section Card List</label>
-								<div class="row align-items-center m-b-10">
-									<div class="col-md-6">
-										<input type="file" name="brokenSectionCard"
-											[(ngModel)]="brokenImagesObject.brokenSectionCard"
-											#brokenSectionCard="ngModel"
-											(change)="onBrokenImageFileChange($event, 'sectionCard')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="sectionCardPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenSectionCard}}?{{randomQuery}}"
-												alt="Section Card Preview" width="75px" height="75px">
+								<div class="divider"><span></span><span>Section CardList</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center m-b-10">
+										<div class="col-md-6">
+											<input type="file" name="brokenSectionCard"
+												[(ngModel)]="brokenImagesObject.brokenSectionCard"
+												#brokenSectionCard="ngModel"
+												(change)="onBrokenImageFileChange($event, 'sectionCard')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="sectionCardPreview"
+													src="{{this.baseUrl+this.brokenImagesObject.brokenSectionCard}}?{{randomQuery}}"
+													alt="Section Card Preview" width="75px" height="75px">
+											</div>
 										</div>
 									</div>
 								</div>
-
-								<mat-divider></mat-divider>
 
 								<!-- Categories Card List -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Categories Card
-									List</label>
-								<div class="row align-items-center m-b-10">
-									<div class="col-md-6">
-										<input type="file" name="brokenCategoriesCard"
-											[(ngModel)]="brokenImagesObject.brokenCategoriesCard"
-											#brokenCategoriesCard="ngModel"
-											(change)="onBrokenImageFileChange($event, 'categoriesCard')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="categoriesCardPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenCategoriesCard}}?{{randomQuery}}"
-												alt="Categories Card Preview" width="75px" height="75px">
+								<div class="divider"><span></span><span>Categories CardList</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center m-b-10">
+										<div class="col-md-6">
+											<input type="file" name="brokenCategoriesCard"
+												[(ngModel)]="brokenImagesObject.brokenCategoriesCard"
+												#brokenCategoriesCard="ngModel"
+												(change)="onBrokenImageFileChange($event, 'categoriesCard')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="categoriesCardPreview"
+													src="{{this.baseUrl+this.brokenImagesObject.brokenCategoriesCard}}?{{randomQuery}}"
+													alt="Categories Card Preview" width="75px" height="75px">
+											</div>
 										</div>
 									</div>
 								</div>
 
-								<mat-divider></mat-divider>
-
 								<!-- Broken Logo -->
-								<!-- <label for="" class="w-100 m-t-10 m-b-0 text-center font600">Broken Logo</label>
+								<!-- <div class="divider"><span></span><span>Broken Logo</span><span></span></div>
+								<div class="group-card">
 								<div class="row align-items-center m-b-10">
 									<div class="col-md-6">
 										<input type="file" name="brokenLogo" [(ngModel)]="brokenImagesObject.brokenLogo"
 											#brokenLogo="ngModel" (change)="onBrokenImageFileChange($event, 'logo')" />
 									</div>
-
 									<div class="col-md-6">
 										<div class="text-center">
 											<img class="previewImg" id="logoPreview"
@@ -1205,19 +1391,18 @@
 												alt="Logo Preview" width="75px" height="75px">
 										</div>
 									</div>
+								</div>
 								</div> -->
 
-								<!-- <mat-divider></mat-divider> -->
-
 								<!-- Login Logo -->
-								<!-- <label for="" class="w-100 m-t-10 m-b-0 text-center font600">Login Logo</label>
-								<div class="row align-items-center m-b-10">
+								<!-- <div class="divider"><span></span><span>Login Logo</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center m-b-10">
 									<div class="col-md-6">
 										<input type="file" name="brokenLoginLogo"
 											[(ngModel)]="brokenImagesObject.brokenLoginLogo" #brokenLoginLogo="ngModel"
 											(change)="onBrokenImageFileChange($event, 'loginLogo')" />
 									</div>
-
 									<div class="col-md-6">
 										<div class="text-center">
 											<img class="previewImg" id="loginLogoPreview"
@@ -1225,25 +1410,25 @@
 												alt="Login Logo Preview" width="75px" height="75px">
 										</div>
 									</div>
-								</div> -->
-
-								<mat-divider></mat-divider>
+								</div>
+							</div> -->
 
 								<!-- Loader Logo -->
-								<label for="" class="w-100 m-t-10 m-b-0 text-center font600">Login & Loader Logo</label>
-								<div class="row align-items-center m-b-10">
-									<div class="col-md-6">
-										<input type="file" name="brokenLoaderLogo"
-											[(ngModel)]="brokenImagesObject.brokenLoaderLogo"
-											#brokenLoaderLogo="ngModel"
-											(change)="onBrokenImageFileChange($event, 'loaderLogo')" />
-									</div>
-
-									<div class="col-md-6">
-										<div class="text-center">
-											<img class="previewImg" id="loaderLogoPreview"
-												src="{{this.baseUrl+this.brokenImagesObject.brokenLoaderLogo}}?{{randomQuery}}"
-												alt="Loader Logo Preview" width="75px" height="75px">
+								<div class="divider"><span></span><span>Login & Loader Logo</span><span></span></div>
+								<div class="group-card">
+									<div class="row align-items-center m-b-10">
+										<div class="col-md-6">
+											<input type="file" name="brokenLoaderLogo"
+												[(ngModel)]="brokenImagesObject.brokenLoaderLogo"
+												#brokenLoaderLogo="ngModel"
+												(change)="onBrokenImageFileChange($event, 'loaderLogo')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="loaderLogoPreview"
+													src="{{this.baseUrl+this.brokenImagesObject.brokenLoaderLogo}}?{{randomQuery}}"
+													alt="Loader Logo Preview" width="75px" height="75px">
+											</div>
 										</div>
 									</div>
 								</div>
@@ -1274,7 +1459,8 @@
 				<mat-card class="card mat-elevation-z1 p-0">
 					<div class="card-body row justify-content-between align-items-center  p-x-30 p-y-20">
 						<h4 class="card-title m-0 font600">Dynamic things Update</h4>
-						<i class="material-icons edit-icon" style="cursor: pointer;" (click)="onEdit('dynamicThings')">edit</i>
+						<i class="material-icons edit-icon" style="cursor: pointer;"
+							(click)="onEdit('dynamicThings')">edit</i>
 					</div>
 				</mat-card>
 				<ng-container *ngIf="formType === 'dynamicThings'">

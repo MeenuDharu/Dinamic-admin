@@ -13,6 +13,7 @@ export interface IThemeForm {
 	pos_rest_id?: string;
 	isDefault?: boolean;
 	theme?: object;
+	instruction?: object;
 	homepage?: object;
 	quickHelp?: object;
 	brokenImages?: object;
@@ -32,6 +33,7 @@ export class restaurantDialogComponent implements OnInit {
 	editForm: any = {};
 	themeForm: IThemeForm = {};
 	themeObject: any = {};
+	instructionObject: any = {};
 	homepageObject: any = {};
 	quickHelpObject: any = {};
 	brokenImageObject: any = {};
@@ -134,6 +136,7 @@ export class restaurantDialogComponent implements OnInit {
 		this.addForm.pos_rest_id = event.target.value;
 		this.editForm.pos_rest_id = event.target.value;
 		this.themeObject.pos_rest_id = event.target.value;
+		this.instructionObject.pos_rest_id = event.target.value;
 		this.homepageObject.pos_rest_id = event.target.value;
 		this.quickHelpObject.pos_rest_id = event.target.value;
 		this.brokenImageObject.pos_rest_id = event.target.value;
@@ -190,7 +193,7 @@ export class restaurantDialogComponent implements OnInit {
 			console.log('rest update...', result)
 			if (result.status) {
 				this.doAction();
-				// this.onAddTheme(result.data);
+				this.onAddTheme(result.data);
 			}
 			else {
 				this.editForm.error_msg = result.message;
@@ -209,6 +212,7 @@ export class restaurantDialogComponent implements OnInit {
 
 	onAddTheme(data: any) {
 		this.themeObject.pos_rest_id = data.pos_rest_id;
+		this.instructionObject.pos_rest_id = data.pos_rest_id;
 		this.homepageObject.pos_rest_id = data.pos_rest_id;
 		this.quickHelpObject.pos_rest_id = data.pos_rest_id;
 		this.brokenImageObject.pos_rest_id = data.pos_rest_id;
@@ -219,6 +223,7 @@ export class restaurantDialogComponent implements OnInit {
 			'restaurant_id': data.restaurant_id,
 			'pos_rest_id': data.pos_rest_id,
 			'theme': this.themeObject,
+			'instruction': this.instructionObject,
 			'homepage': this.homepageObject,
 			'quickHelp': this.quickHelpObject,
 			'brokenImages': this.brokenImageObject,

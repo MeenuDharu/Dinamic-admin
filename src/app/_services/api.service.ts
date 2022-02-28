@@ -44,6 +44,11 @@ export class ApiService {
 		return this.http.post<any>(environment.ws_url + '/admin/restaurant/addTheme', x, httpOptions);
 	}
 
+	ADD_INSTRUCTION_PAGE_THEME(x: any) {
+		let httpOptions = { headers: new HttpHeaders({ 'Authorization':'Bearer ' + localStorage.getItem('admin_token') }) };
+		return this.http.post<any>(environment.ws_url + '/admin/restaurant/addInstructionTheme', x, httpOptions);
+	}
+
 	ADD_HOMEPAGE_THEME(x: any) {
 		let httpOptions = { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('admin_token') }) };
 		return this.http.post<any>(environment.ws_url + '/admin/restaurant/addHomePageTheme', x, httpOptions);

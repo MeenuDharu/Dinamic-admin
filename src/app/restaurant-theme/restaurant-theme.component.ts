@@ -15,10 +15,12 @@ export class restaurantThemeComponent implements OnInit {
 	formType: string = '';
 	themeForm: any = {};
 	themeObject: any = {};
+	instructionObject: any = {};
 	homepageObject: any = {};
 	quickHelpObject: any = {};
 	brokenImagesObject: any = {};
 	dynamicThingsObject: any = {};
+	formDataInstructionPage = new FormData();
 	formDataHomePage = new FormData();
 	formDataQuickHelp = new FormData();
 	formDataBrokenImages = new FormData();
@@ -47,6 +49,7 @@ export class restaurantThemeComponent implements OnInit {
 		this.themeObject = [];
 		this.homepageObject = [];
 		this.quickHelpObject = [];
+		this.instructionObject = [];
 		this.apiService.THEME_LIST({ "pos_rest_id": this.selectedrestaurant.pos_rest_id }).subscribe((result) => {
 			console.log('Result: ', result);
 			if (result.status) {
@@ -54,6 +57,10 @@ export class restaurantThemeComponent implements OnInit {
 					this.formType = 'theme';
 					this.themeObject = result.data.theme;
 					console.log('ThemeObject: ', this.themeObject);
+				} else if (formType === 'instructionPage') {
+					this.formType = 'instructionPage';
+					this.instructionObject = result.data.instruction?.data;
+					console.log('instruction', result.data.instruction.data)
 				} else if (formType === 'homepage') {
 					this.formType = 'homepage';
 					console.log('homepage', result.data.homepage)
@@ -71,9 +78,24 @@ export class restaurantThemeComponent implements OnInit {
 					this.dynamicThingsObject = result.data.dynamicThings;
 				}
 			} else {
-				console.error(result.message);
+				alert(result.message);
 			}
 		});
+	}
+
+	onInstructionFileChange(event: any, fileName: string, preview: string) {
+		if(this.formDataInstructionPage.get('instruction')) {
+			this.formDataInstructionPage.delete('instruction');
+			this.formDataInstructionPage.delete('instructionPageImages');
+		}
+		let cardImage = event.target?.files[0];
+		let cardPreview = document.getElementById(preview);
+		if (cardImage) {
+			this.formDataInstructionPage.append('instructionPageImages', cardImage, fileName);
+			cardPreview?.setAttribute('src', URL.createObjectURL(cardImage));
+		} else {
+			cardPreview?.setAttribute('src', '');
+		}
 	}
 
 	onHomePageFileChange(event: any, type: string) {
@@ -326,7 +348,6 @@ export class restaurantThemeComponent implements OnInit {
 	}
 
 	onUpdateTheme(updateName: any) {
-
 		if (updateName === 'theme') {
 			this.themeObject.pos_rest_id = this.selectedrestaurant.pos_rest_id;
 			this.themeObject.isDefaultTheme = false;
@@ -337,6 +358,22 @@ export class restaurantThemeComponent implements OnInit {
 			}
 			this.apiService.ADD_THEME(this.themeForm).subscribe((result: any) => {
 				console.log('theme result', result);
+				this.closeForm();
+			});
+		} else if (updateName === 'instructionPage') {
+			if(this.formDataInstructionPage.get('instruction')) {
+				this.formDataInstructionPage.delete('instruction');
+				this.formDataInstructionPage.delete('instructionPageImages');
+			}
+			let instruction = JSON.stringify({
+				isDefault: false,
+				pos_rest_id: this.selectedrestaurant.pos_rest_id,
+				formType: 'instructionPage',
+				data: this.instructionObject
+			});
+			console.log({instructionObject: this.instructionObject});
+			this.formDataInstructionPage.append('instruction', instruction);
+			this.apiService.ADD_INSTRUCTION_PAGE_THEME(this.formDataInstructionPage).subscribe((result: any) => {
 				this.closeForm();
 			});
 		} else if (updateName === 'homepage') {
