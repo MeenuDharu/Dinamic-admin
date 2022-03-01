@@ -15,7 +15,8 @@ export class restaurantThemeComponent implements OnInit {
 	formType: string = '';
 	themeForm: any = {};
 	themeObject: any = {};
-	instructionObject: any = {};
+	insData: any = {};
+	insImagePath: any = {};
 	homepageObject: any = {};
 	quickHelpObject: any = {};
 	brokenImagesObject: any = {};
@@ -34,7 +35,7 @@ export class restaurantThemeComponent implements OnInit {
 	// generate randomString for queryparams
 	getRandomCode = function () {
 		let randomText = '';
-		let allText = 'abcdefghijklmnopqrstuvwxyz0123456789';
+		let allText = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 		for (let i = 0; i < 5; i++) {
 			randomText += allText.charAt(Math.floor(Math.random() * allText.length));
@@ -49,7 +50,8 @@ export class restaurantThemeComponent implements OnInit {
 		this.themeObject = [];
 		this.homepageObject = [];
 		this.quickHelpObject = [];
-		this.instructionObject = [];
+		this.insData = [];
+		this.insImagePath = [];
 		this.apiService.THEME_LIST({ "pos_rest_id": this.selectedrestaurant.pos_rest_id }).subscribe((result) => {
 			console.log('Result: ', result);
 			if (result.status) {
@@ -59,8 +61,9 @@ export class restaurantThemeComponent implements OnInit {
 					console.log('ThemeObject: ', this.themeObject);
 				} else if (formType === 'instructionPage') {
 					this.formType = 'instructionPage';
-					this.instructionObject = result.data.instruction?.data;
-					console.log('instruction', result.data.instruction.data)
+					this.insData = result.data.instruction?.data;
+					this.insImagePath = result.data.instruction?.imagePath;
+					console.log('instruction', result.data.instruction)
 				} else if (formType === 'homepage') {
 					this.formType = 'homepage';
 					console.log('homepage', result.data.homepage)
@@ -369,9 +372,9 @@ export class restaurantThemeComponent implements OnInit {
 				isDefault: false,
 				pos_rest_id: this.selectedrestaurant.pos_rest_id,
 				formType: 'instructionPage',
-				data: this.instructionObject
+				data: this.insData
 			});
-			console.log({instructionObject: this.instructionObject});
+			console.log({insData: this.insData});
 			this.formDataInstructionPage.append('instruction', instruction);
 			this.apiService.ADD_INSTRUCTION_PAGE_THEME(this.formDataInstructionPage).subscribe((result: any) => {
 				this.closeForm();

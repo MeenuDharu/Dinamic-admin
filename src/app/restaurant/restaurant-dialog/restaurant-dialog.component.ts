@@ -212,7 +212,27 @@ export class restaurantDialogComponent implements OnInit {
 
 	onAddTheme(data: any) {
 		this.themeObject.pos_rest_id = data.pos_rest_id;
-		this.instructionObject.pos_rest_id = data.pos_rest_id;
+		// this.instructionObject.pos_rest_id = data.pos_rest_id;
+		this.instructionObject = {
+			pos_rest_id: data.pos_rest_id,
+			isDefault: true,
+			formType: 'instructionPage',
+			data: {
+				header: 'Take a look, how to use',
+				subHeader: 'Cool to use',
+				headerStatus: true,
+				card1_title: 'Title1',
+				card1_desc: 'Description1',
+				card1_status: true,
+				card2_title: 'Title2',
+				card2_desc: 'Description2',
+				card2_status: true
+			},
+			imagePath: {
+				card1_img: '/uploads/default/homepage/exitImage.svg',
+				card2_img: '/uploads/default/homepage/helpImage.svg',
+			}
+		}
 		this.homepageObject.pos_rest_id = data.pos_rest_id;
 		this.quickHelpObject.pos_rest_id = data.pos_rest_id;
 		this.brokenImageObject.pos_rest_id = data.pos_rest_id;

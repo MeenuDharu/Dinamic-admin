@@ -623,7 +623,7 @@
 											<mat-form-field class="w-100">
 												<mat-label>Header</mat-label>
 												<input matInput type="text" name="header"
-													[(ngModel)]="instructionObject.header" #header="ngModel" />
+													[(ngModel)]="insData.header" #header="ngModel" />
 											</mat-form-field>
 										</div>
 	
@@ -631,14 +631,14 @@
 											<mat-form-field class="w-100">
 												<mat-label>Subheader</mat-label>
 												<input matInput type="text" name="subHeader"
-													[(ngModel)]="instructionObject.subHeader" #subHeader="ngModel" />
+													[(ngModel)]="insData.subHeader" #subHeader="ngModel" />
 											</mat-form-field>
 										</div>
 									</div>
 	
 									<div class="row">
 										<mat-checkbox class="p-10" name="headerStatus"
-											[(ngModel)]="instructionObject.headerStatus">Show Ins-Header
+											[(ngModel)]="insData.headerStatus">Show Ins-Header
 										</mat-checkbox>
 									</div>
 								</div>
@@ -651,7 +651,7 @@
 											<mat-form-field class="w-100">
 												<mat-label>card Title</mat-label>
 												<input matInput type="text" name="card1_title"
-													[(ngModel)]="instructionObject.card1_title" #card1_title="ngModel" />
+													[(ngModel)]="insData.card1_title" #card1_title="ngModel" />
 											</mat-form-field>
 										</div>
 	
@@ -659,7 +659,7 @@
 											<mat-form-field class="w-100">
 												<mat-label>Description</mat-label>
 												<input matInput type="text" name="card1_desc"
-													[(ngModel)]="instructionObject.card1_desc"
+													[(ngModel)]="insData.card1_desc"
 													#card1_desc="ngModel" />
 											</mat-form-field>
 										</div>
@@ -668,14 +668,13 @@
 									<div class="row align-items-center">
 										<div class="col-md-6">
 											<input type="file" name="card1_img"
-												[(ngModel)]="instructionObject.card1_img" #card1_img="ngModel"
 												(change)="onInstructionFileChange($event, 'card1_img', 'card1_prev')" />
 										</div>
 	
 										<div class="col-md-6">
 											<div class="text-center">
 												<img class="previewImg" id="card1_prev"
-													src="{{this.baseUrl+this.instructionObject.card1_img}}?{{randomQuery}}"
+													src="{{this.baseUrl+this.insImagePath.card1_img}}?{{randomQuery}}"
 													alt="Card1 Image Preview" width="100px" height="100px">
 											</div>
 										</div>
@@ -683,7 +682,7 @@
 	
 									<div class="row">
 										<mat-checkbox class="p-10" name="card1_status"
-											[(ngModel)]="instructionObject.card1_status">Show card-1
+											[(ngModel)]="insData.card1_status">Show card-1
 										</mat-checkbox>
 									</div>
 								</div>
@@ -696,7 +695,7 @@
 											<mat-form-field class="w-100">
 												<mat-label>card Title</mat-label>
 												<input matInput type="text" name="card2_title"
-													[(ngModel)]="instructionObject.card2_title" #card2_title="ngModel" />
+													[(ngModel)]="insData.card2_title" #card2_title="ngModel" />
 											</mat-form-field>
 										</div>
 	
@@ -704,7 +703,7 @@
 											<mat-form-field class="w-100">
 												<mat-label>Description</mat-label>
 												<input matInput type="text" name="card2_desc"
-													[(ngModel)]="instructionObject.card2_desc"
+													[(ngModel)]="insData.card2_desc"
 													#card2_desc="ngModel" />
 											</mat-form-field>
 										</div>
@@ -713,14 +712,13 @@
 									<div class="row align-items-center">
 										<div class="col-md-6">
 											<input type="file" name="card2_img"
-												[(ngModel)]="instructionObject.card2_img" #card2_img="ngModel"
 												(change)="onInstructionFileChange($event, 'card2_img', 'card2_prev')" />
 										</div>
 	
 										<div class="col-md-6">
 											<div class="text-center">
 												<img class="previewImg" id="card2_prev"
-													src="{{this.baseUrl+this.instructionObject.card2_img}}?{{randomQuery}}"
+													src="{{this.baseUrl+this.insImagePath.card2_img}}?{{randomQuery}}"
 													alt="Card2 Image Preview" width="100px" height="100px">
 											</div>
 										</div>
@@ -728,15 +726,15 @@
 	
 									<div class="row">
 										<mat-checkbox class="p-10" name="card2_status"
-											[(ngModel)]="instructionObject.card2_status">Show card-2
+											[(ngModel)]="insData.card2_status">Show card-2
 										</mat-checkbox>
 									</div>
 								</div>
 
 								<mat-divider></mat-divider>
 								
-								<div *ngIf="instructionObject.error_msg" class="error-msg">{{
-									instructionObject.error_msg }}
+								<div *ngIf="insData.error_msg" class="error-msg">{{
+									insData.error_msg }}
 								</div>
 							</div>
 
