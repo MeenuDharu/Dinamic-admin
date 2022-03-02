@@ -52,7 +52,7 @@ export class restaurantThemeComponent implements OnInit {
 		this.quickHelpObject = [];
 		this.insData = [];
 		this.insImagePath = [];
-		this.apiService.THEME_LIST({ "pos_rest_id": this.selectedrestaurant.pos_rest_id }).subscribe((result) => {
+		this.apiService.GET_THEME_LIST({ "pos_rest_id": this.selectedrestaurant.pos_rest_id }).subscribe((result) => {
 			console.log('Result: ', result);
 			if (result.status) {
 				if (formType === 'theme') {

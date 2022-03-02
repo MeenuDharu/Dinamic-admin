@@ -211,53 +211,86 @@ export class restaurantDialogComponent implements OnInit {
 	}
 
 	onAddTheme(data: any) {
-		this.themeObject.pos_rest_id = data.pos_rest_id;
-		// this.instructionObject.pos_rest_id = data.pos_rest_id;
-		this.instructionObject = {
-			pos_rest_id: data.pos_rest_id,
-			isDefault: true,
-			formType: 'instructionPage',
-			data: {
-				header: 'Take a look, how to use',
-				subHeader: 'Cool to use',
-				headerStatus: true,
-				card1_title: 'Title1',
-				card1_desc: 'Description1',
-				card1_status: true,
-				card2_title: 'Title2',
-				card2_desc: 'Description2',
-				card2_status: true
-			},
-			imagePath: {
-				card1_img: '/uploads/default/homepage/exitImage.svg',
-				card2_img: '/uploads/default/homepage/helpImage.svg',
+		new Promise((resolve, reject) => {
+			this.apiService.GET_THEME_LIST({pos_rest_id: data.pos_rest_id}).subscribe((result: any) =>{
+				if(result.status) {
+					resolve(result.data);
+				} else {
+					reject('No Record Found');
+				}
+			});
+		})	
+		.then((themeList: any) => {
+			console.log('promise data', themeList);
+			this.themeObject.pos_rest_id = data.pos_rest_id;
+			// this.instructionObject.pos_rest_id = data.pos_rest_id;
+			let insTheme = themeList.instruction;
+			this.instructionObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'instructionPage',
+				data: {
+					header: insTheme.data.header === '' || undefined ? 'Take a look, how to use' : insTheme.data.header,
+					subHeader: 'Cool to use',
+					headerStatus: true,
+					card1_title: 'Title1',
+					card1_desc: 'Description1',
+					card1_status: true,
+					card2_title: 'Title2',
+					card2_desc: 'Description2',
+					card2_status: true,
+					card3_title: 'Title3',
+					card3_desc: 'Description3',
+					card3_status: true,
+					card4_title: 'Title4',
+					card4_desc: 'Description4',
+					card4_status: true,
+					card5_title: 'Title5',
+					card5_desc: 'Description5',
+					card5_status: true,
+					card6_title: 'Title6',
+					card6_desc: 'Description6',
+					card6_status: true
+				},
+				imagePath: {
+					card1_img: '/uploads/default/homepage/exitImage.svg',
+					card2_img: '/uploads/default/homepage/helpImage.svg',
+					card3_img: '/uploads/default/homepage/exitImage.svg',
+					card4_img: '/uploads/default/homepage/helpImage.svg',
+					card5_img: '/uploads/default/homepage/exitImage.svg',
+					card6_img: '/uploads/default/homepage/helpImage.svg',
+				}
 			}
-		}
-		this.homepageObject.pos_rest_id = data.pos_rest_id;
-		this.quickHelpObject.pos_rest_id = data.pos_rest_id;
-		this.brokenImageObject.pos_rest_id = data.pos_rest_id;
-		this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
-		this.themeForm = {
-			'isDefault': true,
-			'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,
-			'restaurant_id': data.restaurant_id,
-			'pos_rest_id': data.pos_rest_id,
-			'theme': this.themeObject,
-			'instruction': this.instructionObject,
-			'homepage': this.homepageObject,
-			'quickHelp': this.quickHelpObject,
-			'brokenImages': this.brokenImageObject,
-			'dynamicThings': this.dynamicThingsObject
-		}
-		console.log('themeform object', this.themeForm);
-		this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {
-			console.log("add theme result ", result)
-			if (result.status) {
-				this.doAction();
-			} else {
-				this.themeObject.error_msg = result.message;
+			this.homepageObject.pos_rest_id = data.pos_rest_id;
+			this.quickHelpObject.pos_rest_id = data.pos_rest_id;
+			this.brokenImageObject.pos_rest_id = data.pos_rest_id;
+			this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
+			this.themeForm = {
+				'isDefault': true,
+				'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,
+				'restaurant_id': data.restaurant_id,
+				'pos_rest_id': data.pos_rest_id,
+				'theme': this.themeObject,
+				'instruction': this.instructionObject,
+				'homepage': this.homepageObject,
+				'quickHelp': this.quickHelpObject,
+				'brokenImages': this.brokenImageObject,
+				'dynamicThings': this.dynamicThingsObject
 			}
-		});
+			console.log('themeform object', this.themeForm);
+			this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {
+				console.log("add theme result ", result)
+				if (result.status) {
+					this.doAction();
+				} else {
+					this.themeObject.error_msg = result.message;
+				}
+			});
+	
+		})
+		.catch((rejected) => {
+			console.log('promise error', rejected);
+		})
 	}
 
 }

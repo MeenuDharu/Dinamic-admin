@@ -731,6 +731,182 @@
 									</div>
 								</div>
 
+								<!-- Card-3 -->
+								<div class="divider"><span></span><span>Card 3</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>card Title</mat-label>
+												<input matInput type="text" name="card3_title"
+													[(ngModel)]="insData.card3_title" #card3_title="ngModel" />
+											</mat-form-field>
+										</div>
+	
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Description</mat-label>
+												<input matInput type="text" name="card3_desc"
+													[(ngModel)]="insData.card3_desc"
+													#card3_desc="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+	
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="card3_img"
+												(change)="onInstructionFileChange($event, 'card3_img', 'card3_prev')" />
+										</div>
+	
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="card3_prev"
+													src="{{this.baseUrl+this.insImagePath.card3_img}}?{{randomQuery}}"
+													alt="Card3 Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+	
+									<div class="row">
+										<mat-checkbox class="p-10" name="card3_status"
+											[(ngModel)]="insData.card3_status">Show card-3
+										</mat-checkbox>
+									</div>
+								</div>
+
+								<!-- Card-4 -->
+								<div class="divider"><span></span><span>Card 4</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>card Title</mat-label>
+												<input matInput type="text" name="card4_title"
+													[(ngModel)]="insData.card4_title" #card4_title="ngModel" />
+											</mat-form-field>
+										</div>
+	
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Description</mat-label>
+												<input matInput type="text" name="card4_desc"
+													[(ngModel)]="insData.card4_desc"
+													#card4_desc="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+	
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="card4_img"
+												(change)="onInstructionFileChange($event, 'card4_img', 'card4_prev')" />
+										</div>
+	
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="card4_prev"
+													src="{{this.baseUrl+this.insImagePath.card4_img}}?{{randomQuery}}"
+													alt="Card4 Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+	
+									<div class="row">
+										<mat-checkbox class="p-10" name="card4_status"
+											[(ngModel)]="insData.card4_status">Show card-4
+										</mat-checkbox>
+									</div>
+								</div>
+
+								<!-- Card-5 -->
+								<div class="divider"><span></span><span>Card 5</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>card Title</mat-label>
+												<input matInput type="text" name="card5_title"
+													[(ngModel)]="insData.card5_title" #card5_title="ngModel" />
+											</mat-form-field>
+										</div>
+	
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Description</mat-label>
+												<input matInput type="text" name="card5_desc"
+													[(ngModel)]="insData.card5_desc"
+													#card5_desc="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+	
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="card5_img"
+												(change)="onInstructionFileChange($event, 'card5_img', 'card5_prev')" />
+										</div>
+	
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="card5_prev"
+													src="{{this.baseUrl+this.insImagePath.card5_img}}?{{randomQuery}}"
+													alt="Card5 Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+	
+									<div class="row">
+										<mat-checkbox class="p-10" name="card5_status"
+											[(ngModel)]="insData.card5_status">Show card-5
+										</mat-checkbox>
+									</div>
+								</div>
+
+								<!-- Card-6 -->
+								<div class="divider"><span></span><span>Card 6</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>card Title</mat-label>
+												<input matInput type="text" name="card6_title"
+													[(ngModel)]="insData.card6_title" #card6_title="ngModel" />
+											</mat-form-field>
+										</div>
+	
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Description</mat-label>
+												<input matInput type="text" name="card6_desc"
+													[(ngModel)]="insData.card6_desc"
+													#card6_desc="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+	
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="card6_img"
+												(change)="onInstructionFileChange($event, 'card6_img', 'card6_prev')" />
+										</div>
+	
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="card6_prev"
+													src="{{this.baseUrl+this.insImagePath.card6_img}}?{{randomQuery}}"
+													alt="Card6 Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+	
+									<div class="row">
+										<mat-checkbox class="p-10" name="card6_status"
+											[(ngModel)]="insData.card6_status">Show card-6
+										</mat-checkbox>
+									</div>
+								</div>
+
 								<mat-divider></mat-divider>
 								
 								<div *ngIf="insData.error_msg" class="error-msg">{{
