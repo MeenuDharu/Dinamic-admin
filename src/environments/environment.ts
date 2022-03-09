@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
 //   ws_url: 'https://mob.dinamic.io/api'
-  ws_url: 'http://192.168.0.104:4000' 
+  ws_url: 'http://localhost:4000'
 };
 
 /*

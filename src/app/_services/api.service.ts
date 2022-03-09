@@ -59,7 +59,7 @@ export class ApiService {
 		return this.http.post<any>(environment.ws_url + '/admin/restaurant/addQuickHelp', x, httpOptions);
 	}
 
-	ADD_BROKENIMAGES_THEME(x: any) {
+	ADD_BROKEN_THEME(x: any) {
 		let httpOptions = { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('admin_token') }) };
 		return this.http.post<any>(environment.ws_url + '/admin/restaurant/addBrokenImage', x, httpOptions);
 	}

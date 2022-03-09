@@ -14,9 +14,9 @@ export interface IThemeForm {
 	isDefault?: boolean;
 	theme?: object;
 	instruction?: object;
-	homepage?: object;
+	homePage?: object;
 	quickHelp?: object;
-	brokenImages?: object;
+	broken?: object;
 	dynamicThings?: object;
 }
 
@@ -261,9 +261,79 @@ export class restaurantDialogComponent implements OnInit {
 					card6_img: '/uploads/default/homepage/helpImage.svg',
 				}
 			}
-			this.homepageObject.pos_rest_id = data.pos_rest_id;
-			this.quickHelpObject.pos_rest_id = data.pos_rest_id;
-			this.brokenImageObject.pos_rest_id = data.pos_rest_id;
+			this.homepageObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'homePage',
+				data: {
+					header: 'Welcome',
+					subHeader: 'Start by selecting your desired option',
+					headerStatus: true,
+					billHeader: 'View Bill',
+					billSubHeader: 'No orders placed',
+					billStatus: true,
+					helpHeader: 'Need Help?',
+					helpSubHeader: 'Call a Waiter',
+					helpStatus: true,
+					vehicleHeader: 'Call for Vehicle',
+					vehicleSubHeader: 'Valet Parking',
+					vehicleStatus: true,
+					offerHeader: 'View Offers',
+					offerSubHeader: 'No offers available',
+					offerStatus: true,
+					exitHeader: 'Exit',
+					exitSubHeader: 'Scan again',
+					exitStatus: true,
+				},
+				imagePath: {
+					bill_img: '/uploads/default/homepage/exitImage.svg',
+					help_img: '/uploads/default/homepage/helpImage.svg',
+					vehicle_img: '/uploads/default/homepage/exitImage.svg',
+					offer_img: '/uploads/default/homepage/helpImage.svg',
+					exit_img: '/uploads/default/homepage/exitImage.svg',
+				}
+			}
+			this.quickHelpObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'quickHelp',
+				data: {
+					QH_mainMenuStatus: true,
+					QH_billStatus: true,
+					QH_waterStatus: true,
+					QH_teaStatus: true,
+					QH_waiterStatus: true,
+					QH_wifiStatus: true,
+					QH_essentialKitStatus: true,
+					QH_tissueStatus: true,
+				},
+				imagePath: {
+					QH_mainMenu_img: 'uploads/default/quickHelp/mainMenu.png',
+					QH_bill_img: '/uploads/default/homepage/billImage.svg',
+					QH_water_img: '/uploads/default/quickHelp/water.svg',
+					QH_tea_img: '/uploads/default/quickHelp/tea.svg',
+					QH_waiter_img: '/uploads/default/quickHelp/call waiter.svg',
+					QH_wifi_img: '/uploads/default/quickHelp/wifi assistance.svg',
+					QH_essentialKit_img: '/uploads/default/quickHelp/essential kit.svg',
+					QH_tissue_img: '/uploads/default/quickHelp/tissue.svg'
+				}
+			}
+			this.brokenImageObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'broken',
+				data: {},
+				imagePath: {
+					brokenHomeBanner: '/uploads/default/brokenImages/brokenImage.png',
+					brokenHomeCard: '/uploads/default/brokenImages/departCard.svg',
+					brokenSectionCard: '/uploads/default/brokenImages/departCard.svg',
+					brokenCatCard: '/uploads/default/brokenImages/list.svg',
+					brokenLoaderLogo: '/uploads/default/brokenImages/dinamicLogo.svg',
+				}
+			}
+			// this.homepageObject.pos_rest_id = data.pos_rest_id;
+			// this.quickHelpObject.pos_rest_id = data.pos_rest_id;
+			// this.brokenImageObject.pos_rest_id = data.pos_rest_id;
 			this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
 			this.themeForm = {
 				'isDefault': true,
@@ -272,9 +342,9 @@ export class restaurantDialogComponent implements OnInit {
 				'pos_rest_id': data.pos_rest_id,
 				'theme': this.themeObject,
 				'instruction': this.instructionObject,
-				'homepage': this.homepageObject,
+				'homePage': this.homepageObject,
 				'quickHelp': this.quickHelpObject,
-				'brokenImages': this.brokenImageObject,
+				'broken': this.brokenImageObject,
 				'dynamicThings': this.dynamicThingsObject
 			}
 			console.log('themeform object', this.themeForm);
@@ -286,10 +356,142 @@ export class restaurantDialogComponent implements OnInit {
 					this.themeObject.error_msg = result.message;
 				}
 			});
-	
 		})
 		.catch((rejected) => {
-			console.log('promise error', rejected);
+			console.log('New data: ', rejected);
+			this.themeObject.pos_rest_id = data.pos_rest_id;
+			// this.instructionObject.pos_rest_id = data.pos_rest_id;
+			this.instructionObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'instructionPage',
+				data: {
+					header: 'Take a look, how to use',
+					subHeader: 'Cool to use',
+					headerStatus: true,
+					card1_title: 'Title1',
+					card1_desc: 'Description1',
+					card1_status: true,
+					card2_title: 'Title2',
+					card2_desc: 'Description2',
+					card2_status: true,
+					card3_title: 'Title3',
+					card3_desc: 'Description3',
+					card3_status: true,
+					card4_title: 'Title4',
+					card4_desc: 'Description4',
+					card4_status: true,
+					card5_title: 'Title5',
+					card5_desc: 'Description5',
+					card5_status: true,
+					card6_title: 'Title6',
+					card6_desc: 'Description6',
+					card6_status: true
+				},
+				imagePath: {
+					card1_img: '/uploads/default/homepage/exitImage.svg',
+					card2_img: '/uploads/default/homepage/helpImage.svg',
+					card3_img: '/uploads/default/homepage/exitImage.svg',
+					card4_img: '/uploads/default/homepage/helpImage.svg',
+					card5_img: '/uploads/default/homepage/exitImage.svg',
+					card6_img: '/uploads/default/homepage/helpImage.svg',
+				}
+			}
+			this.homepageObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'homePage',
+				data: {
+					header: 'Welcome',
+					subHeader: 'Start by selecting your desired option',
+					headerStatus: true,
+					billHeader: 'View Bill',
+					billSubHeader: 'No orders placed',
+					billStatus: true,
+					helpHeader: 'Need Help?',
+					helpSubHeader: 'Call a Waiter',
+					helpStatus: true,
+					vehicleHeader: 'Call for Vehicle',
+					vehicleSubHeader: 'Valet Parking',
+					vehicleStatus: true,
+					offerHeader: 'View Offers',
+					offerSubHeader: 'No offers available',
+					offerStatus: true,
+					exitHeader: 'Exit',
+					exitSubHeader: 'Scan again',
+					exitStatus: true,
+				},
+				imagePath: {
+					bill_img: '/uploads/default/homepage/exitImage.svg',
+					help_img: '/uploads/default/homepage/helpImage.svg',
+					vehicle_img: '/uploads/default/homepage/exitImage.svg',
+					offer_img: '/uploads/default/homepage/helpImage.svg',
+					exit_img: '/uploads/default/homepage/exitImage.svg'
+				}
+			}
+			this.quickHelpObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'quickHelp',
+				data: {
+					QH_mainMenuStatus: true,
+					QH_billStatus: true,
+					QH_waterStatus: true,
+					QH_teaStatus: true,
+					QH_waiterStatus: true,
+					QH_wifiStatus: true,
+					QH_essentialKitStatus: true,
+					QH_tissueStatus: true
+				},
+				imagePath: {
+					QH_mainMenu_img: 'uploads/default/quickHelp/mainMenu.png',
+					QH_bill_img: '/uploads/default/homepage/billImage.svg',
+					QH_water_img: '/uploads/default/quickHelp/water.svg',
+					QH_tea_img: '/uploads/default/quickHelp/tea.svg',
+					QH_waiter_img: '/uploads/default/quickHelp/call waiter.svg',
+					QH_wifi_img: '/uploads/default/quickHelp/wifi assistance.svg',
+					QH_essentialKit_img: '/uploads/default/quickHelp/essential kit.svg',
+					QH_tissue_img: '/uploads/default/quickHelp/tissue.svg'
+				}
+			}
+			this.brokenImageObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'broken',
+				data: {},
+				imagePath: {
+					brokenHomeBanner: '/uploads/default/brokenImages/brokenImage.png',
+					brokenHomeCard: '/uploads/default/brokenImages/departCard.svg',
+					brokenSectionCard: '/uploads/default/brokenImages/departCard.svg',
+					brokenCatCard: '/uploads/default/brokenImages/list.svg',
+					brokenLoaderLogo: '/uploads/default/brokenImages/dinamicLogo.svg',
+				}
+			}
+			// this.homepageObject.pos_rest_id = data.pos_rest_id;
+			// this.quickHelpObject.pos_rest_id = data.pos_rest_id;
+			// this.brokenImageObject.pos_rest_id = data.pos_rest_id;
+			this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
+			this.themeForm = {
+				'isDefault': true,
+				'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,
+				'restaurant_id': data.restaurant_id,
+				'pos_rest_id': data.pos_rest_id,
+				'theme': this.themeObject,
+				'instruction': this.instructionObject,
+				'homePage': this.homepageObject,
+				'quickHelp': this.quickHelpObject,
+				'broken': this.brokenImageObject,
+				'dynamicThings': this.dynamicThingsObject
+			}
+			console.log('themeform object', this.themeForm);
+			this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {
+				console.log("add theme result ", result)
+				if (result.status) {
+					this.doAction();
+				} else {
+					this.themeObject.error_msg = result.message;
+				}
+			});
 		})
 	}
 
