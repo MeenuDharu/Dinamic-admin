@@ -308,7 +308,7 @@ export class restaurantDialogComponent implements OnInit {
 					QH_tissueStatus: true,
 				},
 				imagePath: {
-					QH_mainMenu_img: 'uploads/default/quickHelp/mainMenu.png',
+					QH_mainMenu_img: '/uploads/default/quickHelp/mainMenu.png',
 					QH_bill_img: '/uploads/default/homepage/billImage.svg',
 					QH_water_img: '/uploads/default/quickHelp/water.svg',
 					QH_tea_img: '/uploads/default/quickHelp/tea.svg',
@@ -331,10 +331,20 @@ export class restaurantDialogComponent implements OnInit {
 					brokenLoaderLogo: '/uploads/default/brokenImages/dinamicLogo.svg',
 				}
 			}
+			this.dynamicThingsObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'dynamicThings',
+				data: {
+					footerStatus: true,
+					pdfStatus: true,
+					smsApiStatus: true
+				}
+			}
 			// this.homepageObject.pos_rest_id = data.pos_rest_id;
 			// this.quickHelpObject.pos_rest_id = data.pos_rest_id;
 			// this.brokenImageObject.pos_rest_id = data.pos_rest_id;
-			this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
+			// this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
 			this.themeForm = {
 				'isDefault': true,
 				'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,
@@ -467,10 +477,20 @@ export class restaurantDialogComponent implements OnInit {
 					brokenLoaderLogo: '/uploads/default/brokenImages/dinamicLogo.svg',
 				}
 			}
+			this.dynamicThingsObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'dynamicThings',
+				data: {
+					footerStatus: true,
+					pdfStatus: true,
+					smsApiStatus: true
+				}
+			}
 			// this.homepageObject.pos_rest_id = data.pos_rest_id;
 			// this.quickHelpObject.pos_rest_id = data.pos_rest_id;
 			// this.brokenImageObject.pos_rest_id = data.pos_rest_id;
-			this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
+			// this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
 			this.themeForm = {
 				'isDefault': true,
 				'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,

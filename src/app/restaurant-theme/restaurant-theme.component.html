@@ -1616,27 +1616,27 @@
 								<!-- Show Footer -->
 								<div class="row">
 									<mat-checkbox class="p-10" name="footerStatus"
-										[(ngModel)]="dynamicThingsObject.footerStatus">Show Footer
+										[(ngModel)]="dynamicThingsData.footerStatus">Show Footer
 									</mat-checkbox>
 								</div>
 
 								<!-- Enable or disable smsApiStatus -->
 								<div class="row">
 									<mat-checkbox class="p-10" name="smsApiStatus"
-										[(ngModel)]="dynamicThingsObject.smsApiStatus">Enable SMS Api
+										[(ngModel)]="dynamicThingsData.smsApiStatus">Enable SMS Api
 									</mat-checkbox>
 								</div>
 
 								<!-- Show Pdf -->
 								<!-- <div class="row">
 									<mat-checkbox class="p-10" name="pdfStatus"
-										[(ngModel)]="dynamicThingsObject.pdfStatus">Show PDF
+										[(ngModel)]="dynamicThingsData.pdfStatus">Show PDF
 									</mat-checkbox>
 								</div> -->
 
 								<mat-divider></mat-divider>
 
-								<div *ngIf="quickHelpObject.error_msg" class="error-msg">{{ quickHelpObject.error_msg }}
+								<div *ngIf="dynamicThingsData?.error_msg" class="error-msg">{{ dynamicThingsData?.error_msg }}
 								</div>
 							</div>
 
