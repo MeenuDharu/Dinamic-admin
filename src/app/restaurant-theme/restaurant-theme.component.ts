@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../_services/api.service';
 import { MatDialog } from "@angular/material/dialog";
 import { environment } from 'src/environments/environment';
+import { DynamicThemeService } from "../_services/dynamic-theme.service";
 
 @Component({
 	selector: 'app-restaurant-theme',
@@ -34,7 +35,11 @@ export class restaurantThemeComponent implements OnInit {
 	formDataBroken = new FormData();
 	baseUrl = environment.ws_url;
 
-	constructor(public apiService: ApiService, public dialog: MatDialog) { }
+	constructor(
+		public apiService: ApiService, 
+		public dialog: MatDialog,
+		public themeService: DynamicThemeService
+	) { }
 
 	ngOnInit(): void {
 	}
@@ -52,52 +57,55 @@ export class restaurantThemeComponent implements OnInit {
 	}
 
 	onEdit(formType: any) {
-		this.randomQuery = this.getRandomCode();
-		this.themeObject = [];
-		this.homepageObject = [];
-		this.quickHelpObject = [];
-		this.insData = [];
-		this.insImagePath = [];
-		this.homeData = [];
-		this.homeImagePath = [];
-		this.quickHelpData = [];
-		this.quickHelpImagePath = [];
+		if (formType !== this.formType) {
+			this.randomQuery = this.getRandomCode();
+			this.themeObject = [];
+			this.homepageObject = [];
+			this.quickHelpObject = [];
+			this.insData = [];
+			this.insImagePath = [];
+			this.homeData = [];
+			this.homeImagePath = [];
+			this.quickHelpData = [];
+			this.quickHelpImagePath = [];
 
-		this.apiService.GET_THEME_LIST({ "pos_rest_id": this.selectedrestaurant.pos_rest_id }).subscribe((result) => {
-			console.log('Result: ', result);
-			if (result.status) {
-				if (formType === 'theme') {
-					this.formType = 'theme';
-					this.themeObject = result.data.theme;
-					console.log('ThemeObject: ', this.themeObject);
-				} else if (formType === 'instructionPage') {
-					this.formType = 'instructionPage';
-					this.insData = result.data.instruction?.data;
-					this.insImagePath = result.data.instruction?.imagePath;
-				} else if (formType === 'homepage') {
-					this.formType = 'homepage';
-					this.homeData = result.data.homePage?.data;
-					this.homeImagePath = result.data.homePage?.imagePath;
-				} else if (formType === 'quickHelp') {
-					this.formType = 'quickHelp';
-					this.quickHelpData = result.data.quickHelp?.data;
-					this.quickHelpImagePath = result.data.quickHelp?.imagePath;
-				} else if (formType === 'broken') {
-					this.formType = 'broken'
-					this.brokenData = result.data.broken?.data;
-					this.brokenImagePath = result.data.broken?.imagePath;
-				} else if (formType === 'dynamicThings') {
-					this.formType = 'dynamicThings';
-					this.dynamicThingsData  = result.data.dynamicThings?.data;
+			this.apiService.GET_THEME_LIST({ "pos_rest_id": this.selectedrestaurant.pos_rest_id }).subscribe((result) => {
+				console.log('Result: ', result);
+				if (result.status) {
+					this.themeService.themeList = result.data;
+					if (formType === 'theme') {
+						this.formType = 'theme';
+						this.themeObject = result.data.theme;
+						console.log('ThemeObject: ', this.themeObject);
+					} else if (formType === 'instructionPage') {
+						this.formType = 'instructionPage';
+						this.insData = result.data.instruction?.data;
+						this.insImagePath = result.data.instruction?.imagePath;
+					} else if (formType === 'homepage') {
+						this.formType = 'homepage';
+						this.homeData = result.data.homePage?.data;
+						this.homeImagePath = result.data.homePage?.imagePath;
+					} else if (formType === 'quickHelp') {
+						this.formType = 'quickHelp';
+						this.quickHelpData = result.data.quickHelp?.data;
+						this.quickHelpImagePath = result.data.quickHelp?.imagePath;
+					} else if (formType === 'broken') {
+						this.formType = 'broken'
+						this.brokenData = result.data.broken?.data;
+						this.brokenImagePath = result.data.broken?.imagePath;
+					} else if (formType === 'dynamicThings') {
+						this.formType = 'dynamicThings';
+						this.dynamicThingsData = result.data.dynamicThings?.data;
+					}
+				} else {
+					alert(result.message);
 				}
-			} else {
-				alert(result.message);
-			}
-		});
+			});
+		}
 	}
 
 	onInstructionFileChange(event: any, fileName: string, preview: string) {
-		if(this.formDataInstructionPage.get('instruction')) {
+		if (this.formDataInstructionPage.get('instruction')) {
 			this.formDataInstructionPage.delete('instruction');
 			this.formDataInstructionPage.delete('instructionPageImages');
 		}
@@ -111,8 +119,8 @@ export class restaurantThemeComponent implements OnInit {
 		}
 	}
 
-	onHomePageFileChange (event: any, fileName: string, preview: string) {
-		if(this.formDataHomePage.get('homePage')) {
+	onHomePageFileChange(event: any, fileName: string, preview: string) {
+		if (this.formDataHomePage.get('homePage')) {
 			this.formDataHomePage.delete('homePage');
 			this.formDataHomePage.delete('homePageImages');
 		}
@@ -126,8 +134,8 @@ export class restaurantThemeComponent implements OnInit {
 		}
 	}
 
-	onQuickHelpFileChange (event: any, fileName: string, preview: string) {
-		if (this.formDataQuickHelp.get('quickHelp')) { 
+	onQuickHelpFileChange(event: any, fileName: string, preview: string) {
+		if (this.formDataQuickHelp.get('quickHelp')) {
 			this.formDataQuickHelp.delete('quickHelp');
 			this.formDataQuickHelp.delete('quickHelpImages');
 		}
@@ -141,7 +149,7 @@ export class restaurantThemeComponent implements OnInit {
 		}
 	}
 
-	onBrokenImageFileChange (event: any, fileName: string, preview: string) {
+	onBrokenImageFileChange(event: any, fileName: string, preview: string) {
 		if (this.formDataBroken.get('broken')) {
 			this.formDataBroken.delete('broken');
 			this.formDataBroken.delete('brokenImages')
@@ -183,7 +191,7 @@ export class restaurantThemeComponent implements OnInit {
 				this.closeForm();
 			});
 		} else if (updateName === 'instructionPage') {
-			if(this.formDataInstructionPage.get('instruction')) {
+			if (this.formDataInstructionPage.get('instruction')) {
 				this.formDataInstructionPage.delete('instruction');
 				this.formDataInstructionPage.delete('instructionPageImages');
 			}
@@ -193,7 +201,7 @@ export class restaurantThemeComponent implements OnInit {
 				formType: 'instructionPage',
 				data: this.insData
 			});
-			console.log({insData: this.insData});
+			console.log({ insData: this.insData });
 			this.formDataInstructionPage.append('instruction', instruction);
 			this.apiService.ADD_INSTRUCTION_PAGE_THEME(this.formDataInstructionPage).subscribe((result: any) => {
 				this.closeForm();
@@ -209,7 +217,7 @@ export class restaurantThemeComponent implements OnInit {
 				formType: 'homePage',
 				data: this.homeData
 			});
-			console.log({homeData: this.homeData});
+			console.log({ homeData: this.homeData });
 			this.formDataHomePage.append('homePage', homePage);
 			this.apiService.ADD_HOMEPAGE_THEME(this.formDataHomePage).subscribe((result: any) => {
 				this.closeForm();

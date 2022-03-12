@@ -223,42 +223,46 @@ export class restaurantDialogComponent implements OnInit {
 		.then((themeList: any) => {
 			console.log('promise data', themeList);
 			this.themeObject.pos_rest_id = data.pos_rest_id;
-			// this.instructionObject.pos_rest_id = data.pos_rest_id;
 			let insTheme = themeList.instruction;
+			let homeTheme = themeList.homePage;
+			let quickTheme = themeList.quickHelp;
+			let brokenTheme = themeList.broken;
+			let dynamicThings = themeList.dynamicThings;
+
 			this.instructionObject = {
 				pos_rest_id: data.pos_rest_id,
 				isDefault: true,
 				formType: 'instructionPage',
 				data: {
-					header: insTheme.data.header === '' || undefined ? 'Take a look, how to use' : insTheme.data.header,
-					subHeader: 'Cool to use',
-					headerStatus: true,
-					card1_title: 'Title1',
-					card1_desc: 'Description1',
-					card1_status: true,
-					card2_title: 'Title2',
-					card2_desc: 'Description2',
-					card2_status: true,
-					card3_title: 'Title3',
-					card3_desc: 'Description3',
-					card3_status: true,
-					card4_title: 'Title4',
-					card4_desc: 'Description4',
-					card4_status: true,
-					card5_title: 'Title5',
-					card5_desc: 'Description5',
-					card5_status: true,
-					card6_title: 'Title6',
-					card6_desc: 'Description6',
-					card6_status: true
+					header: insTheme.data.header,
+					subHeader: insTheme.data.subHeader,
+					headerStatus: insTheme.data.headerStatus,
+					card1_title: insTheme.data.card1_title,
+					card1_desc: insTheme.data.card1_desc,
+					card1_status: insTheme.data.card1_status,
+					card2_title: insTheme.data.card2_title,
+					card2_desc: insTheme.data.card2_desc,
+					card2_status: insTheme.data.card2_status,
+					card3_title: insTheme.data.card3_title,
+					card3_desc: insTheme.data.card3_desc,
+					card3_status: insTheme.data.card3_status,
+					card4_title: insTheme.data.card4_title,
+					card4_desc: insTheme.data.card4_desc,
+					card4_status: insTheme.data.card4_status,
+					card5_title: insTheme.data.card5_title,
+					card5_desc: insTheme.data.card5_desc,
+					card5_status: insTheme.data.card5_status,
+					card6_title: insTheme.data.card6_title,
+					card6_desc: insTheme.data.card6_desc,
+					card6_status: insTheme.data.card6_status,
 				},
 				imagePath: {
-					card1_img: '/uploads/default/homepage/exitImage.svg',
-					card2_img: '/uploads/default/homepage/helpImage.svg',
-					card3_img: '/uploads/default/homepage/exitImage.svg',
-					card4_img: '/uploads/default/homepage/helpImage.svg',
-					card5_img: '/uploads/default/homepage/exitImage.svg',
-					card6_img: '/uploads/default/homepage/helpImage.svg',
+					card1_img: insTheme.imagePath.card1_img,
+					card2_img: insTheme.imagePath.card2_img,
+					card3_img: insTheme.imagePath.card3_img,
+					card4_img: insTheme.imagePath.card4_img,
+					card5_img: insTheme.imagePath.card5_img,
+					card6_img: insTheme.imagePath.card6_img,
 				}
 			}
 			this.homepageObject = {
@@ -266,31 +270,31 @@ export class restaurantDialogComponent implements OnInit {
 				isDefault: true,
 				formType: 'homePage',
 				data: {
-					header: 'Welcome',
-					subHeader: 'Start by selecting your desired option',
-					headerStatus: true,
-					billHeader: 'View Bill',
-					billSubHeader: 'No orders placed',
-					billStatus: true,
-					helpHeader: 'Need Help?',
-					helpSubHeader: 'Call a Waiter',
-					helpStatus: true,
-					vehicleHeader: 'Call for Vehicle',
-					vehicleSubHeader: 'Valet Parking',
-					vehicleStatus: true,
-					offerHeader: 'View Offers',
-					offerSubHeader: 'No offers available',
-					offerStatus: true,
-					exitHeader: 'Exit',
-					exitSubHeader: 'Scan again',
-					exitStatus: true,
+					header: homeTheme.data.header,
+					subHeader: homeTheme.data.subHeader,
+					headerStatus: homeTheme.data.headerStatus,
+					billHeader: homeTheme.data.billHeader,
+					billSubHeader: homeTheme.data.billSubHeader,
+					billStatus: homeTheme.data.billStatus,
+					helpHeader: homeTheme.data.helpHeader,
+					helpSubHeader: homeTheme.data.helpSubHeader,
+					helpStatus: homeTheme.data.helpStatus,
+					vehicleHeader: homeTheme.data.vehicleHeader,
+					vehicleSubHeader: homeTheme.data.vehicleSubHeader,
+					vehicleStatus: homeTheme.data.vehicleStatus,
+					offerHeader: homeTheme.data.offerHeader,
+					offerSubHeader: homeTheme.data.offerSubHeader,
+					offerStatus: homeTheme.data.offerStatus,
+					exitHeader: homeTheme.data.exitHeader,
+					exitSubHeader: homeTheme.data.exitSubHeader,
+					exitStatus: homeTheme.data.exitStatus,
 				},
 				imagePath: {
-					bill_img: '/uploads/default/homepage/exitImage.svg',
-					help_img: '/uploads/default/homepage/helpImage.svg',
-					vehicle_img: '/uploads/default/homepage/exitImage.svg',
-					offer_img: '/uploads/default/homepage/helpImage.svg',
-					exit_img: '/uploads/default/homepage/exitImage.svg',
+					bill_img: homeTheme.imagePath.bill_img,
+					help_img: homeTheme.imagePath.help_img,
+					vehicle_img: homeTheme.imagePath.vehicle_img,
+					offer_img: homeTheme.imagePath.offer_img,
+					exit_img: homeTheme.imagePath.exit_img,
 				}
 			}
 			this.quickHelpObject = {
@@ -298,24 +302,24 @@ export class restaurantDialogComponent implements OnInit {
 				isDefault: true,
 				formType: 'quickHelp',
 				data: {
-					QH_mainMenuStatus: true,
-					QH_billStatus: true,
-					QH_waterStatus: true,
-					QH_teaStatus: true,
-					QH_waiterStatus: true,
-					QH_wifiStatus: true,
-					QH_essentialKitStatus: true,
-					QH_tissueStatus: true,
+					QH_mainMenuStatus: quickTheme.data.QH_mainMenu_img,
+					QH_billStatus: quickTheme.data.QH_billStatus,
+					QH_waterStatus: quickTheme.data.QH_waterStatus,
+					QH_teaStatus: quickTheme.data.QH_teaStatus,
+					QH_waiterStatus: quickTheme.data.QH_waiterStatus,
+					QH_wifiStatus: quickTheme.data.QH_wifiStatus,
+					QH_essentialKitStatus: quickTheme.data.QH_essentialKitStatus,
+					QH_tissueStatus: quickTheme.data.QH_tissueStatus,
 				},
 				imagePath: {
-					QH_mainMenu_img: '/uploads/default/quickHelp/mainMenu.png',
-					QH_bill_img: '/uploads/default/homepage/billImage.svg',
-					QH_water_img: '/uploads/default/quickHelp/water.svg',
-					QH_tea_img: '/uploads/default/quickHelp/tea.svg',
-					QH_waiter_img: '/uploads/default/quickHelp/call waiter.svg',
-					QH_wifi_img: '/uploads/default/quickHelp/wifi assistance.svg',
-					QH_essentialKit_img: '/uploads/default/quickHelp/essential kit.svg',
-					QH_tissue_img: '/uploads/default/quickHelp/tissue.svg'
+					QH_mainMenu_img: quickTheme.imagePath.QH_mainMenu_img,
+					QH_bill_img: quickTheme.imagePath.QH_bill_img,
+					QH_water_img: quickTheme.imagePath.QH_water_img,
+					QH_tea_img: quickTheme.imagePath.QH_tea_img,
+					QH_waiter_img: quickTheme.imagePath.QH_waiter_img,
+					QH_wifi_img: quickTheme.imagePath.QH_wifi_img,
+					QH_essentialKit_img: quickTheme.imagePath.QH_essentialKit_img,
+					QH_tissue_img: quickTheme.imagePath.QH_tissue_img,
 				}
 			}
 			this.brokenImageObject = {
@@ -324,11 +328,11 @@ export class restaurantDialogComponent implements OnInit {
 				formType: 'broken',
 				data: {},
 				imagePath: {
-					brokenHomeBanner: '/uploads/default/brokenImages/brokenImage.png',
-					brokenHomeCard: '/uploads/default/brokenImages/departCard.svg',
-					brokenSectionCard: '/uploads/default/brokenImages/departCard.svg',
-					brokenCatCard: '/uploads/default/brokenImages/list.svg',
-					brokenLoaderLogo: '/uploads/default/brokenImages/dinamicLogo.svg',
+					brokenHomeBanner: brokenTheme.imagePath.brokenHomeBanner,
+					brokenHomeCard: brokenTheme.imagePath.brokenHomeCard,
+					brokenSectionCard: brokenTheme.imagePath.brokenSectionCard,
+					brokenCatCard: brokenTheme.imagePath.brokenCatCard,
+					brokenLoaderLogo: brokenTheme.imagePath.brokenLoaderLogo,
 				}
 			}
 			this.dynamicThingsObject = {
@@ -336,15 +340,12 @@ export class restaurantDialogComponent implements OnInit {
 				isDefault: true,
 				formType: 'dynamicThings',
 				data: {
-					footerStatus: true,
-					pdfStatus: true,
-					smsApiStatus: true
+					footerStatus: dynamicThings.data.footerStatus,
+					pdfStatus: dynamicThings.data.pdfStatus,
+					smsApiStatus: dynamicThings.data.smsApiStatus
 				}
 			}
-			// this.homepageObject.pos_rest_id = data.pos_rest_id;
-			// this.quickHelpObject.pos_rest_id = data.pos_rest_id;
-			// this.brokenImageObject.pos_rest_id = data.pos_rest_id;
-			// this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
+
 			this.themeForm = {
 				'isDefault': true,
 				'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,
@@ -370,7 +371,6 @@ export class restaurantDialogComponent implements OnInit {
 		.catch((rejected) => {
 			console.log('New data: ', rejected);
 			this.themeObject.pos_rest_id = data.pos_rest_id;
-			// this.instructionObject.pos_rest_id = data.pos_rest_id;
 			this.instructionObject = {
 				pos_rest_id: data.pos_rest_id,
 				isDefault: true,
@@ -487,10 +487,7 @@ export class restaurantDialogComponent implements OnInit {
 					smsApiStatus: true
 				}
 			}
-			// this.homepageObject.pos_rest_id = data.pos_rest_id;
-			// this.quickHelpObject.pos_rest_id = data.pos_rest_id;
-			// this.brokenImageObject.pos_rest_id = data.pos_rest_id;
-			// this.dynamicThingsObject.pos_rest_id = data.pos_rest_id;
+
 			this.themeForm = {
 				'isDefault': true,
 				'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,
