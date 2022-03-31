@@ -1230,14 +1230,24 @@
 								<div class="divider" style="margin-top: 0;"><span></span><span>Main
 										Menu</span><span></span></div>
 								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Title</mat-label>
+												<input matInput type="text" name="mainMenuTitle" 
+													[(ngModel)]="quickHelpData.QH_1.title" #mainMenuTitle="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+
 									<div class="row align-items-center">
 										<div class="col-md-6">
-											<input type="file" name="QH_mainMenu_img" (change)="onQuickHelpFileChange($event, 'QH_mainMenu_img', 'QH_mainMenuPreview')" />
+											<input type="file" name="QH_mainMenu_img" (change)="onQuickHelpFileChange($event, 'QH_1', 'QH_mainMenuPreview')" />
 										</div>
 										<div class="col-md-6">
 											<div class="text-center">
 												<img class="previewImg" id="QH_mainMenuPreview"
-													src="{{this.baseUrl+this.quickHelpImagePath.QH_mainMenu_img}}?{{randomQuery}}"
+													src="{{this.baseUrl+this.quickHelpImagePath.QH_1.image}}?{{randomQuery}}"
 													alt="Main Menu Image Preview" width="100px" height="100px">
 											</div>
 										</div>
@@ -1245,7 +1255,40 @@
 
 									<div class="row">
 										<mat-checkbox class="p-10" name="QH_mainMenuStatus"
-											[(ngModel)]="quickHelpData.QH_mainMenuStatus">Show Main menu
+											[(ngModel)]="quickHelpData.QH_1.visibleStatus">Show Main menu
+										</mat-checkbox>
+									</div>
+								</div>
+
+								<!-- Quick Help Call Manager -->
+								<div class="divider"><span></span><span>Call Manager</span><span></span></div>
+								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Title</mat-label>
+												<input matInput type="text" name="callManagerTitle" 
+													[(ngModel)]="quickHelpData.QH_2.title" #callManagerTitle="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+
+									<div class="row align-items-center">
+										<div class="col-md-6">
+											<input type="file" name="QH_callManager_img" (change)="onQuickHelpFileChange($event, 'QH_2', 'QH_callManagerPreview')" />
+										</div>
+										<div class="col-md-6">
+											<div class="text-center">
+												<img class="previewImg" id="QH_callManagerPreview"
+													src="{{this.baseUrl+this.quickHelpImagePath.QH_2.image}}?{{randomQuery}}"
+													alt="View bill Image Preview" width="100px" height="100px">
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<mat-checkbox class="p-10" name="QH_callManagerStatus"
+											[(ngModel)]="quickHelpData.QH_2.visibleStatus">Show View Bill
 										</mat-checkbox>
 									</div>
 								</div>
@@ -1253,14 +1296,24 @@
 								<!-- Quick Help viewBill -->
 								<div class="divider"><span></span><span>View Bill</span><span></span></div>
 								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Title</mat-label>
+												<input matInput type="text" name="billTitle" 
+													[(ngModel)]="quickHelpData.QH_3.title" #billTitle="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+
 									<div class="row align-items-center">
 										<div class="col-md-6">
-											<input type="file" name="QH_bill_img" (change)="onQuickHelpFileChange($event, 'QH_bill_img', 'QH_billPreview')" />
+											<input type="file" name="QH_bill_img" (change)="onQuickHelpFileChange($event, 'QH_3', 'QH_billPreview')" />
 										</div>
 										<div class="col-md-6">
 											<div class="text-center">
 												<img class="previewImg" id="QH_billPreview"
-													src="{{this.baseUrl+this.quickHelpImagePath.QH_bill_img}}?{{randomQuery}}"
+													src="{{this.baseUrl+this.quickHelpImagePath.QH_3.image}}?{{randomQuery}}"
 													alt="View bill Image Preview" width="100px" height="100px">
 											</div>
 										</div>
@@ -1268,7 +1321,7 @@
 
 									<div class="row">
 										<mat-checkbox class="p-10" name="QH_billStatus"
-											[(ngModel)]="quickHelpData.QH_billStatus">Show View Bill
+											[(ngModel)]="quickHelpData.QH_3.visibleStatus">Show View Bill
 										</mat-checkbox>
 									</div>
 								</div>
@@ -1276,15 +1329,25 @@
 								<!-- Quick Help Water -->
 								<div class="divider"><span></span><span>Water</span><span></span></div>
 								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Title</mat-label>
+												<input matInput type="text" name="waterTitle" 
+													[(ngModel)]="quickHelpData.QH_4.title" #waterTitle="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+
 									<div class="row align-items-center">
 										<div class="col-md-6">
 											<input type="file" name="QH_water_img"
-												(change)="onQuickHelpFileChange($event, 'QH_water_img', 'QH_waterPreview')" />
+												(change)="onQuickHelpFileChange($event, 'QH_4', 'QH_waterPreview')" />
 										</div>
 										<div class="col-md-6">
 											<div class="text-center">
 												<img class="previewImg" id="QH_waterPreview"
-													src="{{this.baseUrl+this.quickHelpImagePath.QH_water_img}}?{{randomQuery}}"
+													src="{{this.baseUrl+this.quickHelpImagePath.QH_4.image}}?{{randomQuery}}"
 													alt="Water Image Preview" width="100px" height="100px">
 											</div>
 										</div>
@@ -1292,7 +1355,7 @@
 
 									<div class="row">
 										<mat-checkbox class="p-10" name="QH_waterStatus"
-											[(ngModel)]="quickHelpData.QH_waterStatus">Show Water
+											[(ngModel)]="quickHelpData.QH_4.visibleStatus">Show Water
 										</mat-checkbox>
 									</div>
 								</div>
@@ -1300,14 +1363,24 @@
 								<!-- Quick Help Tea -->
 								<div class="divider"><span></span><span>Tea</span><span></span></div>
 								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Title</mat-label>
+												<input matInput type="text" name="teaTitle" 
+													[(ngModel)]="quickHelpData.QH_5.title" #teaTitle="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+
 									<div class="row align-items-center">
 										<div class="col-md-6">
-											<input type="file" name="QH_tea_img" (change)="onQuickHelpFileChange($event, 'QH_tea_img', 'QH_teaPreview')" />
+											<input type="file" name="QH_tea_img" (change)="onQuickHelpFileChange($event, 'QH_5', 'QH_teaPreview')" />
 										</div>
 										<div class="col-md-6">
 											<div class="text-center">
 												<img class="previewImg" id="QH_teaPreview"
-													src="{{this.baseUrl+this.quickHelpImagePath.QH_tea_img}}?{{randomQuery}}"
+													src="{{this.baseUrl+this.quickHelpImagePath.QH_5.image}}?{{randomQuery}}"
 													alt="Tea Image Preview" width="100px" height="100px">
 											</div>
 										</div>
@@ -1315,7 +1388,7 @@
 
 									<div class="row">
 										<mat-checkbox class="p-10" name="QH_teaStatus"
-											[(ngModel)]="quickHelpData.QH_teaStatus">
+											[(ngModel)]="quickHelpData.QH_5.visibleStatus">
 											Show Tea
 										</mat-checkbox>
 									</div>
@@ -1324,15 +1397,25 @@
 								<!-- Quick Help Waiter -->
 								<div class="divider"><span></span><span>Waiter</span><span></span></div>
 								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Title</mat-label>
+												<input matInput type="text" name="waiterTitle" 
+													[(ngModel)]="quickHelpData.QH_6.title" #waiterTitle="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+
 									<div class="row align-items-center">
 										<div class="col-md-6">
 											<input type="file" name="QH_waiter_img"
-												(change)="onQuickHelpFileChange($event, 'QH_waiter_img', 'QH_waiterPreview')" />
+												(change)="onQuickHelpFileChange($event, 'QH_6', 'QH_waiterPreview')" />
 										</div>
 										<div class="col-md-6">
 											<div class="text-center">
 												<img class="previewImg" id="QH_waiterPreview"
-													src="{{this.baseUrl+this.quickHelpImagePath.QH_waiter_img}}?{{randomQuery}}"
+													src="{{this.baseUrl+this.quickHelpImagePath.QH_6.image}}?{{randomQuery}}"
 													alt="Waiter Image Preview" width="100px" height="100px">
 											</div>
 										</div>
@@ -1340,7 +1423,7 @@
 
 									<div class="row">
 										<mat-checkbox class="p-10" name="QH_waiterStatus"
-											[(ngModel)]="quickHelpData.QH_waiterStatus">Show Waiter
+											[(ngModel)]="quickHelpData.QH_6.visibleStatus">Show Waiter
 										</mat-checkbox>
 									</div>
 								</div>
@@ -1348,14 +1431,23 @@
 								<!-- Quick Help Wifi -->
 								<div class="divider"><span></span><span>Wifi Assistance</span><span></span></div>
 								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Title</mat-label>
+												<input matInput type="text" name="wifiTitle" 
+													[(ngModel)]="quickHelpData.QH_7.title" #wifiTitle="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
 									<div class="row align-items-center">
 										<div class="col-md-6">
-											<input type="file" name="QH_wifi_img" (change)="onQuickHelpFileChange($event, 'QH_wifi_img', 'QH_wifiPreview')" />
+											<input type="file" name="QH_wifi_img" (change)="onQuickHelpFileChange($event, 'QH_7', 'QH_wifiPreview')" />
 										</div>
 										<div class="col-md-6">
 											<div class="text-center">
 												<img class="previewImg" id="QH_wifiPreview"
-													src="{{this.baseUrl+this.quickHelpImagePath.QH_wifi_img}}?{{randomQuery}}"
+													src="{{this.baseUrl+this.quickHelpImagePath.QH_7.image}}?{{randomQuery}}"
 													alt="Wifi Image Preview" width="100px" height="100px">
 											</div>
 										</div>
@@ -1363,7 +1455,7 @@
 
 									<div class="row">
 										<mat-checkbox class="p-10" name="QH_wifiStatus"
-											[(ngModel)]="quickHelpData.QH_wifiStatus">Show Wifi
+											[(ngModel)]="quickHelpData.QH_7.visibleStatus">Show Wifi
 										</mat-checkbox>
 									</div>
 								</div>
@@ -1371,15 +1463,25 @@
 								<!-- Quick Help Essential Kit -->
 								<div class="divider"><span></span><span>Essential Kit</span><span></span></div>
 								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Title</mat-label>
+												<input matInput type="text" name="essentialKitTitle" 
+													[(ngModel)]="quickHelpData.QH_8.title" #essentialKitTitle="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+
 									<div class="row align-items-center">
 										<div class="col-md-6">
 											<input type="file" name="QH_essentialKit_img"
-												(change)="onQuickHelpFileChange($event, 'QH_essentialKit_img', 'QH_essentialKitPreview')" />
+												(change)="onQuickHelpFileChange($event, 'QH_8', 'QH_essentialKitPreview')" />
 										</div>
 										<div class="col-md-6">
 											<div class="text-center">
 												<img class="previewImg" id="QH_essentialKitPreview"
-													src="{{this.baseUrl+this.quickHelpImagePath.QH_essentialKit_img}}?{{randomQuery}}"
+													src="{{this.baseUrl+this.quickHelpImagePath.QH_8.image}}?{{randomQuery}}"
 													alt="EssentialKit Image Preview" width="100px" height="100px">
 											</div>
 										</div>
@@ -1387,7 +1489,7 @@
 
 									<div class="row">
 										<mat-checkbox class="p-10" name="QH_essentialKitStatus"
-											[(ngModel)]="quickHelpData.QH_essentialKitStatus">
+											[(ngModel)]="quickHelpData.QH_8.visibleStatus">
 											Show EssentialKit
 										</mat-checkbox>
 									</div>
@@ -1396,15 +1498,25 @@
 								<!-- Quick Help Tissue -->
 								<div class="divider"><span></span><span>Tissue</span><span></span></div>
 								<div class="group-card">
+									<div class="row">
+										<div class="col-md-6">
+											<mat-form-field class="w-100">
+												<mat-label>Title</mat-label>
+												<input matInput type="text" name="tissueTitle" 
+													[(ngModel)]="quickHelpData.QH_9.title" #tissueTitle="ngModel" />
+											</mat-form-field>
+										</div>
+									</div>
+
 									<div class="row align-items-center">
 										<div class="col-md-6">
 											<input type="file" name="QH_tissue_img"
-												(change)="onQuickHelpFileChange($event, 'QH_tissue_img', 'QH_tissuePreview')" />
+												(change)="onQuickHelpFileChange($event, 'QH_9', 'QH_tissuePreview')" />
 										</div>
 										<div class="col-md-6">
 											<div class="text-center">
 												<img class="previewImg" id="QH_tissuePreview"
-													src="{{this.baseUrl+this.quickHelpImagePath.QH_tissue_img}}?{{randomQuery}}"
+													src="{{this.baseUrl+this.quickHelpImagePath.QH_9.image}}?{{randomQuery}}"
 													alt="Tissue Image Preview" width="100px" height="100px">
 											</div>
 										</div>
@@ -1412,7 +1524,7 @@
 
 									<div class="row">
 										<mat-checkbox class="p-10" name="QH_tissueStatus"
-											[(ngModel)]="quickHelpData.QH_tissueStatus">Show Tissue
+											[(ngModel)]="quickHelpData.QH_9.visibleStatus">Show Tissue
 										</mat-checkbox>
 									</div>
 								</div>

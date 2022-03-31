@@ -302,24 +302,116 @@ export class restaurantDialogComponent implements OnInit {
 				isDefault: true,
 				formType: 'quickHelp',
 				data: {
-					QH_mainMenuStatus: quickTheme.data.QH_mainMenu_img,
-					QH_billStatus: quickTheme.data.QH_billStatus,
-					QH_waterStatus: quickTheme.data.QH_waterStatus,
-					QH_teaStatus: quickTheme.data.QH_teaStatus,
-					QH_waiterStatus: quickTheme.data.QH_waiterStatus,
-					QH_wifiStatus: quickTheme.data.QH_wifiStatus,
-					QH_essentialKitStatus: quickTheme.data.QH_essentialKitStatus,
-					QH_tissueStatus: quickTheme.data.QH_tissueStatus,
+					// QH_mainMenuStatus: quickTheme.data.QH_mainMenuStatus,
+					// QH_callManagerStatus: quickTheme.data.QH_callManagerStatus,
+					// QH_billStatus: quickTheme.data.QH_billStatus,
+					// QH_waterStatus: quickTheme.data.QH_waterStatus,
+					// QH_teaStatus: quickTheme.data.QH_teaStatus,
+					// QH_waiterStatus: quickTheme.data.QH_waiterStatus,
+					// QH_wifiStatus: quickTheme.data.QH_wifiStatus,
+					// QH_essentialKitStatus: quickTheme.data.QH_essentialKitStatus,
+					// QH_tissueStatus: quickTheme.data.QH_tissueStatus,
+					QH_1: {
+						title: quickTheme.data.QH_1.title,
+						visibleStatus: quickTheme.data.QH_1.visibleStatus,
+						purpose: "main_menu",
+						posName: ""
+					},
+					QH_2: {
+						title: quickTheme.data.QH_2.title,
+						visibleStatus: quickTheme.data.QH_2.visibleStatus,
+						purpose: "call_manager",
+						posName: ""
+					},
+					QH_3: {
+						title: quickTheme.data.QH_3.title,
+						visibleStatus: quickTheme.data.QH_3.visibleStatus,
+						purpose: "bill",
+						posName: ""
+					},
+					QH_4: {
+						title: quickTheme.data.QH_4.title,
+						visibleStatus: quickTheme.data.QH_4.visibleStatus,
+						purpose: "water",
+						posName: "water"
+					},
+					QH_5: {
+						title: quickTheme.data.QH_5.title,
+						visibleStatus: quickTheme.data.QH_5.visibleStatus,
+						purpose: "tea",
+						posName: "tea"
+					},
+					QH_6: {
+						title: quickTheme.data.QH_6.title,
+						visibleStatus: quickTheme.data.QH_6.visibleStatus,
+						purpose: "waiter",
+						posName: "call waiter"
+					},
+					QH_7: {
+						title: quickTheme.data.QH_7.title,
+						visibleStatus: quickTheme.data.QH_7.visibleStatus,
+						purpose: "wifi",
+						posName: "wifi assistance"
+					},
+					QH_8: {
+						title: quickTheme.data.QH_8.title,
+						visibleStatus: quickTheme.data.QH_8.visibleStatus,
+						purpose: "essential_kit",
+						posName: "essential kit"
+					},
+					QH_9: {
+						title: quickTheme.data.QH_9.title,
+						visibleStatus: quickTheme.data.QH_9.visibleStatus,
+						purpose: "tissue",
+						posName: "tissue"
+					}
 				},
 				imagePath: {
-					QH_mainMenu_img: quickTheme.imagePath.QH_mainMenu_img,
-					QH_bill_img: quickTheme.imagePath.QH_bill_img,
-					QH_water_img: quickTheme.imagePath.QH_water_img,
-					QH_tea_img: quickTheme.imagePath.QH_tea_img,
-					QH_waiter_img: quickTheme.imagePath.QH_waiter_img,
-					QH_wifi_img: quickTheme.imagePath.QH_wifi_img,
-					QH_essentialKit_img: quickTheme.imagePath.QH_essentialKit_img,
-					QH_tissue_img: quickTheme.imagePath.QH_tissue_img,
+					// QH_mainMenu_img: quickTheme.imagePath.QH_mainMenu_img,
+					// QH_callManager_img: quickTheme.imagePath.QH_callManager_img,
+					// QH_bill_img: quickTheme.imagePath.QH_bill_img,
+					// QH_water_img: quickTheme.imagePath.QH_water_img,
+					// QH_tea_img: quickTheme.imagePath.QH_tea_img,
+					// QH_waiter_img: quickTheme.imagePath.QH_waiter_img,
+					// QH_wifi_img: quickTheme.imagePath.QH_wifi_img,
+					// QH_essentialKit_img: quickTheme.imagePath.QH_essentialKit_img,
+					// QH_tissue_img: quickTheme.imagePath.QH_tissue_img,
+					QH_1: {
+						title: quickTheme.data.QH_1.title,
+						image: quickTheme.imagePath.QH_1.image
+					},
+					QH_2: {
+						title: quickTheme.data.QH_2.title,
+						image: quickTheme.imagePath.QH_2.image
+					},
+					QH_3: {
+						title: quickTheme.data.QH_3.title,
+						image: quickTheme.imagePath.QH_3.image
+					},
+					QH_4: {
+						title: quickTheme.data.QH_4.title,
+						image: quickTheme.imagePath.QH_4.image
+					},
+					QH_5: {
+						title: quickTheme.data.QH_5.title,
+						image: quickTheme.imagePath.QH_5.image
+					},
+					QH_6: {
+						title: quickTheme.data.QH_6.title,
+						image: quickTheme.imagePath.QH_6.image
+					},
+					QH_7: {
+						title: quickTheme.data.QH_7.title,
+						image: quickTheme.imagePath.QH_7.image
+					},
+					QH_8: {
+						title: quickTheme.data.QH_8.title,
+						image: quickTheme.imagePath.QH_8.image
+					},
+					QH_9: {
+						title: quickTheme.data.QH_9.title,
+						image: quickTheme.imagePath.QH_9.image
+					}
 				}
 			}
 			this.brokenImageObject = {
@@ -444,24 +536,116 @@ export class restaurantDialogComponent implements OnInit {
 				isDefault: true,
 				formType: 'quickHelp',
 				data: {
-					QH_mainMenuStatus: true,
-					QH_billStatus: true,
-					QH_waterStatus: true,
-					QH_teaStatus: true,
-					QH_waiterStatus: true,
-					QH_wifiStatus: true,
-					QH_essentialKitStatus: true,
-					QH_tissueStatus: true
+					// QH_mainMenuStatus: true,
+					// QH_callManagerStatus: true,
+					// QH_billStatus: true,
+					// QH_waterStatus: true,
+					// QH_teaStatus: true,
+					// QH_waiterStatus: true,
+					// QH_wifiStatus: true,
+					// QH_essentialKitStatus: true,
+					// QH_tissueStatus: true
+					QH_1: {
+						title: "Main Menu",
+						visibleStatus: true,
+						purpose: "main_menu",
+						posName: ""
+					},
+					QH_2: {
+						title: "Call Manager",
+						visibleStatus: true,
+						purpose: "call_manager",
+						posName: ""
+					},
+					QH_3: {
+						title: "View Bill",
+						visibleStatus: true,
+						purpose: "bill",
+						posName: ""
+					},
+					QH_4: {
+						title: "Water",
+						visibleStatus: true,
+						purpose: "water",
+						posName: "water"
+					},
+					QH_5: {
+						title: "Tea",
+						visibleStatus: true,
+						purpose: "tea",
+						posName: "tea"
+					},
+					QH_6: {
+						title: "Call Waiter",
+						visibleStatus: true,
+						purpose: "waiter",
+						posName: "call waiter"
+					},
+					QH_7: {
+						title: "Wifi Assistance",
+						visibleStatus: true,
+						purpose: "wifi",
+						posName: "wifi assistance"
+					},
+					QH_8: {
+						title: "Essential Kit",
+						visibleStatus: true,
+						purpose: "essential_kit",
+						posName: "essential kit"
+					},
+					QH_9: {
+						title: "Tissue",
+						visibleStatus: true,
+						purpose: "tissue",
+						posName: "tissue"
+					}
 				},
 				imagePath: {
-					QH_mainMenu_img: 'uploads/default/quickHelp/mainMenu.png',
-					QH_bill_img: '/uploads/default/homepage/billImage.svg',
-					QH_water_img: '/uploads/default/quickHelp/water.svg',
-					QH_tea_img: '/uploads/default/quickHelp/tea.svg',
-					QH_waiter_img: '/uploads/default/quickHelp/call waiter.svg',
-					QH_wifi_img: '/uploads/default/quickHelp/wifi assistance.svg',
-					QH_essentialKit_img: '/uploads/default/quickHelp/essential kit.svg',
-					QH_tissue_img: '/uploads/default/quickHelp/tissue.svg'
+					// QH_mainMenu_img: 'uploads/default/quickHelp/mainMenu.png',
+					// QH_callManager_img: 'uploads/default/quickHelp/mainMenu.png',
+					// QH_bill_img: '/uploads/default/homepage/billImage.svg',
+					// QH_water_img: '/uploads/default/quickHelp/water.svg',
+					// QH_tea_img: '/uploads/default/quickHelp/tea.svg',
+					// QH_waiter_img: '/uploads/default/quickHelp/call waiter.svg',
+					// QH_wifi_img: '/uploads/default/quickHelp/wifi assistance.svg',
+					// QH_essentialKit_img: '/uploads/default/quickHelp/essential kit.svg',
+					// QH_tissue_img: '/uploads/default/quickHelp/tissue.svg'
+					QH_1: {
+						title: "Main Menu",
+						image: '/uploads/default/quickHelp/mainMenu.png'
+					},
+					QH_2: {
+						title: "Call Manager",
+						image: '/uploads/default/quickHelp/mainMenu.png'
+					},
+					QH_3: {
+						title: "View Bill",
+						image: '/uploads/default/homepage/billImage.svg'
+					},
+					QH_4: {
+						title: "Water",
+						image: '/uploads/default/quickHelp/water.svg'
+					},
+					QH_5: {
+						title: "Tea",
+						image: '/uploads/default/quickHelp/tea.svg'
+					},
+					QH_6: {
+						title: "Call Waiter",
+						image: '/uploads/default/quickHelp/call waiter.svg'
+					},
+					QH_7: {
+						title: "Wifi Assistance",
+						image: '/uploads/default/quickHelp/wifi assistance.svg'
+					},
+					QH_8: {
+						title: "Essential Kit",
+						image: '/uploads/default/quickHelp/essential kit.svg'
+					},
+					QH_9: {
+						title: "Tissue",
+						image: '/uploads/default/quickHelp/tissue.svg'
+					}
 				}
 			}
 			this.brokenImageObject = {
