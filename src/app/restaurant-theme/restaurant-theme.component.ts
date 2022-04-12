@@ -16,6 +16,7 @@ export class restaurantThemeComponent implements OnInit {
 	formType: string = '';
 	themeForm: any = {};
 	themeObject: any = {};
+	themeData: any = {};
 	insData: any = {};
 	insImagePath: any = {};
 	homeData: any = {};
@@ -62,6 +63,7 @@ export class restaurantThemeComponent implements OnInit {
 			this.themeObject = [];
 			this.homepageObject = [];
 			this.quickHelpObject = [];
+			this.themeData = [];
 			this.insData = [];
 			this.insImagePath = [];
 			this.homeData = [];
@@ -73,10 +75,11 @@ export class restaurantThemeComponent implements OnInit {
 				console.log('Result: ', result);
 				if (result.status) {
 					this.themeService.themeList = result.data;
-					if (formType === 'theme') {
-						this.formType = 'theme';
-						this.themeObject = result.data.theme;
-						console.log('ThemeObject: ', this.themeObject);
+					if (formType === 'themes') {
+						this.formType = 'themes';
+						this.themeData = result.data.themes?.data;
+						// this.themeObject = result.data.theme;
+						console.log('ThemeData: ', this.themeData);
 					} else if (formType === 'instructionPage') {
 						this.formType = 'instructionPage';
 						this.insData = result.data.instruction?.data;
@@ -178,13 +181,14 @@ export class restaurantThemeComponent implements OnInit {
 	}
 
 	onUpdateTheme(updateName: any) {
-		if (updateName === 'theme') {
-			this.themeObject.pos_rest_id = this.selectedrestaurant.pos_rest_id;
-			this.themeObject.isDefaultTheme = false;
+		if (updateName === 'themes') {
+			// this.themeObject.pos_rest_id = this.selectedrestaurant.pos_rest_id;
+			// this.themeObject.isDefaultTheme = false;
 			this.themeForm = {
-				'isDefault': false,
-				'pos_rest_id': this.themeObject.pos_rest_id,
-				'theme': this.themeObject,
+				isDefault: false,
+				pos_rest_id: this.selectedrestaurant.pos_rest_id,
+				formType: 'themes',
+				data: this.themeData,
 			}
 			this.apiService.ADD_THEME(this.themeForm).subscribe((result: any) => {
 				console.log('theme result', result);

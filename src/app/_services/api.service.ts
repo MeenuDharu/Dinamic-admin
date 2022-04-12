@@ -38,9 +38,16 @@ export class ApiService {
 		return this.http.post<any>(environment.ws_url + '/admin/restaurant/delete', x, httpOptions);
 	}
 
-	ADD_THEME(x: any) {
+	ADD_THEME_FORM(x: any) {
 		// let httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer '+localStorage.getItem("admin_token") }) };
 		let httpOptions = { headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem("admin_token") }) };
+		return this.http.post<any>(environment.ws_url + '/admin/restaurant/addThemeForm', x, httpOptions);
+	}
+
+	ADD_THEME(x: any) {
+		let httpOptions = {
+			headers: new HttpHeaders({'Authorization':'Bearer ' + localStorage.getItem('admin_token')})
+		};
 		return this.http.post<any>(environment.ws_url + '/admin/restaurant/addTheme', x, httpOptions);
 	}
 

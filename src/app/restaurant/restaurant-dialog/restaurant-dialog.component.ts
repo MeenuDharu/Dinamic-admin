@@ -12,7 +12,7 @@ export interface IThemeForm {
 	restaurant_id?: string;
 	pos_rest_id?: string;
 	isDefault?: boolean;
-	theme?: object;
+	themes?: object;
 	instruction?: object;
 	homePage?: object;
 	quickHelp?: object;
@@ -222,13 +222,38 @@ export class restaurantDialogComponent implements OnInit {
 		})	
 		.then((themeList: any) => {
 			console.log('promise data', themeList);
-			this.themeObject.pos_rest_id = data.pos_rest_id;
+			// this.themeObject.pos_rest_id = data.pos_rest_id;
+			let themes = themeList.themes;
 			let insTheme = themeList.instruction;
 			let homeTheme = themeList.homePage;
 			let quickTheme = themeList.quickHelp;
 			let brokenTheme = themeList.broken;
 			let dynamicThings = themeList.dynamicThings;
 
+			this.themeObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: true,
+				formType: 'themes',
+				data: {
+					"body-bg": themes['body-bg'] ? themes['body-bg'] : '#212121',
+					"primary-text": themes['primary-text'] ? themes['primary-text'] : '#212121',
+					"secondary-text": themes['secondary-text'] ? themes['secondary-text'] : '#999999',
+					"header-bg": themes['header-bg'] ? themes['header-bg'] : '#fff',
+					"header-text": themes['header-text'] ? themes['header-text'] : '#212121',
+					"card-bg": themes['card-bg'] ? themes['card-bg'] : '#512da8',
+					"card-text": themes['card-text'] ? themes['card-text'] : '#fff',
+					"card-subText": themes['card-subText'] ? themes['card-subText'] : '#999999',
+					"primary-btn-bg": themes['primary-btn-bg'] ? themes['primary-btn-bg'] : '#212121',
+					"primary-btn-text": themes['primary-btn-text'] ? themes['primary-btn-text'] : '#fff',
+					"primary-btn-hover-bg": themes['primary-btn-hover-bg'] ? themes['primary-btn-hover-bg'] : '#fff',
+					"primary-btn-hover-text": themes['primary-btn-hover-text'] ? themes['primary-btn-hover-text'] : '#212121',
+					"secondary-btn-bg": themes['secondary-btn-bg'] ? themes['secondary-btn-bg'] : '#f18da5',
+					"secondary-btn-text": themes['secondary-btn-text'] ? themes['secondary-btn-text'] : '#fff',
+					"secondary-btn-hover-bg": themes['secondary-btn-hover-bg'] ? themes['secondary-btn-hover-bg'] : '#fff',
+					"secondary-btn-hover-text": themes['secondary-btn-hover-text'] ? themes['secondary-btn-hover-text'] : '#f18da5',
+					"loader-bg": themes['loader-bg'] ? themes['loader-bg'] : '#d3d3d3'
+				}
+			}
 			this.instructionObject = {
 				pos_rest_id: data.pos_rest_id,
 				isDefault: true,
@@ -443,7 +468,7 @@ export class restaurantDialogComponent implements OnInit {
 				'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,
 				'restaurant_id': data.restaurant_id,
 				'pos_rest_id': data.pos_rest_id,
-				'theme': this.themeObject,
+				'themes': this.themeObject,
 				'instruction': this.instructionObject,
 				'homePage': this.homepageObject,
 				'quickHelp': this.quickHelpObject,
@@ -451,7 +476,7 @@ export class restaurantDialogComponent implements OnInit {
 				'dynamicThings': this.dynamicThingsObject
 			}
 			console.log('themeform object', this.themeForm);
-			this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {
+			this.apiService.ADD_THEME_FORM(this.themeForm).subscribe((result) => {
 				console.log("add theme result ", result)
 				if (result.status) {
 					this.doAction();
@@ -462,7 +487,31 @@ export class restaurantDialogComponent implements OnInit {
 		})
 		.catch((rejected) => {
 			console.log('New data: ', rejected);
-			this.themeObject.pos_rest_id = data.pos_rest_id;
+			// this.themeObject.pos_rest_id = data.pos_rest_id;
+			this.themeObject = {
+				pos_rest_id: data.pos_rest_id,
+				isDefault: false,
+				formType: 'themes',
+				data: {
+					"body-bg": "#212121",
+					"primary-text": "#212121",
+					"secondary-text": "#999999",
+					"header-bg": "#fff",
+					"header-text": "#212121",
+					"card-bg": "#512da8",
+					"card-text": "#fff",
+					"card-subText": "#999999",
+					"primary-btn-bg": "#212121",
+					"primary-btn-text": "#fff",
+					"primary-btn-hover-bg": "#fff",
+					"primary-btn-hover-text": "#212121",
+					"secondary-btn-bg": "#f18a5d",
+					"secondary-btn-text": "#fff",
+					"secondary-btn-hover-bg": "#fff",
+					"secondary-btn-hover-text": "#f18a5d",
+					"loader-bg": "#d3d3d3"
+				}
+			}
 			this.instructionObject = {
 				pos_rest_id: data.pos_rest_id,
 				isDefault: true,
@@ -677,7 +726,7 @@ export class restaurantDialogComponent implements OnInit {
 				'restaurantName': this.addForm.name ? this.addForm.name : this.editForm.name,
 				'restaurant_id': data.restaurant_id,
 				'pos_rest_id': data.pos_rest_id,
-				'theme': this.themeObject,
+				'themes': this.themeObject,
 				'instruction': this.instructionObject,
 				'homePage': this.homepageObject,
 				'quickHelp': this.quickHelpObject,
@@ -685,7 +734,7 @@ export class restaurantDialogComponent implements OnInit {
 				'dynamicThings': this.dynamicThingsObject
 			}
 			console.log('themeform object', this.themeForm);
-			this.apiService.ADD_THEME(this.themeForm).subscribe((result) => {
+			this.apiService.ADD_THEME_FORM(this.themeForm).subscribe((result) => {
 				console.log("add theme result ", result)
 				if (result.status) {
 					this.doAction();

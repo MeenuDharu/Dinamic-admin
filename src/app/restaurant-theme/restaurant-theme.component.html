@@ -514,15 +514,14 @@
 				<mat-card class="card mat-elevation-z1 p-0">
 					<div class="card-body row justify-content-between align-items-center p-x-30 p-y-20">
 						<h4 class="card-title m-0 font600">Theme Update</h4>
-						<i class="material-icons edit-icon" style="cursor: pointer;" (click)="onEdit('theme')">edit</i>
+						<i class="material-icons edit-icon" style="cursor: pointer;" (click)="onEdit('themes')">edit</i>
 					</div>
 				</mat-card>
-				<ng-container *ngIf="formType === 'theme'">
+				<ng-container *ngIf="formType === 'themes'">
 					<mat-card class="mat-elevation-z2 p-0">
-						<form autocomplete="off" (ngSubmit)="onUpdateTheme('theme')" ngNativeValidate>
+						<form autocomplete="off" (ngSubmit)="onUpdateTheme('themes')" ngNativeValidate>
 							<div class="modal-body p-25">
-
-								<h3>Primary Theme</h3>
+								<!-- <h3>Primary Theme</h3>
 								<div class="row">
 									<div class="col-md-3">
 										<mat-form-field class="w-100">
@@ -563,7 +562,6 @@
 										</mat-form-field>
 									</div>
 								</div>
-
 								<div class="row">
 									<div class="col-md-3">
 										<mat-form-field class="w-100">
@@ -582,15 +580,175 @@
 												#primary_button_text="ngModel" required />
 										</mat-form-field>
 									</div>
+								</div> -->
+
+								<h3>Body</h3>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Background</mat-label>
+											<input matInput type="text" name="body-bg"
+												[(ngModel)]="themeData['body-bg']" required />
+										</mat-form-field>
+									</div>
 								</div>
 
-								<div *ngIf="themeObject.error_msg" class="error-msg">{{ themeObject.error_msg }}</div>
+								<h3>Text</h3>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Primary</mat-label>
+											<input matInput type="text" name="primary-text"
+												[(ngModel)]="themeData['primary-text']" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Secondary</mat-label>
+											<input matInput type="text" name="secondary-text"
+												[(ngModel)]="themeData['secondary-text']" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Header</h3>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Background</mat-label>
+											<input matInput type="text" name="header-bg"
+												[(ngModel)]="themeData['header-bg']" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Text Color</mat-label>
+											<input matInput type="text" name="header-text"
+												[(ngModel)]="themeData['header-text']" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Card</h3>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Background</mat-label>
+											<input matInput type="text" name="card-bg"
+												[(ngModel)]="themeData['card-bg']" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Text Color</mat-label>
+											<input matInput type="text" name="card-text"
+												[(ngModel)]="themeData['card-text']" required />
+										</mat-form-field>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Sub-Text Color</mat-label>
+											<input matInput type="text" name="card-subText"
+												[(ngModel)]="themeData['card-subText']" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Primary Button</h3>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Background</mat-label>
+											<input matInput type="text" name="primary-btn-bg"
+												[(ngModel)]="themeData['primary-btn-bg']" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Text Color</mat-label>
+											<input matInput type="text" name="primary-btn-text"
+												[(ngModel)]="themeData['primary-btn-text']" required />
+										</mat-form-field>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Hover Background</mat-label>
+											<input matInput type="text" name="primary-btn-hover-bg"
+												[(ngModel)]="themeData['primary-btn-hover-bg']" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Hover Text Color</mat-label>
+											<input matInput type="text" name="primary-btn-hover-text"
+												[(ngModel)]="themeData['primary-btn-hover-text']" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Secondary Button</h3>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Background</mat-label>
+											<input matInput type="text" name="secondary-btn-bg"
+												[(ngModel)]="themeData['secondary-btn-bg']" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Text Color</mat-label>
+											<input matInput type="text" name="secondary-btn-text"
+												[(ngModel)]="themeData['secondary-btn-text']" required />
+										</mat-form-field>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Hover Background</mat-label>
+											<input matInput type="text" name="secondary-btn-hover-bg"
+												[(ngModel)]="themeData['secondary-btn-hover-bg']" required />
+										</mat-form-field>
+									</div>
+
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Hover Text Color</mat-label>
+											<input matInput type="text" name="secondary-btn-hover-text"
+												[(ngModel)]="themeData['secondary-btn-hover-text']" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<h3>Loader</h3>
+								<div class="row">
+									<div class="col-md-3">
+										<mat-form-field class="w-100">
+											<mat-label>Background</mat-label>
+											<input matInput type="text" name="loader-bg"
+												[(ngModel)]="themeData['loader-bg']" required />
+										</mat-form-field>
+									</div>
+								</div>
+
+								<div *ngIf="themeData.error_msg" class="error-msg">{{ themeData.error_msg }}</div>
 							</div>
 
 							<div class="row">
 								<div class="col-md-12 text-right p-x-25 p-b-10">
 									<button type="button" class="btn btn-link btn-cancel waves-effect"
-										(click)="closeForm('theme')">CANCEL</button>
+										(click)="closeForm('themes')">CANCEL</button>
 									<button type="submit" class="btn btn-link waves-effect">DONE</button>
 								</div>
 							</div>
